@@ -1,0 +1,23 @@
+// Paste at the very end of your <script> block
+window.switchAuthTab = switchAuthTab;
+window.guestLogin = guestLogin;
+window.handleAuth = handleAuth;
+window.logout = logout;
+window.combine = combine;
+window.clearSlots = clearSlots;
+window.closeResult = closeResult;
+window.viewInEncyclopedia = viewInEncyclopedia;
+window.openEncyclopedia = openEncyclopedia;
+window.closeEncyclopedia = closeEncyclopedia;
+window.setEncTab = setEncTab;
+window.filterEncyclopedia = filterEncyclopedia;
+window.encShowDetail = encShowDetail;
+window.encBack = encBack;
+window.filterCollection = filterCollection;
+window.setFilter = setFilter;
+window.openEncyclopediaTo = openEncyclopediaTo;
+window.openStrainMap = openStrainMap;
+window.closeStrainMap = closeStrainMap;
+window.smapResetView = smapResetView;
+window.smapToggleLabels = smapToggleLabels;
+window.smapToggleUndiscovered = smapToggleUndiscovered;

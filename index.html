@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChronAlchemy — Cannabis Strain Lineage</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#0d1a0f;--bg2:#111e11;--bg3:#1a2e1a;--bg4:#0d1a0d;
+    --border:#2a4a2a;--border2:#3a6b2a;--accent:#7ec850;--accent2:#4a9a2a;
+    --gold:#c8a850;--text:#e8dcc8;--text2:#c8e8b0;--text3:#8a9a80;--text4:#7a9a60;
+  }
+  body{background:var(--bg);color:var(--text);font-family:'Georgia',serif;height:100vh;overflow:hidden;display:flex;flex-direction:column}
+
+  /* ═══ HEADER ═══ */
+  header{background:linear-gradient(135deg,var(--bg3),var(--bg));border-bottom:2px solid var(--border2);padding:10px 20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;z-index:10}
+  .logo{font-size:22px;font-weight:bold;color:var(--accent);letter-spacing:2px;text-shadow:0 0 20px #4a9a2a88}
+  .logo span{color:var(--gold)}
+  .header-actions{display:flex;align-items:center;gap:16px}
+  .encyclopedia-btn{background:linear-gradient(135deg,#2a4a2a,#1a3a1a);border:1px solid var(--accent2);color:var(--accent);padding:6px 14px;border-radius:8px;font-size:12px;font-family:'Georgia',serif;cursor:pointer;transition:all .3s;letter-spacing:1px;display:flex;align-items:center;gap:6px}
+  .encyclopedia-btn:hover{background:linear-gradient(135deg,#3a6a3a,#2a5a2a);border-color:var(--accent);box-shadow:0 0 15px #4a9a2a44;transform:translateY(-1px)}
+  .strainmap-btn{background:linear-gradient(135deg,#1a2a3a,#0d1a2a);border:1px solid #2a5a8a;color:#60a0d0;padding:6px 14px;border-radius:8px;font-size:12px;font-family:'Georgia',serif;cursor:pointer;transition:all .3s;letter-spacing:1px;display:flex;align-items:center;gap:6px}
+  .strainmap-btn:hover{background:linear-gradient(135deg,#2a3a5a,#1a2a4a);border-color:#60a0d0;box-shadow:0 0 15px #2a5a8a44;transform:translateY(-1px)}
+  .stats{display:flex;gap:14px;font-size:13px}
+  .stat{background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:5px 12px;text-align:center}
+  .stat-val{color:var(--accent);font-size:16px;font-weight:bold}
+  .stat-lbl{color:var(--text3);font-size:10px}
+
+  /* ═══ AUTH BAR ═══ */
+  .auth-bar{display:flex;align-items:center;gap:10px}
+  .auth-bar .user-badge{background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:4px 12px;font-size:11px;color:var(--text2);display:flex;align-items:center;gap:6px}
+  .auth-bar .user-badge .avatar{width:20px;height:20px;border-radius:50%;background:var(--accent2);display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff}
+  .auth-bar button{background:transparent;border:1px solid #4a3a2a;color:#9a8060;border-radius:6px;padding:4px 10px;font-size:10px;cursor:pointer;font-family:'Georgia',serif;transition:all .2s}
+  .auth-bar button:hover{border-color:var(--gold);color:var(--gold)}
+
+  /* ═══ AUTH MODAL ═══ */
+  .auth-overlay{position:fixed;inset:0;z-index:9999;background:#000a;backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+  .auth-overlay.open{opacity:1;pointer-events:all}
+  .auth-card{background:linear-gradient(135deg,var(--bg3),var(--bg2));border:2px solid var(--border2);border-radius:20px;padding:40px;max-width:400px;width:90%;text-align:center;box-shadow:0 0 80px #4a9a2a22;transform:scale(.9);transition:transform .3s}
+  .auth-overlay.open .auth-card{transform:scale(1)}
+  .auth-card h2{color:var(--accent);font-size:24px;margin-bottom:6px;text-shadow:0 0 20px #4a9a2a66}
+  .auth-card p{color:var(--text3);font-size:13px;margin-bottom:24px}
+  .auth-card .auth-tabs{display:flex;margin-bottom:20px;border-radius:10px;overflow:hidden;border:1px solid var(--border)}
+  .auth-card .auth-tab{flex:1;padding:8px;background:transparent;border:none;color:var(--text4);font-family:'Georgia',serif;font-size:12px;cursor:pointer;transition:all .2s}
+  .auth-card .auth-tab.active{background:var(--accent2);color:#fff}
+  .auth-field{margin-bottom:14px;text-align:left}
+  .auth-field label{display:block;font-size:11px;color:var(--text4);margin-bottom:4px;letter-spacing:1px;text-transform:uppercase}
+  .auth-field input{width:100%;background:var(--bg4);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text2);font-size:14px;outline:none;font-family:'Georgia',serif;transition:border-color .2s}
+  .auth-field input:focus{border-color:var(--accent2)}
+  .auth-submit{width:100%;background:linear-gradient(135deg,var(--accent2),#3a7a1a);color:#e8f8d8;border:none;border-radius:12px;padding:12px;font-size:15px;font-family:'Georgia',serif;font-weight:bold;cursor:pointer;transition:all .2s;margin-top:8px;letter-spacing:1px}
+  .auth-submit:hover{background:linear-gradient(135deg,#5ab03a,var(--accent2));transform:translateY(-1px);box-shadow:0 4px 20px #4a9a2a44}
+  .auth-error{color:#e05050;font-size:12px;margin-top:8px;min-height:16px}
+  .auth-guest{margin-top:16px;padding-top:16px;border-top:1px solid var(--border)}
+  .auth-guest button{background:transparent;border:1px solid var(--border);color:var(--text4);border-radius:10px;padding:8px 20px;font-size:12px;cursor:pointer;font-family:'Georgia',serif;transition:all .2s}
+  .auth-guest button:hover{border-color:var(--accent);color:var(--text2)}
+  .auth-guest p{margin-bottom:8px;font-size:11px}
+
+  /* ═══ MAIN LAYOUT ═══ */
+  .main{display:flex;flex:1;overflow:hidden}
+  .collection-panel{width:220px;background:var(--bg2);border-right:2px solid var(--border);display:flex;flex-direction:column;flex-shrink:0}
+  .panel-title{padding:12px 15px;font-size:12px;color:var(--accent);text-transform:uppercase;letter-spacing:2px;border-bottom:1px solid var(--border);background:var(--bg4)}
+  .collection-grid{flex:1;overflow-y:auto;padding:10px;display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start}
+  .collection-grid::-webkit-scrollbar{width:4px}
+  .collection-grid::-webkit-scrollbar-track{background:var(--bg4)}
+  .collection-grid::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+
+  .strain-card{width:90px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:6px;cursor:grab;transition:all .2s;position:relative;text-align:center;user-select:none}
+  .strain-card:hover{border-color:var(--accent);background:#213521;transform:translateY(-2px);box-shadow:0 4px 15px #4a9a2a44}
+  .strain-card.dragging{opacity:.5;cursor:grabbing}
+  .strain-card .placeholder-img{width:60px;height:45px;margin:0 auto 4px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:22px}
+  .strain-card .card-name{font-size:9px;color:var(--text2);line-height:1.2;font-weight:bold}
+  .strain-card .card-type{font-size:8px;color:var(--text4);margin-top:2px}
+  .strain-card .card-badge{position:absolute;top:4px;right:4px;width:14px;height:14px;border-radius:50%;font-size:8px;display:flex;align-items:center;justify-content:center;font-weight:bold}
+  .strain-card .info-btn{position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;font-size:9px;display:flex;align-items:center;justify-content:center;font-weight:bold;background:#0d1a0d88;color:var(--accent);border:1px solid var(--border2);cursor:pointer;opacity:0;transition:opacity .2s;z-index:2}
+  .strain-card:hover .info-btn{opacity:1}
+  .strain-card .info-btn:hover{background:var(--accent2);color:#fff}
+
+  .search-bar{padding:8px;border-bottom:1px solid var(--border)}
+  .search-bar input{width:100%;background:var(--bg4);border:1px solid var(--border);border-radius:6px;padding:6px 10px;color:var(--text2);font-size:12px;outline:none;font-family:'Georgia',serif}
+  .search-bar input:focus{border-color:var(--accent2)}
+  .search-bar input::placeholder{color:#3a5a3a}
+  .filter-tabs{display:flex;padding:6px 8px;gap:4px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+  .filter-tab{padding:3px 8px;border-radius:10px;font-size:10px;border:1px solid var(--border);background:transparent;color:var(--text4);cursor:pointer;transition:all .2s;font-family:'Georgia',serif}
+  .filter-tab.active{background:var(--border2);color:var(--text2);border-color:var(--accent)}
+
+  /* ═══ CRAFT AREA ═══ */
+  .craft-area{flex:1;display:flex;flex-direction:column;position:relative;overflow:hidden}
+  .craft-canvas{flex:1;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 50%,var(--bg3) 0%,var(--bg) 70%)}
+  .craft-canvas::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,#3a6b2a22 1px,transparent 1px);background-size:30px 30px;pointer-events:none}
+  .drop-zone{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;gap:40px;align-items:center}
+  .slot{width:120px;height:120px;border:2px dashed var(--border2);border-radius:16px;background:#111e1180;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:all .3s;position:relative}
+  .slot.drag-over{border-color:var(--accent);background:#1a3a1a80;box-shadow:0 0 30px #4a9a2a44}
+  .slot.filled{border-color:var(--accent);border-style:solid;background:var(--bg3)}
+  .slot .slot-placeholder-img{width:70px;height:55px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:30px}
+  .slot-label{position:absolute;bottom:-22px;font-size:11px;color:var(--text4);white-space:nowrap;font-weight:bold}
+  .slot-name{font-size:10px;color:var(--text2);margin-top:4px;text-align:center;padding:0 5px}
+  .slot-empty-text{font-size:11px;color:var(--border2);text-align:center;line-height:1.4}
+  .plus-sign{font-size:36px;color:var(--border2);font-weight:bold}
+  .combine-btn{background:linear-gradient(135deg,var(--accent2),#3a7a1a);color:#e8f8d8;border:none;border-radius:12px;padding:14px 28px;font-size:16px;font-family:'Georgia',serif;cursor:pointer;transition:all .3s;letter-spacing:1px;font-weight:bold;box-shadow:0 4px 20px #4a9a2a44}
+  .combine-btn:hover:not(:disabled){background:linear-gradient(135deg,#5ab03a,var(--accent2));transform:translateY(-2px);box-shadow:0 6px 25px #4a9a2a66}
+  .combine-btn:disabled{background:#2a3a2a;color:#5a7a5a;cursor:not-allowed;box-shadow:none}
+  .clear-btn{background:transparent;border:1px solid #4a3a2a;color:#9a8060;border-radius:8px;padding:6px 16px;font-size:12px;cursor:pointer;transition:all .2s;font-family:'Georgia',serif}
+  .clear-btn:hover{border-color:var(--gold);color:var(--gold)}
+
+  /* ═══ RESULT PANEL ═══ */
+  .result-panel{position:absolute;inset:0;background:#0d1a0fee;display:flex;align-items:center;justify-content:center;z-index:20;opacity:0;pointer-events:none;transition:opacity .4s}
+  .result-panel.show{opacity:1;pointer-events:all}
+  .result-card{background:linear-gradient(135deg,var(--bg3),var(--bg2));border:2px solid var(--accent);border-radius:20px;padding:30px;max-width:480px;width:90%;text-align:center;box-shadow:0 0 60px #4a9a2a44,0 0 120px #4a9a2a22;position:relative;animation:cardPop .4s ease}
+  @keyframes cardPop{0%{transform:scale(.8);opacity:0}60%{transform:scale(1.05)}100%{transform:scale(1);opacity:1}}
+  .result-new-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--gold),#a87830);color:#1a1000;padding:4px 16px;border-radius:20px;font-size:11px;font-weight:bold;letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
+  .result-placeholder{width:120px;height:95px;margin:0 auto 10px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:50px}
+  .result-name{font-size:26px;font-weight:bold;color:var(--accent);margin-bottom:4px;text-shadow:0 0 20px #4a9a2a88}
+  .result-aka{font-size:12px;color:#8a9a70;margin-bottom:8px;font-style:italic}
+  .result-type-row{display:flex;justify-content:center;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+  .type-badge{padding:3px 10px;border-radius:12px;font-size:11px;font-weight:bold}
+  .result-lineage{font-size:12px;color:var(--gold);margin-bottom:12px}
+  .result-desc{font-size:13px;color:#b8c8a8;line-height:1.6;margin-bottom:16px;text-align:left;background:var(--bg4);padding:12px;border-radius:10px;border:1px solid var(--border);max-height:120px;overflow-y:auto}
+  .result-stats{display:flex;justify-content:space-around;margin-bottom:16px}
+  .r-stat{text-align:center}
+  .r-stat-val{font-size:18px;font-weight:bold;color:var(--accent)}
+  .r-stat-lbl{font-size:10px;color:var(--text4)}
+  .result-effects{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-bottom:16px}
+  .effect-tag{background:#1a3a1a;border:1px solid var(--border2);border-radius:10px;padding:3px 10px;font-size:11px;color:#a8d890}
+  .result-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .result-btn{background:linear-gradient(135deg,var(--accent2),#3a7a1a);color:#e8f8d8;border:none;border-radius:12px;padding:12px 30px;font-size:14px;cursor:pointer;transition:all .2s;font-family:'Georgia',serif;font-weight:bold}
+  .result-btn:hover{background:linear-gradient(135deg,#5ab03a,var(--accent2));transform:translateY(-2px)}
+  .result-btn.secondary{background:linear-gradient(135deg,#2a4a3a,#1a3a2a);border:1px solid #4a9a6a;color:#a8d8c0;padding:10px 20px;font-size:12px}
+  .result-btn.secondary:hover{background:linear-gradient(135deg,#3a6a4a,#2a5a3a)}
+
+  /* ═══ INFO PANEL ═══ */
+  .info-panel{width:240px;background:var(--bg2);border-left:2px solid var(--border);display:flex;flex-direction:column;flex-shrink:0;overflow:hidden}
+  .hint-section{padding:15px;border-bottom:1px solid var(--border)}
+  .hint-title{font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px}
+  .hint-list{display:flex;flex-direction:column;gap:6px}
+  .hint-item{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:7px 10px;font-size:11px;color:var(--text3);line-height:1.3}
+  .hint-item strong{color:var(--gold)}
+  .discovery-log{flex:1;overflow-y:auto;padding:10px}
+  .discovery-log::-webkit-scrollbar{width:4px}
+  .discovery-log::-webkit-scrollbar-track{background:var(--bg4)}
+  .discovery-log::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+  .log-title{font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:2px;padding:10px 5px 8px}
+  .log-entry{background:var(--bg3);border-left:3px solid var(--accent2);border-radius:0 6px 6px 0;padding:6px 8px;margin-bottom:6px;font-size:11px;animation:slideIn .3s ease}
+  .log-entry .log-strain{color:var(--accent);font-weight:bold}
+  .log-entry .log-combo{color:#8a9a70;font-size:10px}
+  @keyframes slideIn{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:translateX(0)}}
+
+  /* ═══ PARTICLES ═══ */
+  .particle{position:absolute;pointer-events:none;border-radius:50%;animation:floatUp 1.5s ease forwards}
+  @keyframes floatUp{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-80px) scale(0)}}
+
+  /* ═══ TOOLTIP ═══ */
+  .tooltip{position:fixed;background:var(--bg3);border:1px solid var(--accent2);border-radius:8px;padding:8px 12px;font-size:11px;color:var(--text2);pointer-events:none;z-index:100;max-width:180px;box-shadow:0 4px 20px #0009}
+
+  /* ═══ NOTIFICATION ═══ */
+  .notification{position:fixed;top:70px;right:20px;background:var(--bg3);border:1px solid var(--accent);border-radius:10px;padding:10px 16px;font-size:13px;color:var(--text2);z-index:200;animation:notifSlide .3s ease;box-shadow:0 4px 20px #0009}
+  @keyframes notifSlide{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
+  .already-known{border-color:var(--gold)}
+
+  /* ═══ SAVE INDICATOR ═══ */
+  .save-indicator{position:fixed;bottom:12px;right:12px;font-size:10px;color:var(--text4);background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:4px 10px;z-index:50;opacity:0;transition:opacity .3s;pointer-events:none}
+  .save-indicator.show{opacity:1}
+
+  /* ═══ STRAIN MAP OVERLAY ═══ */
+  .strainmap-overlay{position:fixed;inset:0;z-index:600;pointer-events:none;opacity:0;transition:opacity .35s}
+  .strainmap-overlay.open{pointer-events:all;opacity:1}
+  .strainmap-backdrop{position:absolute;inset:0;background:#000c;backdrop-filter:blur(6px)}
+  .strainmap-container{position:absolute;inset:0;display:flex;flex-direction:column}
+  .strainmap-header{padding:12px 20px;background:linear-gradient(135deg,#0d1a2a,#0a1420);border-bottom:2px solid #1a3a5a;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;z-index:2}
+  .strainmap-title-area{display:flex;align-items:center;gap:10px}
+  .strainmap-title{font-size:16px;color:#60a0d0;font-weight:bold;letter-spacing:1px}
+  .strainmap-subtitle{font-size:11px;color:#3a6a8a;margin-left:8px}
+  .strainmap-controls{display:flex;align-items:center;gap:10px}
+  .strainmap-ctrl-btn{background:#0d1a2a;border:1px solid #1a3a5a;color:#4a8ab0;border-radius:6px;padding:5px 10px;font-size:12px;cursor:pointer;font-family:'Georgia',serif;transition:all .2s}
+  .strainmap-ctrl-btn:hover{border-color:#60a0d0;color:#80c0e0;background:#1a2a3a}
+  .strainmap-ctrl-btn.active{background:#1a3a5a;color:#a0d0f0;border-color:#60a0d0}
+  .strainmap-close{width:32px;height:32px;border-radius:50%;background:#1a2020;border:1px solid #2a4a5a;color:#4a8ab0;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+  .strainmap-close:hover{background:#2a3a4a;color:#a0d0f0;border-color:#60a0d0}
+  .strainmap-canvas-wrap{flex:1;position:relative;overflow:hidden;background:#050d14;cursor:grab}
+  .strainmap-canvas-wrap:active{cursor:grabbing}
+  .strainmap-canvas-wrap canvas{position:absolute;top:0;left:0}
+  .strainmap-legend{position:absolute;bottom:16px;left:16px;background:#0a141eee;border:1px solid #1a3a5a;border-radius:10px;padding:12px 16px;z-index:2;display:flex;flex-direction:column;gap:6px}
+  .strainmap-legend-title{font-size:10px;color:#4a8ab0;text-transform:uppercase;letter-spacing:2px;margin-bottom:2px}
+  .strainmap-legend-item{display:flex;align-items:center;gap:8px;font-size:11px;color:#6a8a9a}
+  .strainmap-legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+  .strainmap-info-popup{position:absolute;z-index:3;background:#0a1a24ee;border:1px solid #2a5a7a;border-radius:12px;padding:14px 18px;min-width:220px;max-width:280px;pointer-events:none;opacity:0;transition:opacity .15s;box-shadow:0 8px 30px #000a}
+  .strainmap-info-popup.show{opacity:1}
+  .smi-name{font-size:15px;font-weight:bold;color:#7ec850;margin-bottom:3px}
+  .smi-name.locked{color:#4a5a60}
+  .smi-types{display:flex;gap:4px;margin-bottom:6px;flex-wrap:wrap}
+  .smi-lineage{font-size:10px;color:#c8a850;margin-bottom:4px}
+  .smi-stats{font-size:11px;color:#6a9a8a}
+  .smi-hint{font-size:10px;color:#8a5a5a;margin-top:6px;font-style:italic;border-top:1px solid #1a3a4a;padding-top:6px}
+  .strainmap-zoom-info{position:absolute;bottom:16px;right:16px;background:#0a141eee;border:1px solid #1a3a5a;border-radius:8px;padding:6px 12px;z-index:2;font-size:11px;color:#3a6a8a}
+  .strainmap-gen-labels{position:absolute;top:60px;left:16px;display:flex;flex-direction:column;gap:4px;z-index:2}
+  .strainmap-gen-tag{font-size:9px;color:#2a5a7a;background:#0a141ecc;border:1px solid #1a2a3a;padding:2px 8px;border-radius:4px;white-space:nowrap}
+
+  /* ═══ LOADING ═══ */
+  .loading-overlay{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:10000;transition:opacity .5s}
+  .loading-overlay.hide{opacity:0;pointer-events:none}
+  .loading-logo{font-size:36px;font-weight:bold;color:var(--accent);margin-bottom:20px;text-shadow:0 0 30px var(--accent2);animation:pulse 1.5s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+  .loading-bar-wrap{width:200px;height:4px;background:#1a3a1a;border-radius:2px;overflow:hidden}
+  .loading-bar{height:100%;background:linear-gradient(90deg,var(--accent2),var(--accent));border-radius:2px;animation:loadProgress 1.2s ease forwards}
+  @keyframes loadProgress{from{width:0}to{width:100%}}
+  .loading-text{margin-top:12px;color:#5a8a5a;font-size:13px}
+
+  /* ═══════════════════════════════════════
+     ENCYCLOPEDIA OVERLAY
+     ═══════════════════════════════════════ */
+  .encyclopedia-overlay{position:fixed;inset:0;z-index:500;pointer-events:none;opacity:0;transition:opacity .35s}
+  .encyclopedia-overlay.open{pointer-events:all;opacity:1}
+  .encyclopedia-backdrop{position:absolute;inset:0;background:#0008;backdrop-filter:blur(4px)}
+  .encyclopedia-panel{position:absolute;top:0;right:0;width:540px;max-width:95vw;height:100%;background:#0f1c0f;border-left:2px solid var(--border2);box-shadow:-8px 0 40px #000a;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .4s cubic-bezier(.22,.61,.36,1)}
+  .encyclopedia-overlay.open .encyclopedia-panel{transform:translateX(0)}
+  .enc-header{padding:16px 20px;background:linear-gradient(135deg,var(--bg3),var(--bg));border-bottom:2px solid var(--border2);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+  .enc-title-area{display:flex;align-items:center;gap:10px}
+  .enc-title{font-size:16px;color:var(--accent);font-weight:bold;letter-spacing:1px}
+  .enc-close{width:32px;height:32px;border-radius:50%;background:#1a2a1a;border:1px solid var(--border2);color:var(--text4);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+  .enc-close:hover{background:var(--border);color:var(--text2);border-color:var(--accent)}
+  .enc-tabs{display:flex;background:#111a11;border-bottom:1px solid var(--border);flex-shrink:0}
+  .enc-tab{flex:1;padding:10px;text-align:center;font-size:11px;color:#5a8a5a;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;background:transparent;border-top:none;border-left:none;border-right:none;font-family:'Georgia',serif;letter-spacing:1px;text-transform:uppercase}
+  .enc-tab:hover{color:#a8d890;background:#1a2a1a}
+  .enc-tab.active{color:var(--accent);border-bottom-color:var(--accent);background:var(--bg3)}
+  .enc-search{padding:10px 16px;background:#111a11;border-bottom:1px solid var(--border);flex-shrink:0}
+  .enc-search input{width:100%;background:var(--bg4);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--text2);font-size:13px;outline:none;font-family:'Georgia',serif}
+  .enc-search input:focus{border-color:var(--accent2)}
+  .enc-search input::placeholder{color:#3a5a3a}
+  .enc-body{flex:1;overflow-y:auto;padding:0}
+  .enc-body::-webkit-scrollbar{width:5px}
+  .enc-body::-webkit-scrollbar-track{background:var(--bg4)}
+  .enc-body::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+
+  /* List View */
+  .enc-list{padding:10px;display:flex;flex-direction:column;gap:6px}
+  .enc-list-item{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:all .2s}
+  .enc-list-item:hover{border-color:var(--accent2);background:#213521;transform:translateX(4px)}
+  .enc-list-item.undiscovered{opacity:.4;filter:grayscale(.5);cursor:default}
+  .enc-list-item.undiscovered:hover{transform:none;border-color:var(--border);background:var(--bg3)}
+  .enc-list-emoji{font-size:28px;width:42px;height:42px;display:flex;align-items:center;justify-content:center;border-radius:8px;flex-shrink:0}
+  .enc-list-info{flex:1;min-width:0}
+  .enc-list-name{font-size:14px;font-weight:bold;color:var(--text2);margin-bottom:2px}
+  .enc-list-meta{font-size:11px;color:#6a8a5a;display:flex;gap:8px;flex-wrap:wrap}
+  .enc-list-gen{font-size:10px;background:var(--border);padding:2px 8px;border-radius:8px;color:#a8d890;flex-shrink:0}
+  .enc-list-arrow{color:var(--border2);font-size:16px;flex-shrink:0}
+  .enc-list-item:hover .enc-list-arrow{color:var(--accent)}
+
+  /* Detail View */
+  .enc-detail{padding:16px}
+  .enc-back-btn{display:inline-flex;align-items:center;gap:6px;background:transparent;border:1px solid var(--border);color:var(--text4);padding:5px 12px;border-radius:6px;font-size:11px;cursor:pointer;margin-bottom:16px;font-family:'Georgia',serif;transition:all .2s}
+  .enc-back-btn:hover{border-color:var(--accent);color:var(--text2)}
+  .enc-detail-header{display:flex;align-items:flex-start;gap:16px;margin-bottom:20px}
+  .enc-detail-emoji{font-size:52px;width:80px;height:80px;display:flex;align-items:center;justify-content:center;border-radius:14px;flex-shrink:0}
+  .enc-detail-title-area{flex:1}
+  .enc-detail-name{font-size:24px;font-weight:bold;color:var(--accent);text-shadow:0 0 15px #4a9a2a66;margin-bottom:4px}
+  .enc-detail-types{display:flex;gap:6px;margin-bottom:6px;flex-wrap:wrap}
+  .enc-detail-lineage{font-size:12px;color:var(--gold)}
+  .enc-stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px}
+  .enc-stat-box{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:10px;text-align:center}
+  .enc-stat-val{font-size:18px;font-weight:bold;color:var(--accent)}
+  .enc-stat-lbl{font-size:10px;color:#6a8a5a;margin-top:2px}
+  .enc-description{background:#111a11;border:1px solid var(--border);border-radius:10px;padding:14px;font-size:13px;line-height:1.7;color:#b8c8a8;margin-bottom:20px}
+  .enc-section-title{font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  .enc-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+  .enc-effects{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+  .enc-effect-tag{background:#1a3a1a;border:1px solid var(--border2);border-radius:12px;padding:4px 12px;font-size:12px;color:#a8d890}
+  .enc-flavor-section{margin-bottom:20px}
+  .enc-flavor-canvas-wrap{background:#111a11;border:1px solid var(--border);border-radius:12px;padding:16px;display:flex;align-items:center;justify-content:center}
+  .enc-tree-section{margin-bottom:20px}
+  .enc-tree-canvas-wrap{background:#111a11;border:1px solid var(--border);border-radius:12px;padding:16px;overflow-x:auto;display:flex;justify-content:center}
+  .enc-children{margin-bottom:20px}
+  .enc-child-list{display:flex;flex-wrap:wrap;gap:6px}
+  .enc-child-tag{background:#1a2a2a;border:1px solid #2a5a4a;border-radius:8px;padding:4px 10px;font-size:11px;color:#80c0a0;cursor:pointer;transition:all .2s}
+  .enc-child-tag:hover{background:#2a4a3a;border-color:#50a080}
+  .enc-child-tag.locked{opacity:.4;cursor:default;color:#5a7a6a}
+
+  /* Gen View */
+  .enc-gen-view{padding:10px}
+  .enc-gen-group{margin-bottom:16px}
+  .enc-gen-label{font-size:12px;color:var(--gold);font-weight:bold;padding:8px 12px;background:#1a2a1a;border-radius:8px;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+  .enc-gen-count{font-size:10px;color:var(--text4);margin-left:auto}
+  .enc-gen-items{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:6px}
+  .enc-gen-item{display:flex;align-items:center;gap:8px;padding:8px 10px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all .2s;font-size:12px}
+  .enc-gen-item:hover{border-color:var(--accent2);background:#213521}
+  .enc-gen-item.undiscovered{opacity:.35;filter:grayscale(.5);cursor:default}
+  .enc-gen-item.undiscovered:hover{border-color:var(--border);background:var(--bg3)}
+  .enc-gen-item-emoji{font-size:18px}
+  .enc-gen-item-name{color:var(--text2);font-size:11px}
+
+  /* ═══ MOBILE ═══ */
+  @media(max-width:900px){
+    .info-panel{display:none}
+    .collection-panel{width:160px}
+    .strain-card{width:68px}
+    .strain-card .placeholder-img{width:48px;height:36px;font-size:18px}
+    .strain-card .card-name{font-size:8px}
+    .stats{gap:8px}
+    .stat{padding:3px 8px}
+    .encyclopedia-panel{width:100vw;max-width:100vw}
+  }
+  @media(max-width:600px){
+    .collection-panel{width:120px}
+    .strain-card{width:100%}
+    .slot{width:90px;height:90px}
+    .drop-zone{gap:16px}
+    .stats{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- AUTH MODAL -->
+<div class="auth-overlay open" id="auth-overlay">
+  <div class="auth-card">
+    <div style="font-size:40px;margin-bottom:10px">🌿</div>
+    <h2>CHRON<span style="color:var(--gold)">ALCHEMY</span></h2>
+    <p>Cannabis Strain Lineage Game</p>
+    <div class="auth-tabs" id="auth-tabs">
+      <button class="auth-tab active" onclick="switchAuthTab('login')">Log In</button>
+      <button class="auth-tab" onclick="switchAuthTab('signup')">Sign Up</button>
+    </div>
+    <form id="auth-form" onsubmit="handleAuth(event)">
+      <div class="auth-field">
+        <label>Username</label>
+        <input type="text" id="auth-username" required autocomplete="username" placeholder="Enter username">
+      </div>
+      <div class="auth-field">
+        <label>Password</label>
+        <input type="password" id="auth-password" required autocomplete="current-password" placeholder="Enter password">
+      </div>
+      <div class="auth-field" id="auth-email-field" style="display:none">
+        <label>Email (optional)</label>
+        <input type="email" id="auth-email" autocomplete="email" placeholder="your@email.com">
+      </div>
+      <button type="submit" class="auth-submit" id="auth-submit-btn">🔑 Log In</button>
+      <div class="auth-error" id="auth-error"></div>
+    </form>
+    <div class="auth-guest">
+      <p style="color:var(--text4)">or</p>
+      <button onclick="guestLogin()">🌱 Play as Guest</button>
+    </div>
+  </div>
+</div>
+
+<!-- LOADING -->
+<div class="loading-overlay" id="loading-overlay" style="display:none">
+  <div class="loading-logo">🌿 CHRONALCHEMY</div>
+  <div style="color:#5a8a5a;font-size:13px;margin-bottom:16px">Cannabis Strain Lineage Game</div>
+  <div class="loading-bar-wrap"><div class="loading-bar"></div></div>
+  <div class="loading-text">Cultivating strains...</div>
+</div>
+
+<header>
+  <div class="logo">🌿 CHRON<span>ALCHEMY</span></div>
+  <div class="header-actions">
+    <button class="strainmap-btn" onclick="openStrainMap()">🗺️ Strain Map</button>
+    <button class="encyclopedia-btn" onclick="openEncyclopedia()">📖 Encyclopedia</button>
+    <div class="stats">
+      <div class="stat"><div class="stat-val" id="discovered-count">0</div><div class="stat-lbl">Discovered</div></div>
+      <div class="stat"><div class="stat-val" id="total-count">0</div><div class="stat-lbl">Total</div></div>
+      <div class="stat"><div class="stat-val" id="combos-count">0</div><div class="stat-lbl">Combos</div></div>
+    </div>
+    <div class="auth-bar" id="auth-bar">
+      <div class="user-badge" id="user-badge" style="display:none">
+        <span class="avatar" id="user-avatar">G</span>
+        <span id="user-display-name">Guest</span>
+      </div>
+      <button onclick="logout()" id="logout-btn" style="display:none">Logout</button>
+    </div>
+  </div>
+</header>
+
+<div class="main">
+  <!-- COLLECTION -->
+  <div class="collection-panel">
+    <div class="panel-title">🌱 Your Collection</div>
+    <div class="search-bar"><input type="text" id="search-input" placeholder="Search strains..." oninput="filterCollection()"></div>
+    <div class="filter-tabs" id="filter-tabs">
+      <button class="filter-tab active" onclick="setFilter('all',this)">All</button>
+      <button class="filter-tab" onclick="setFilter('landrace',this)">Landrace</button>
+      <button class="filter-tab" onclick="setFilter('indica',this)">Indica</button>
+      <button class="filter-tab" onclick="setFilter('sativa',this)">Sativa</button>
+      <button class="filter-tab" onclick="setFilter('hybrid',this)">Hybrid</button>
+    </div>
+    <div class="collection-grid" id="collection-grid"></div>
+  </div>
+
+  <!-- CRAFT AREA -->
+  <div class="craft-area">
+    <div class="craft-canvas" id="craft-canvas">
+      <div class="drop-zone" id="drop-zone">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:20px">
+          <div style="display:flex;align-items:center;gap:20px">
+            <div class="slot" id="slot-a"><div class="slot-empty-text">Drop<br>strain here</div><div class="slot-label">Parent A</div></div>
+            <div class="plus-sign">+</div>
+            <div class="slot" id="slot-b"><div class="slot-empty-text">Drop<br>strain here</div><div class="slot-label">Parent B</div></div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+            <button class="combine-btn" id="combine-btn" onclick="combine()" disabled>⚗️ Combine</button>
+            <button class="clear-btn" onclick="clearSlots()">Clear Slots</button>
+          </div>
+        </div>
+      </div>
+      <div class="result-panel" id="result-panel">
+        <div class="result-card" id="result-card">
+          <div class="result-new-badge" id="result-badge">✨ NEW DISCOVERY</div>
+          <div id="result-img-container"></div>
+          <div class="result-name" id="result-name"></div>
+          <div class="result-aka" id="result-aka"></div>
+          <div class="result-type-row" id="result-types"></div>
+          <div class="result-lineage" id="result-lineage"></div>
+          <div class="result-desc" id="result-desc"></div>
+          <div class="result-stats" id="result-stats"></div>
+          <div class="result-effects" id="result-effects"></div>
+          <div class="result-btns">
+            <button class="result-btn" onclick="closeResult()">Add to Collection →</button>
+            <button class="result-btn secondary" onclick="viewInEncyclopedia()">📖 View Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INFO PANEL -->
+  <div class="info-panel">
+    <div class="hint-section">
+      <div class="hint-title">💡 Possible Combos</div>
+      <div class="hint-list" id="hint-list">
+        <div class="hint-item" style="color:#4a7a4a">Discover strains to unlock hints...</div>
+      </div>
+    </div>
+    <div class="discovery-log">
+      <div class="log-title">📜 Discovery Log</div>
+      <div id="log-entries"></div>
+    </div>
+  </div>
+</div>
+
+<div class="tooltip" id="tooltip" style="display:none"></div>
+<div class="save-indicator" id="save-indicator">💾 Saved</div>
+
+<!-- ENCYCLOPEDIA -->
+<!-- STRAIN MAP -->
+<div class="strainmap-overlay" id="strainmap-overlay">
+  <div class="strainmap-backdrop" onclick="closeStrainMap()"></div>
+  <div class="strainmap-container">
+    <div class="strainmap-header">
+      <div class="strainmap-title-area">
+        <span style="font-size:20px">🗺️</span>
+        <span class="strainmap-title">Strain Constellation Map</span>
+        <span class="strainmap-subtitle" id="smap-subtitle">0 / 0 discovered</span>
+      </div>
+      <div class="strainmap-controls">
+        <button class="strainmap-ctrl-btn" onclick="smapResetView()">⟲ Reset View</button>
+        <button class="strainmap-ctrl-btn" id="smap-toggle-labels" onclick="smapToggleLabels()">Labels: On</button>
+        <button class="strainmap-ctrl-btn" id="smap-toggle-undiscovered" onclick="smapToggleUndiscovered()">Hidden: Show</button>
+        <button class="strainmap-close" onclick="closeStrainMap()">✕</button>
+      </div>
+    </div>
+    <div class="strainmap-canvas-wrap" id="smap-wrap">
+      <canvas id="smap-canvas"></canvas>
+      <div class="strainmap-legend">
+        <div class="strainmap-legend-title">Legend</div>
+        <div class="strainmap-legend-item"><div class="strainmap-legend-dot" style="background:#7ec850;box-shadow:0 0 6px #7ec850"></div> Discovered</div>
+        <div class="strainmap-legend-item"><div class="strainmap-legend-dot" style="background:#2a3a40;border:1px solid #3a5a60"></div> Undiscovered</div>
+        <div class="strainmap-legend-item"><div class="strainmap-legend-dot" style="background:#c8a850;box-shadow:0 0 6px #c8a850"></div> Landrace Origin</div>
+        <div class="strainmap-legend-item"><div class="strainmap-legend-dot" style="background:#60a0d0;box-shadow:0 0 4px #60a0d0"></div> Craftable Now</div>
+        <div class="strainmap-legend-item"><div class="strainmap-legend-dot" style="background:transparent;border:1px dashed #3a5a60"></div> Unknown Recipe</div>
+      </div>
+      <div class="strainmap-info-popup" id="smap-info-popup"></div>
+      <div class="strainmap-zoom-info" id="smap-zoom-info">Scroll to zoom · Drag to pan</div>
+    </div>
+  </div>
+</div>
+
+<div class="encyclopedia-overlay" id="encyclopedia-overlay">
+  <div class="encyclopedia-backdrop" onclick="closeEncyclopedia()"></div>
+  <div class="encyclopedia-panel">
+    <div class="enc-header">
+      <div class="enc-title-area"><span style="font-size:20px">📖</span><span class="enc-title">Strain Encyclopedia</span></div>
+      <button class="enc-close" onclick="closeEncyclopedia()">✕</button>
+    </div>
+    <div class="enc-tabs">
+      <button class="enc-tab active" data-tab="list" onclick="setEncTab('list',this)">All Strains</button>
+      <button class="enc-tab" data-tab="generations" onclick="setEncTab('generations',this)">Generations</button>
+    </div>
+    <div class="enc-search"><input type="text" id="enc-search-input" placeholder="Search encyclopedia..." oninput="filterEncyclopedia()"></div>
+    <div class="enc-body" id="enc-body"></div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════
+// STRAIN DATABASE
+// ═══════════════════════════════════════════════
+const STRAINS={
+  'afghani':{name:'Afghani',type:['indica','landrace'],thc:'18-25%',cbd:'0.5-1%',lineage:'Hindu Kush Mountains, Afghanistan',desc:'One of the oldest and most influential cannabis strains in existence. Originating from the Hindu Kush mountains, Afghani is a pure indica landrace that has formed the genetic backbone of countless modern hybrids. Known for its heavy resin production and deeply relaxing effects.',effects:['Relaxed','Sleepy','Happy','Euphoric','Body High'],flavors:{Earthy:.9,Woody:.7,Pungent:.6,Sweet:.3,Spicy:.5,Herbal:.4,Pine:.5,Hash:.8},emoji:'🏔️',generation:0,color:'#4a7a3a'},
+  'durban-poison':{name:'Durban Poison',type:['sativa','landrace'],thc:'15-20%',cbd:'0.01%',lineage:'Durban, South Africa',desc:"A pure sativa landrace from the port city of Durban, South Africa. Celebrated for its energetic, uplifting high and sweet, anise-like aroma. It's one of the most important sativa genetics in modern breeding.",effects:['Energetic','Uplifted','Creative','Focused','Happy'],flavors:{Sweet:.8,Earthy:.5,Pine:.4,Anise:.7,Citrus:.3,Herbal:.4,Spicy:.3,Woody:.2},emoji:'🌍',generation:0,color:'#8ab840'},
+  'thai':{name:'Thai',type:['sativa','landrace'],thc:'14-24%',cbd:'0.1%',lineage:'Thailand',desc:'A pure sativa landrace from Thailand, historically sold as "Thai sticks." Thai genetics are responsible for the long-flowering, cerebral sativas found in many modern hybrids. Its psychedelic, soaring high is legendary among connoisseurs.',effects:['Euphoric','Creative','Energetic','Psychedelic','Uplifted'],flavors:{Citrus:.7,Tropical:.6,Spicy:.5,Herbal:.6,Earthy:.3,Sweet:.4,Floral:.3,Woody:.4},emoji:'🌏',generation:0,color:'#6aaa30'},
+  'colombian-gold':{name:'Colombian Gold',type:['sativa','landrace'],thc:'14-19%',cbd:'0.1%',lineage:'Santa Marta mountains, Colombia',desc:"A legendary sativa landrace from the Santa Marta mountains. Colombian Gold was one of the most sought-after strains during the 1960s-70s and has been a crucial building block in classic American hybrids.",effects:['Happy','Uplifted','Energetic','Relaxed','Creative'],flavors:{Citrus:.8,Sweet:.6,Earthy:.5,Lemon:.7,Woody:.3,Herbal:.2,Spicy:.2,Tropical:.4},emoji:'🌄',generation:0,color:'#c8b840'},
+  'hindu-kush':{name:'Hindu Kush',type:['indica','landrace'],thc:'15-20%',cbd:'1%',lineage:'Hindu Kush mountain range',desc:'A pure indica landrace from the harsh Hindu Kush mountain range between Pakistan and Afghanistan. Known for its sweet, earthy sandalwood aroma and heavy-handed, tranquilizing effect. A fundamental building block of modern indica breeding.',effects:['Relaxed','Sleepy','Happy','Sedated','Pain Relief'],flavors:{Earthy:.9,Sweet:.5,Sandalwood:.8,Pine:.4,Woody:.7,Spicy:.3,Hash:.6,Herbal:.3},emoji:'⛰️',generation:0,color:'#5a5a3a'},
+  'acapulco-gold':{name:'Acapulco Gold',type:['sativa','landrace'],thc:'15-23%',cbd:'0.1%',lineage:'Acapulco, Mexico',desc:"Considered one of the best cannabis strains ever created. Acapulco Gold was the premier smoke of the 1960s and 70s. Named for its gold and brown coloring, it delivers a euphoric, energetic high.",effects:['Euphoric','Energetic','Happy','Creative','Uplifted'],flavors:{Earthy:.6,Sweet:.5,Toffee:.7,Citrus:.4,Woody:.5,Spicy:.3,Coffee:.4,Herbal:.3},emoji:'🌅',generation:0,color:'#c8a030'},
+  'jamaican':{name:'Jamaican',type:['sativa','landrace'],thc:'12-19%',cbd:'0.1%',lineage:'Jamaica',desc:"A pure sativa landrace from Jamaica, shaped by the island's tropical climate over centuries. Known for uplifting, spiritual effects and fruity, tropical flavor profile.",effects:['Happy','Uplifted','Relaxed','Creative','Euphoric'],flavors:{Tropical:.9,Sweet:.6,Citrus:.5,Mango:.7,Earthy:.3,Herbal:.3,Floral:.2,Spicy:.2},emoji:'🌴',generation:0,color:'#30a050'},
+  'malawi-gold':{name:'Malawi Gold',type:['sativa','landrace'],thc:'15-18%',cbd:'0.1%',lineage:'Malawi, Africa',desc:'A rare sativa landrace from Malawi. Known for extreme potency and unusually long flowering time. Delivers a psychedelic, long-lasting high that has made it legendary among collectors and breeders.',effects:['Euphoric','Psychedelic','Energetic','Focused','Creative'],flavors:{Earthy:.7,Spicy:.6,Woody:.5,Herbal:.6,Sweet:.3,Citrus:.2,Pine:.3,Tropical:.4},emoji:'🌞',generation:0,color:'#d4a020'},
+
+  // GEN 1
+  'skunk-1':{name:'Skunk #1',type:['hybrid'],thc:'15-19%',cbd:'0.2%',lineage:'Afghani × Colombian Gold × Acapulco Gold',desc:"One of the most influential cannabis strains ever created, developed in the 1970s by Sacred Seeds. Skunk #1 is the genetic backbone of countless modern hybrids.",effects:['Happy','Relaxed','Uplifted','Euphoric','Creative'],flavors:{Skunk:.95,Earthy:.7,Sweet:.4,Pungent:.8,Citrus:.3,Herbal:.3,Woody:.2,Spicy:.2},emoji:'🦨',generation:1,color:'#7a9a30',recipes:[['afghani','colombian-gold'],['afghani','acapulco-gold']]},
+  'northern-lights':{name:'Northern Lights',type:['indica'],thc:'16-21%',cbd:'0.1%',lineage:'Afghani × Thai',desc:'A legendary pure indica developed in the Pacific Northwest. One of the most awarded cannabis strains in history, beloved for its resinous buds and deeply relaxing, nearly psychedelic body high.',effects:['Relaxed','Sleepy','Happy','Euphoric','Body High'],flavors:{Pine:.7,Earthy:.8,Sweet:.5,Spicy:.4,Honey:.3,Herbal:.3,Woody:.4,Pungent:.3},emoji:'🌌',generation:1,color:'#3a5a9a',recipes:[['afghani','thai']]},
+  'haze':{name:'Haze',type:['sativa'],thc:'17-20%',cbd:'0.1%',lineage:'Colombian Gold × Thai × Mexican × South Indian',desc:'The original Haze was created in Santa Cruz, California in the 1970s by the Haze Brothers. A crossing of Colombian, Thai, Mexican, and South Indian genetics produced this soaring, long-lasting sativa.',effects:['Energetic','Creative','Euphoric','Uplifted','Focused'],flavors:{Spicy:.7,Earthy:.6,Citrus:.5,Sweet:.3,Herbal:.5,Woody:.3,Incense:.4,Floral:.3},emoji:'☁️',generation:1,color:'#9aaa50',recipes:[['colombian-gold','thai'],['colombian-gold','jamaican']]},
+  'og-kush':{name:'OG Kush',type:['hybrid'],thc:'19-26%',cbd:'0.3%',lineage:'Hindu Kush × Chemdawg × Lemon Thai',desc:"Perhaps the most famous cannabis strain in the world. Its fuel, citrus, and earth aroma with complex cerebral and physical effects have made it the genetic foundation of the West Coast cannabis scene.",effects:['Happy','Relaxed','Euphoric','Uplifted','Creative'],flavors:{Fuel:.8,Earthy:.7,Pine:.6,Lemon:.5,Woody:.5,Spicy:.4,Pungent:.6,Citrus:.4},emoji:'👑',generation:1,color:'#5a8a40',recipes:[['hindu-kush','chemdawg'],['afghani','durban-poison']]},
+  'chemdawg':{name:'Chemdawg',type:['hybrid'],thc:'15-20%',cbd:'0.1%',lineage:'Thai × Nepalese',desc:"A mysterious hybrid with uncertain origins. Chemdawg's legendary chemical, diesel-like aroma has made it one of the most sought-after genetics. Parent to both OG Kush and Sour Diesel.",effects:['Happy','Euphoric','Relaxed','Uplifted','Creative'],flavors:{Diesel:.9,Chemical:.8,Pungent:.7,Earthy:.5,Pine:.3,Woody:.3,Spicy:.2,Citrus:.2},emoji:'🧪',generation:1,color:'#5a9a60',recipes:[['thai','malawi-gold'],['thai','afghani']]},
+  'ak-47':{name:'AK-47',type:['hybrid'],thc:'13-20%',cbd:'1.5%',lineage:'Colombian Gold × Mexican × Afghani × Thai',desc:'Despite its aggressive name, AK-47 is a mellow, long-lasting sativa-dominant hybrid created in the Netherlands in 1992. It has won numerous Cannabis Cup awards.',effects:['Relaxed','Happy','Euphoric','Uplifted','Creative'],flavors:{Earthy:.6,Sweet:.5,Floral:.4,Spicy:.5,Woody:.4,Herbal:.3,Pungent:.5,Sour:.3},emoji:'🏆',generation:1,color:'#8a8a40',recipes:[['colombian-gold','afghani'],['acapulco-gold','thai']]},
+  'white-widow':{name:'White Widow',type:['hybrid'],thc:'18-25%',cbd:'0.2%',lineage:'Brazilian Sativa × South Indian Indica',desc:"One of the most famous Dutch strains, created by Green House Seeds in the early 1990s. Its white, crystal-covered buds and powerful burst of euphoria made it a global sensation.",effects:['Euphoric','Happy','Uplifted','Relaxed','Creative'],flavors:{Earthy:.6,Woody:.5,Pungent:.6,Spicy:.4,Sweet:.3,Herbal:.4,Pine:.3,Floral:.2},emoji:'🕸️',generation:1,color:'#c8c8c8',recipes:[['afghani','jamaican'],['hindu-kush','jamaican']]},
+  'blueberry':{name:'Blueberry',type:['indica'],thc:'15-20%',cbd:'0.2%',lineage:'Afghani × Thai × Purple Thai',desc:"Created by DJ Short in the 1970s-80s. Won the High Times Cannabis Cup in 2000. Beloved for its distinct blueberry aroma and flavor.",effects:['Relaxed','Happy','Euphoric','Sleepy','Body High'],flavors:{Blueberry:.95,Sweet:.8,Berry:.9,Earthy:.3,Herbal:.2,Vanilla:.3,Fruity:.7,Woody:.2},emoji:'🫐',generation:1,color:'#4a4a9a',recipes:[['afghani','thai'],['thai','jamaican']]},
+
+  // GEN 2
+  'sour-diesel':{name:'Sour Diesel',type:['sativa'],thc:'18-26%',cbd:'0.2%',lineage:'Chemdawg × Super Skunk',desc:'Born in New York in the 1990s, Sour Diesel is a fast-acting, energizing sativa with a pungent, diesel-like aroma. One of the most popular strains on the East Coast.',effects:['Energetic','Happy','Uplifted','Creative','Focused'],flavors:{Diesel:.95,Sour:.8,Pungent:.7,Citrus:.4,Earthy:.4,Herbal:.3,Fuel:.6,Spicy:.3},emoji:'⛽',generation:2,color:'#c8a830',recipes:[['chemdawg','skunk-1'],['chemdawg','northern-lights']]},
+  'blue-dream':{name:'Blue Dream',type:['hybrid'],thc:'17-24%',cbd:'0.1-2%',lineage:'Blueberry × Haze',desc:"A California classic and one of the best-selling strains in the US. Combines Blueberry's relaxing body effects with Haze's gentle cerebral invigoration.",effects:['Happy','Relaxed','Euphoric','Uplifted','Creative'],flavors:{Blueberry:.8,Sweet:.7,Berry:.7,Herbal:.4,Vanilla:.3,Citrus:.3,Earthy:.3,Floral:.2},emoji:'💙',generation:2,color:'#4a7ac8',recipes:[['blueberry','haze']]},
+  'bubba-kush':{name:'Bubba Kush',type:['indica'],thc:'14-22%',cbd:'0.1%',lineage:'OG Kush × Afghani',desc:'An indica-dominant hybrid developed in California in the 1990s. Delivers a heavy, tranquilizing stone with flavors of chocolate, coffee, and sweet hashish.',effects:['Relaxed','Sleepy','Happy','Euphoric','Sedated'],flavors:{Coffee:.8,Chocolate:.7,Earthy:.6,Sweet:.4,Hash:.6,Woody:.4,Spicy:.3,Pungent:.3},emoji:'☕',generation:2,color:'#6a5a3a',recipes:[['og-kush','afghani'],['og-kush','hindu-kush']]},
+  'super-silver-haze':{name:'Super Silver Haze',type:['sativa'],thc:'18-23%',cbd:'0.1%',lineage:'Skunk #1 × Northern Lights × Haze',desc:'A three-time Cannabis Cup winner (1997-1999), created by Green House Seeds. A long-lasting, energetic, cerebral experience.',effects:['Energetic','Uplifted','Euphoric','Creative','Happy'],flavors:{Citrus:.6,Spicy:.6,Herbal:.5,Earthy:.5,Skunk:.5,Sweet:.4,Pine:.3,Haze:.7},emoji:'🥇',generation:2,color:'#a0c040',recipes:[['skunk-1','haze'],['northern-lights','haze']]},
+  'trainwreck':{name:'Trainwreck',type:['hybrid'],thc:'18-25%',cbd:'0.1%',lineage:'Mexican Sativa × Thai Sativa × Afghani Indica',desc:'A potent, fast-acting sativa-dominant hybrid from Humboldt County. The name reflects its powerful onset — a mind-bending, euphoric rush followed by body relaxation.',effects:['Euphoric','Happy','Creative','Relaxed','Energetic'],flavors:{Pine:.7,Lemon:.6,Earthy:.5,Spicy:.5,Woody:.4,Sweet:.3,Herbal:.3,Pungent:.4},emoji:'🚂',generation:2,color:'#8a6a30',recipes:[['haze','afghani'],['thai','acapulco-gold']]},
+  'jack-herer':{name:'Jack Herer',type:['sativa'],thc:'15-24%',cbd:'0.03%',lineage:'Haze × (Northern Lights #5 × Shiva Skunk)',desc:'Named after the legendary cannabis activist. Created by Sensi Seeds in the Netherlands. Combines a Haze hybrid with Northern Lights and Skunk.',effects:['Happy','Energetic','Creative','Uplifted','Focused'],flavors:{Pine:.8,Earthy:.6,Spicy:.5,Woody:.5,Herbal:.4,Citrus:.3,Sweet:.2,Floral:.2},emoji:'📚',generation:2,color:'#78a838',recipes:[['haze','northern-lights'],['haze','skunk-1'],['northern-lights','skunk-1']]},
+  'gorilla-glue':{name:'Gorilla Glue #4',type:['hybrid'],thc:'25-30%',cbd:'0.1%',lineage:"Chem's Sister × Chocolate Diesel × Sour Dubb",desc:'One of the most potent strains ever created. Its extreme resin production and 25-30% THC content have made it a modern classic.',effects:['Relaxed','Euphoric','Happy','Sleepy','Body High'],flavors:{Diesel:.7,Chocolate:.5,Earthy:.6,Pine:.5,Pungent:.6,Coffee:.4,Sour:.4,Chemical:.3},emoji:'🦍',generation:2,color:'#6a5a40',recipes:[['chemdawg','sour-diesel'],['og-kush','chemdawg']]},
+  'girl-scout-cookies':{name:'Girl Scout Cookies',type:['hybrid'],thc:'17-28%',cbd:'0.2%',lineage:'OG Kush × Durban Poison',desc:'Created in the Bay Area of California, GSC took the cannabis world by storm in the early 2010s. Multiple Cannabis Cup winner and parent to dozens of famous strains.',effects:['Happy','Relaxed','Euphoric','Uplifted','Creative'],flavors:{Sweet:.8,Mint:.7,Earthy:.5,Chocolate:.4,Spicy:.3,Vanilla:.4,Pungent:.3,Cookie:.8},emoji:'🍪',generation:2,color:'#c89060',recipes:[['og-kush','durban-poison']]},
+
+  // GEN 3
+  'gelato':{name:'Gelato',type:['hybrid'],thc:'17-25%',cbd:'0.2%',lineage:'Sunset Sherbet × Thin Mint GSC',desc:"Born from the Cookie Fam in San Francisco. Its sweet, creamy flavor reminiscent of sherbet ice cream pairs with a balanced, euphoric high.",effects:['Happy','Relaxed','Euphoric','Uplifted','Creative'],flavors:{Sweet:.9,Creamy:.8,Berry:.5,Citrus:.5,Mint:.4,Lavender:.3,Earthy:.2,Vanilla:.5},emoji:'🍨',generation:3,color:'#c870a0',recipes:[['girl-scout-cookies','blueberry'],['girl-scout-cookies','skunk-1']]},
+  'wedding-cake':{name:'Wedding Cake',type:['hybrid'],thc:'22-25%',cbd:'0.1%',lineage:'Triangle Kush × Animal Mints',desc:"Also known as Pink Cookies. A rich, tangy indica-hybrid with sweet vanilla-cake flavor. Named Leafly's Strain of the Year in 2019.",effects:['Relaxed','Happy','Euphoric','Uplifted','Sedated'],flavors:{Vanilla:.9,Sweet:.8,Earthy:.5,Pepper:.4,Cake:.8,Creamy:.6,Dough:.5,Spicy:.3},emoji:'🎂',generation:3,color:'#e8d0b0',recipes:[['girl-scout-cookies','og-kush'],['girl-scout-cookies','white-widow']]},
+  'mac-1':{name:'MAC 1',type:['hybrid'],thc:'20-23%',cbd:'0.1%',lineage:'Alien Cookies × Colombian × Starfighter',desc:'MAC 1 (Miracle Alien Cookies) by Capulator is one of the most coveted strains of the modern era. Delivers balanced, long-lasting euphoria.',effects:['Euphoric','Happy','Relaxed','Creative','Uplifted'],flavors:{Citrus:.6,Sweet:.5,Earthy:.4,Floral:.5,Dough:.4,Vanilla:.3,Diesel:.3,Herbal:.3},emoji:'👽',generation:3,color:'#80c0a0',recipes:[['girl-scout-cookies','chemdawg'],['girl-scout-cookies','colombian-gold']]},
+  'runtz':{name:'Runtz',type:['hybrid'],thc:'19-29%',cbd:'0.04%',lineage:'Zkittlez × Gelato',desc:"A rare, evenly balanced hybrid by Cookies. Tastes like the candy it's named after. Leafly's Strain of the Year in 2020.",effects:['Euphoric','Happy','Uplifted','Relaxed','Creative'],flavors:{Candy:.9,Sweet:.8,Tropical:.6,Berry:.5,Creamy:.5,Citrus:.4,Fruity:.7,Sugar:.6},emoji:'🍬',generation:3,color:'#e060c0',recipes:[['gelato','durban-poison'],['gelato','skunk-1']]},
+  'zkittlez':{name:'Zkittlez',type:['indica'],thc:'15-23%',cbd:'0.4%',lineage:'Grape Ape × Grapefruit',desc:'An indica-dominant mix by 3rd Gen Family and Terp Hogz. Delivers a flavor blast of tropical fruit and grape with calming, focused euphoria.',effects:['Happy','Relaxed','Euphoric','Uplifted','Focused'],flavors:{Grape:.9,Tropical:.7,Sweet:.8,Berry:.7,Candy:.6,Citrus:.4,Fruity:.8,Herbal:.2},emoji:'🌈',generation:3,color:'#d060d0',recipes:[['blueberry','girl-scout-cookies'],['blueberry','og-kush']]},
+  'pineapple-express':{name:'Pineapple Express',type:['hybrid'],thc:'16-26%',cbd:'0.1%',lineage:'Trainwreck × Hawaiian',desc:'Made famous by the 2008 film. A combination of Trainwreck and Hawaiian that delivers a long-lasting, energetic buzz with tropical, fruity aroma.',effects:['Happy','Uplifted','Energetic','Creative','Relaxed'],flavors:{Pineapple:.95,Tropical:.8,Citrus:.6,Sweet:.5,Mango:.4,Earthy:.2,Cedar:.3,Fruity:.7},emoji:'🍍',generation:3,color:'#d4a820',recipes:[['trainwreck','jamaican'],['trainwreck','haze']]},
+  'do-si-dos':{name:'Do-Si-Dos',type:['indica'],thc:'20-30%',cbd:'0.1%',lineage:'Girl Scout Cookies × Face Off OG',desc:'An indica-dominant hybrid from Archive Seed Bank. Combines powerful GSC genetics with Face Off OG for a potent, relaxing strain.',effects:['Relaxed','Euphoric','Happy','Sedated','Body High'],flavors:{Floral:.7,Earthy:.6,Lime:.5,Sweet:.5,Mint:.4,Nutty:.3,Herbal:.3,Spicy:.4},emoji:'🌸',generation:3,color:'#8060a0',recipes:[['girl-scout-cookies','bubba-kush'],['girl-scout-cookies','afghani']]},
+  'sherbet':{name:'Sunset Sherbet',type:['hybrid'],thc:'15-19%',cbd:'0.2%',lineage:'Girl Scout Cookies × Pink Panties',desc:"Created by the Cookie Fam. Inherits GSC's sweet, dessert-like genetics and adds fruity notes reminiscent of fruity sherbet.",effects:['Happy','Relaxed','Euphoric','Uplifted','Creative'],flavors:{Sweet:.8,Citrus:.7,Berry:.6,Creamy:.5,Earthy:.3,Mint:.3,Fruity:.6,Tropical:.4},emoji:'🍧',generation:3,color:'#e89040',recipes:[['girl-scout-cookies','white-widow'],['girl-scout-cookies','blueberry'],['girl-scout-cookies','northern-lights']]},
+
+  // GEN 4
+  'purple-punch':{name:'Purple Punch',type:['indica'],thc:'18-20%',cbd:'0.1%',lineage:'Larry OG × Granddaddy Purple',desc:'Smells and tastes like tropical punch with blueberry muffins and grape candy. A dessert strain perfect for nighttime relaxation.',effects:['Relaxed','Sleepy','Happy','Euphoric','Body High'],flavors:{Grape:.9,Blueberry:.7,Sweet:.7,Berry:.8,Vanilla:.4,Herbal:.2,Candy:.5,Tropical:.3},emoji:'🍇',generation:4,color:'#7030c0',recipes:[['bubba-kush','blueberry'],['blueberry','northern-lights']]},
+  'strawberry-cough':{name:'Strawberry Cough',type:['sativa'],thc:'15-20%',cbd:'0.1%',lineage:'Haze × Strawberry Fields',desc:"Kyle Kushman's famous creation. A sativa-dominant hybrid known for its potent skunky, strawberry scent and smooth, sweet smoke.",effects:['Happy','Uplifted','Euphoric','Energetic','Creative'],flavors:{Strawberry:.95,Sweet:.7,Berry:.6,Earthy:.3,Herbal:.3,Skunk:.3,Floral:.2,Fruity:.5},emoji:'🍓',generation:4,color:'#e04060',recipes:[['haze','durban-poison'],['super-silver-haze','durban-poison']]},
+  'mimosa':{name:'Mimosa',type:['hybrid'],thc:'17-30%',cbd:'0.1%',lineage:'Clementine × Purple Punch',desc:"A tantalizing sativa-dominant hybrid by Symbiotic Genetics. Delivers bright citrus flavors — orange, grapefruit, and tropical fruits.",effects:['Energetic','Happy','Uplifted','Euphoric','Creative'],flavors:{Orange:.9,Citrus:.8,Tropical:.6,Sweet:.5,Grapefruit:.5,Berry:.3,Tangy:.4,Floral:.2},emoji:'🥂',generation:4,color:'#f0b820',recipes:[['purple-punch','sour-diesel'],['purple-punch','durban-poison']]},
+  'cereal-milk':{name:'Cereal Milk',type:['hybrid'],thc:'18-23%',cbd:'0.1%',lineage:'Y Life × Snowman (GSC phenotype)',desc:'A Cookies creation that captures the sweet, leftover milk at the bottom of a cereal bowl. Breakfast for champions.',effects:['Euphoric','Relaxed','Happy','Uplifted','Creative'],flavors:{Creamy:.9,Sweet:.8,Vanilla:.7,Berry:.4,Milk:.7,Sugar:.5,Fruity:.4,Dough:.3},emoji:'🥛',generation:4,color:'#e0d0b0',recipes:[['gelato','wedding-cake'],['sherbet','wedding-cake']]},
+  'ice-cream-cake':{name:'Ice Cream Cake',type:['indica'],thc:'20-25%',cbd:'0.1%',lineage:'Wedding Cake × Gelato #33',desc:'A rare indica-dominant hybrid by Seed Junky Genetics. Features a creamy, vanilla-cake flavor with a long-lasting, relaxing high.',effects:['Relaxed','Sleepy','Happy','Euphoric','Body High'],flavors:{Vanilla:.9,Creamy:.8,Cake:.7,Sweet:.7,Dough:.5,Butter:.4,Earthy:.2,Lavender:.3},emoji:'🍦',generation:4,color:'#f0e0c0',recipes:[['wedding-cake','gelato'],['wedding-cake','bubba-kush']]},
+  'biscotti':{name:'Biscotti',type:['indica'],thc:'21-25%',cbd:'0.1%',lineage:'Gelato #25 × South Florida OG',desc:'A potent indica-dominant hybrid from Cookies Fam. Smells and tastes of freshly baked biscotti cookies.',effects:['Relaxed','Euphoric','Happy','Sleepy','Creative'],flavors:{Cookie:.9,Almond:.7,Sweet:.6,Earthy:.4,Diesel:.4,Vanilla:.5,Coffee:.3,Butter:.4},emoji:'🍫',generation:4,color:'#a07040',recipes:[['gelato','og-kush'],['gelato','bubba-kush']]},
+  'apples-bananas':{name:'Apples and Bananas',type:['hybrid'],thc:'28-31%',cbd:'0.1%',lineage:'Platinum Cookies × GDP × Blue Power × Gelato #41',desc:'One of the most potent modern strains at 28-31% THC by Compound Genetics. Tastes like a sweet fruit medley.',effects:['Euphoric','Relaxed','Happy','Sleepy','Body High'],flavors:{Apple:.8,Banana:.7,Sweet:.7,Fruity:.8,Tropical:.5,Creamy:.4,Berry:.3,Earthy:.2},emoji:'🍏',generation:4,color:'#a0c040',recipes:[['gelato','purple-punch'],['runtz','zkittlez']]},
+  'white-runtz':{name:'White Runtz',type:['hybrid'],thc:'23-28%',cbd:'0.1%',lineage:'Zkittlez × Gelato (White phenotype)',desc:'A premium phenotype of Runtz selected for its pale, frosty appearance and refined candy sweetness.',effects:['Happy','Euphoric','Relaxed','Uplifted','Creative'],flavors:{Candy:.8,Sweet:.7,Creamy:.6,Fruity:.6,Citrus:.4,Berry:.4,Vanilla:.5,Sugar:.5},emoji:'⬜',generation:4,color:'#e8e8e8',recipes:[['runtz','white-widow'],['zkittlez','white-widow']]},
+
+  // GEN 5
+  'mac-and-cheese':{name:'Mac and Cheese',type:['hybrid'],thc:'20-25%',cbd:'0.1%',lineage:'MAC 1 × Alien Cheese',desc:"Combines MAC 1 with Alien Cheese genetics for a surprisingly accurate macaroni and cheese aroma — cheesy, earthy, and creamy.",effects:['Happy','Relaxed','Euphoric','Uplifted','Creative'],flavors:{Cheese:.9,Earthy:.6,Creamy:.5,Pungent:.6,Sweet:.3,Dough:.4,Butter:.3,Herbal:.2},emoji:'🧀',generation:5,color:'#e0a820',recipes:[['mac-1','og-kush'],['mac-1','chemdawg']]},
+  'jealousy':{name:'Jealousy',type:['hybrid'],thc:'23-28%',cbd:'0.1%',lineage:'Sherbet × Gelato #41',desc:'A Seed Junky Genetics creation and one of the hottest strains of 2022-2023. Named for the envy it inspires.',effects:['Euphoric','Relaxed','Happy','Creative','Uplifted'],flavors:{Creamy:.7,Fruity:.6,Diesel:.5,Sweet:.6,Citrus:.5,Berry:.4,Earthy:.3,Floral:.3},emoji:'💚',generation:5,color:'#50a050',recipes:[['sherbet','gelato'],['ice-cream-cake','gelato']]},
+  'permanent-marker':{name:'Permanent Marker',type:['hybrid'],thc:'25-32%',cbd:'0.1%',lineage:'Biscotti × Sherbert × Jealousy',desc:'A pinnacle of modern cannabis breeding by Seed Junky Genetics. Ultra-high THC with uniquely gassy, sweet, and floral aroma.',effects:['Euphoric','Relaxed','Happy','Creative','Sedated'],flavors:{Chemical:.7,Sweet:.6,Floral:.5,Diesel:.6,Earthy:.4,Pungent:.5,Berry:.3,Vanilla:.3},emoji:'✏️',generation:5,color:'#2050a0',recipes:[['biscotti','jealousy'],['biscotti','sherbet']]},
+  'gary-payton':{name:'Gary Payton',type:['hybrid'],thc:'20-25%',cbd:'0.1%',lineage:'The Y × Snowman',desc:'A collaboration between Cookies and Hall-of-Fame basketball player Gary Payton. Delivers fuel-forward flavor with swift-acting euphoria.',effects:['Euphoric','Happy','Creative','Uplifted','Energetic'],flavors:{Fuel:.7,Earthy:.6,Diesel:.5,Sweet:.4,Pungent:.5,Herbal:.3,Spicy:.3,Pine:.2},emoji:'🏀',generation:5,color:'#4080c0',recipes:[['gorilla-glue','girl-scout-cookies'],['mac-1','runtz']]}
+};
+
+// ═══════════════════════════════════════════════
+// RECIPE INDEX
+// ═══════════════════════════════════════════════
+const RECIPE_INDEX={};
+Object.entries(STRAINS).forEach(([id,s])=>{
+  if(s.recipes) s.recipes.forEach(r=>{
+    const key=[...r].sort().join('+');
+    if(!RECIPE_INDEX[key]) RECIPE_INDEX[key]=id;
+  });
+});
+
+// ═══════════════════════════════════════════════
+// AUTH & PERSISTENCE — localStorage Simulated DB
+// ═══════════════════════════════════════════════
+const DB_PREFIX='chronalchemy_';
+let currentUser=null;
+let authMode='login';
+
+function getDB(key){try{return JSON.parse(localStorage.getItem(DB_PREFIX+key))}catch(e){return null}}
+function setDB(key,val){localStorage.setItem(DB_PREFIX+key,JSON.stringify(val))}
+
+function getUserDB(username){return getDB('user_'+username)}
+function setUserDB(username,data){setDB('user_'+username,data)}
+
+function hashPass(p){let h=0;for(let i=0;i<p.length;i++){h=((h<<5)-h)+p.charCodeAt(i);h|=0}return h.toString(36)}
+
+function switchAuthTab(mode){
+  authMode=mode;
+  document.querySelectorAll('#auth-tabs .auth-tab').forEach((b,i)=>b.classList.toggle('active',i===(mode==='login'?0:1)));
+  document.getElementById('auth-email-field').style.display=mode==='signup'?'block':'none';
+  document.getElementById('auth-submit-btn').textContent=mode==='login'?'🔑 Log In':'🌱 Create Account';
+  document.getElementById('auth-error').textContent='';
+}
+
+function handleAuth(e){
+  e.preventDefault();
+  const u=document.getElementById('auth-username').value.trim().toLowerCase();
+  const p=document.getElementById('auth-password').value;
+  const errEl=document.getElementById('auth-error');
+  if(u.length<2){errEl.textContent='Username must be at least 2 characters.';return}
+  if(p.length<3){errEl.textContent='Password must be at least 3 characters.';return}
+  const ph=hashPass(p);
+  if(authMode==='signup'){
+    if(getUserDB(u)){errEl.textContent='Username already exists.';return}
+    const userData={username:u,passHash:ph,email:document.getElementById('auth-email').value||'',created:Date.now(),gameState:getDefaultGameState()};
+    setUserDB(u,userData);
+    loginAs(u,userData);
+  }else{
+    const userData=getUserDB(u);
+    if(!userData){errEl.textContent='User not found.';return}
+    if(userData.passHash!==ph){errEl.textContent='Incorrect password.';return}
+    loginAs(u,userData);
+  }
+}
+
+function guestLogin(){
+  const guestId='guest_'+Date.now().toString(36);
+  const userData={username:guestId,passHash:'',isGuest:true,created:Date.now(),gameState:getDefaultGameState()};
+  setUserDB(guestId,userData);
+  loginAs(guestId,userData);
+}
+
+function getDefaultGameState(){
+    return{discovered:['afghani','durban-poison','thai','colombian-gold','hindu-kush','acapulco-gold','jamaican','malawi-gold'],combosCount:0,log:[]}
+}
+
+function loginAs(username,userData){
+  currentUser=username;
+  setDB('session',username);
+  document.getElementById('auth-overlay').classList.remove('open');
+  document.getElementById('loading-overlay').style.display='flex';
+  const dName=userData.isGuest?'Guest':username.charAt(0).toUpperCase()+username.slice(1);
+  document.getElementById('user-display-name').textContent=dName;
+  document.getElementById('user-avatar').textContent=dName.charAt(0).toUpperCase();
+  document.getElementById('user-badge').style.display='flex';
+  document.getElementById('logout-btn').style.display='inline-block';
+  loadGameState(userData.gameState);
+  setTimeout(()=>{document.getElementById('loading-overlay').classList.add('hide');setTimeout(()=>{document.getElementById('loading-overlay').style.display='none'},500)},1200);
+}
+
+function logout(){
+  currentUser=null;
+  setDB('session',null);
+  discovered=new Set(['afghani','durban-poison','thai','colombian-gold']);
+  combosCount=0;
+  document.getElementById('log-entries').innerHTML='';
+  document.getElementById('user-badge').style.display='none';
+  document.getElementById('logout-btn').style.display='none';
+  document.getElementById('auth-overlay').classList.add('open');
+  document.getElementById('auth-username').value='';
+  document.getElementById('auth-password').value='';
+  document.getElementById('auth-error').textContent='';
+  renderCollection();
+}
+
+function loadGameState(gs){
+  discovered=new Set(gs.discovered||['afghani','durban-poison','thai','colombian-gold']);
+  combosCount=gs.combosCount||0;
+  document.getElementById('combos-count').textContent=combosCount;
+  document.getElementById('log-entries').innerHTML='';
+  if(gs.log){
+    gs.log.slice(-20).forEach(l=>{
+      const el=document.createElement('div');el.className='log-entry';
+      el.innerHTML=`<div class="log-strain">🌿 ${l.name}</div><div class="log-combo">${l.combo}</div>`;
+      document.getElementById('log-entries').appendChild(el);
+    });
+  }
+  renderCollection();
+}
+
+function saveGameState(){
+  if(!currentUser)return;
+  const userData=getUserDB(currentUser);
+  if(!userData)return;
+  const logEntries=[...document.getElementById('log-entries').children].map(el=>({
+    name:el.querySelector('.log-strain')?.textContent.replace('🌿 ','')||'',
+    combo:el.querySelector('.log-combo')?.textContent||''
+  }));
+  userData.gameState={discovered:[...discovered],combosCount,log:logEntries.slice(-50)};
+  userData.lastSaved=Date.now();
+  setUserDB(currentUser,userData);
+  showSaveIndicator();
+}
+
+let saveTimeout=null;
+function debouncedSave(){clearTimeout(saveTimeout);saveTimeout=setTimeout(saveGameState,500)}
+
+function showSaveIndicator(){
+  const el=document.getElementById('save-indicator');
+  el.classList.add('show');
+  setTimeout(()=>el.classList.remove('show'),1500);
+}
+
+// ═══════════════════════════════════════════════
+// AUTO-SESSION RESTORE
+// ═══════════════════════════════════════════════
+function checkSession(){
+  const sess=getDB('session');
+  if(sess){
+    const userData=getUserDB(sess);
+    if(userData){loginAs(sess,userData);return}
+  }
+  document.getElementById('auth-overlay').classList.add('open');
+}
+
+// ═══════════════════════════════════════════════
+// GAME STATE
+// ═══════════════════════════════════════════════
+let discovered=new Set(['afghani','durban-poison','thai','colombian-gold','hindu-kush','acapulco-gold','jamaican','malawi-gold']);
+let slotA=null,slotB=null,combosCount=0,currentFilter='all',searchQuery='',lastResultId=null;
+let encCurrentTab='list',encSearchQuery='',encDetailStrain=null;
+
+// ═══════════════════════════════════════════════
+// UTILITIES
+// ═══════════════════════════════════════════════
+function getStrainImg(id){const s=STRAINS[id];const bg=s.color||'#4a7a3a';return`<div class="placeholder-img" style="background:${bg}22;border:1px solid ${bg}44">${s.emoji||'🌿'}</div>`}
+function getSlotImg(id,big=false){const s=STRAINS[id];const bg=s.color||'#4a7a3a';const cls=big?'result':'slot';return`<div class="${cls}-placeholder-img" style="background:${bg}22;border:1px solid ${bg}44;font-size:${big?'50px':'30px'}">${s.emoji||'🌿'}</div>`}
+function typeBadge(t){const c={landrace:{bg:'#c8a850',text:'#1a0e00'},indica:{bg:'#4a3a9a',text:'#e0d8ff'},sativa:{bg:'#2a7a2a',text:'#c8f0c8'},hybrid:{bg:'#7a4a2a',text:'#ffd8b0'}}[t]||{bg:'#3a5a3a',text:'#c8e8b0'};return`<span class="type-badge" style="background:${c.bg};color:${c.text}">${t.toUpperCase()}</span>`}
+
+// ═══════════════════════════════════════════════
+// RENDER COLLECTION
+// ═══════════════════════════════════════════════
+function renderCollection(){
+  const grid=document.getElementById('collection-grid');
+  const q=searchQuery.toLowerCase();
+  const items=[...discovered].filter(id=>{
+    const s=STRAINS[id];if(!s)return false;
+    if(currentFilter!=='all'&&!s.type.includes(currentFilter))return false;
+    if(q&&!s.name.toLowerCase().includes(q))return false;
+    return true;
+  }).sort((a,b)=>STRAINS[a].generation-STRAINS[b].generation||STRAINS[a].name.localeCompare(STRAINS[b].name));
+  grid.innerHTML=items.map(id=>{
+    const s=STRAINS[id];const isL=s.type.includes('landrace');
+    return`<div class="strain-card" draggable="true" data-id="${id}" ondragstart="handleDragStart(event,'${id}')" onmouseenter="showTooltip(event,'${id}')" onmouseleave="hideTooltip()"><div class="info-btn" onclick="event.stopPropagation();openEncyclopediaTo('${id}')">📖</div>${getStrainImg(id)}<div class="card-name">${s.name}</div><div class="card-type">${s.type[0]}</div>${isL?'<div class="card-badge" style="background:#c8a850;color:#1a0e00">L</div>':''}</div>`;
+  }).join('');
+  document.getElementById('discovered-count').textContent=discovered.size;
+  document.getElementById('total-count').textContent=Object.keys(STRAINS).length;
+  document.getElementById('combine-btn').disabled=!(slotA&&slotB);
+  updateHints();
+}
+
+// ═══════════════════════════════════════════════
+// DRAG & DROP — with touch support
+// ═══════════════════════════════════════════════
+let dragId=null;
+function handleDragStart(e,id){dragId=id;e.dataTransfer.effectAllowed='copy'}
+function handleDrop(e,slot){
+  e.preventDefault();if(!dragId)return;
+  if(slot==='a'){slotA=dragId;renderSlot('a')}else{slotB=dragId;renderSlot('b')}
+  document.getElementById('combine-btn').disabled=!(slotA&&slotB);
+}
+['slot-a','slot-b'].forEach(s=>{
+  const el=document.getElementById(s);
+  el.addEventListener('dragover',e=>{e.preventDefault();el.classList.add('drag-over')});
+  el.addEventListener('dragleave',()=>el.classList.remove('drag-over'));
+  el.addEventListener('drop',e=>{el.classList.remove('drag-over');handleDrop(e,s.split('-')[1])});
+});
+document.getElementById('craft-canvas').addEventListener('dragover',e=>{e.preventDefault();e.dataTransfer.dropEffect='copy'});
+
+// Touch drag support
+let touchDragId=null,touchGhost=null;
+document.addEventListener('touchstart',e=>{
+  const card=e.target.closest('.strain-card');
+  if(!card)return;
+  touchDragId=card.dataset.id;
+  touchGhost=card.cloneNode(true);
+  touchGhost.style.cssText='position:fixed;z-index:999;opacity:.7;pointer-events:none;width:90px;transform:translate(-50%,-50%)';
+  document.body.appendChild(touchGhost);
+  const t=e.touches[0];touchGhost.style.left=t.clientX+'px';touchGhost.style.top=t.clientY+'px';
+},{passive:true});
+document.addEventListener('touchmove',e=>{
+  if(!touchGhost)return;
+  const t=e.touches[0];touchGhost.style.left=t.clientX+'px';touchGhost.style.top=t.clientY+'px';
+  ['slot-a','slot-b'].forEach(s=>{
+    const el=document.getElementById(s);const r=el.getBoundingClientRect();
+    if(t.clientX>=r.left&&t.clientX<=r.right&&t.clientY>=r.top&&t.clientY<=r.bottom)el.classList.add('drag-over');
+    else el.classList.remove('drag-over');
+  });
+},{passive:true});
+document.addEventListener('touchend',e=>{
+  if(!touchGhost||!touchDragId){touchGhost?.remove();touchGhost=null;touchDragId=null;return}
+  const t=e.changedTouches[0];
+  ['slot-a','slot-b'].forEach(s=>{
+    const el=document.getElementById(s);el.classList.remove('drag-over');
+    const r=el.getBoundingClientRect();
+    if(t.clientX>=r.left&&t.clientX<=r.right&&t.clientY>=r.top&&t.clientY<=r.bottom){
+      if(s==='slot-a'){slotA=touchDragId;renderSlot('a')}else{slotB=touchDragId;renderSlot('b')}
+      document.getElementById('combine-btn').disabled=!(slotA&&slotB);
+    }
+  });
+  touchGhost.remove();touchGhost=null;touchDragId=null;
+});
+
+function renderSlot(which){
+  const id=which==='a'?slotA:slotB;const slot=document.getElementById(`slot-${which}`);
+  if(id){const s=STRAINS[id];slot.classList.add('filled');slot.innerHTML=`${getSlotImg(id)}<div class="slot-name">${s.name}</div><div class="slot-label">${which==='a'?'Parent A':'Parent B'}</div>`}
+  else{slot.classList.remove('filled');slot.innerHTML=`<div class="slot-empty-text">Drop<br>strain here</div><div class="slot-label">${which==='a'?'Parent A':'Parent B'}</div>`}
+}
+
+// ═══════════════════════════════════════════════
+// COMBINE
+// ═══════════════════════════════════════════════
+function combine(){
+  if(!slotA||!slotB)return;
+  const key=[slotA,slotB].sort().join('+');
+  const resultId=RECIPE_INDEX[key];
+  combosCount++;document.getElementById('combos-count').textContent=combosCount;
+  if(resultId){
+    const isNew=!discovered.has(resultId);
+    discovered.add(resultId);lastResultId=resultId;
+    showResult(resultId,isNew);
+    if(isNew){addLogEntry(resultId,slotA,slotB);spawnParticles()}
+  }else{showNotification('❌ No known combination — try different strains!',false)}
+  debouncedSave();
+}
+
+function showResult(id,isNew){
+  const s=STRAINS[id];
+  document.getElementById('result-name').textContent=s.name;
+  document.getElementById('result-aka').textContent=isNew?'✨ New strain discovered!':'Already in your collection';
+  document.getElementById('result-badge').textContent=isNew?'✨ NEW DISCOVERY':'📚 ALREADY KNOWN';
+  document.getElementById('result-badge').style.background=isNew?'linear-gradient(135deg,#c8a850,#a87830)':'linear-gradient(135deg,#4a9a6a,#2a6a4a)';
+  document.getElementById('result-lineage').textContent='🧬 '+s.lineage;
+  document.getElementById('result-desc').textContent=s.desc;
+  document.getElementById('result-img-container').innerHTML=getSlotImg(id,true);
+  document.getElementById('result-types').innerHTML=s.type.map(typeBadge).join('');
+  document.getElementById('result-stats').innerHTML=`<div class="r-stat"><div class="r-stat-val">${s.thc}</div><div class="r-stat-lbl">THC</div></div><div class="r-stat"><div class="r-stat-val">${s.cbd}</div><div class="r-stat-lbl">CBD</div></div><div class="r-stat"><div class="r-stat-val">Gen ${s.generation}</div><div class="r-stat-lbl">Generation</div></div>`;
+  document.getElementById('result-effects').innerHTML=s.effects.map(e=>`<span class="effect-tag">${e}</span>`).join('');
+  document.getElementById('result-panel').classList.add('show');
+}
+
+function viewInEncyclopedia(){if(lastResultId){closeResult();openEncyclopediaTo(lastResultId)}}
+function closeResult(){document.getElementById('result-panel').classList.remove('show');clearSlots();renderCollection()}
+function clearSlots(){slotA=null;slotB=null;renderSlot('a');renderSlot('b');document.getElementById('combine-btn').disabled=true}
+
+// ═══════════════════════════════════════════════
+// HINTS
+// ═══════════════════════════════════════════════
+function updateHints(){
+  const hintEl=document.getElementById('hint-list');const hints=[];
+  Object.entries(STRAINS).forEach(([id,s])=>{if(discovered.has(id)||!s.recipes)return;s.recipes.forEach(r=>{if(r.every(x=>discovered.has(x)))hints.push({target:id,recipe:r})})});
+  if(!hints.length){hintEl.innerHTML=Object.keys(STRAINS).every(id=>discovered.has(id))?'<div class="hint-item" style="color:#7ec850">🎉 All strains discovered!</div>':'<div class="hint-item" style="color:#4a7a4a">Keep exploring to unlock hints...</div>';return}
+  hintEl.innerHTML=hints.slice(0,4).map(h=>`<div class="hint-item"><strong>${STRAINS[h.target].name}</strong><br>${h.recipe.map(r=>STRAINS[r]?.name||r).join(' × ')}</div>`).join('');
+}
+
+// ═══════════════════════════════════════════════
+// LOG
+// ═══════════════════════════════════════════════
+function addLogEntry(id,pA,pB){
+  const s=STRAINS[id];const el=document.createElement('div');el.className='log-entry';
+  el.innerHTML=`<div class="log-strain">🌿 ${s.name}</div><div class="log-combo">${STRAINS[pA]?.name} × ${STRAINS[pB]?.name}</div>`;
+  document.getElementById('log-entries').insertBefore(el,document.getElementById('log-entries').firstChild);
+}
+
+// ═══════════════════════════════════════════════
+// TOOLTIP
+// ═══════════════════════════════════════════════
+function showTooltip(e,id){const s=STRAINS[id];const t=document.getElementById('tooltip');t.innerHTML=`<strong style="color:#7ec850">${s.name}</strong><br><span style="color:#8a9a70">${s.type.join(' · ')}</span><br><span style="font-size:10px;color:#c8e8b0">THC:${s.thc} | CBD:${s.cbd}</span>`;t.style.display='block';moveTooltip(e)}
+function hideTooltip(){document.getElementById('tooltip').style.display='none'}
+document.addEventListener('mousemove',e=>{if(document.getElementById('tooltip').style.display==='block')moveTooltip(e)});
+function moveTooltip(e){const t=document.getElementById('tooltip');t.style.left=(e.clientX+14)+'px';t.style.top=(e.clientY-10)+'px'}
+
+// ═══════════════════════════════════════════════
+// PARTICLES
+// ═══════════════════════════════════════════════
+function spawnParticles(){
+  const canvas=document.getElementById('craft-canvas');
+  for(let i=0;i<20;i++){
+    const p=document.createElement('div');p.className='particle';
+    const sz=Math.random()*10+4;const colors=['#7ec850','#c8a850','#4a9a2a','#e8f0d0','#50c870'];
+    p.style.cssText=`width:${sz}px;height:${sz}px;background:${colors[Math.floor(Math.random()*colors.length)]};left:${canvas.clientWidth/2+(Math.random()-.5)*200}px;top:${canvas.clientHeight/2+(Math.random()-.5)*100}px;animation-duration:${Math.random()+.8}s;animation-delay:${Math.random()*.3}s`;
+    canvas.appendChild(p);setTimeout(()=>p.remove(),2000);
+  }
+}
+
+function showNotification(msg,isNew=true){const n=document.createElement('div');n.className='notification'+(isNew?'':' already-known');n.textContent=msg;document.body.appendChild(n);setTimeout(()=>n.remove(),2500)}
+
+function setFilter(f,btn){currentFilter=f;document.querySelectorAll('.filter-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderCollection()}
+function filterCollection(){searchQuery=document.getElementById('search-input').value;renderCollection()}
+
+// ═══════════════════════════════════════════════
+// ENCYCLOPEDIA
+// ═══════════════════════════════════════════════
+function openEncyclopedia(){document.getElementById('encyclopedia-overlay').classList.add('open');encDetailStrain=null;renderEncyclopedia()}
+function openEncyclopediaTo(id){document.getElementById('encyclopedia-overlay').classList.add('open');encDetailStrain=id;renderEncyclopedia()}
+function closeEncyclopedia(){document.getElementById('encyclopedia-overlay').classList.remove('open')}
+function setEncTab(tab,btn){encCurrentTab=tab;encDetailStrain=null;document.querySelectorAll('.enc-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderEncyclopedia()}
+function filterEncyclopedia(){encSearchQuery=document.getElementById('enc-search-input').value;if(encDetailStrain)return;renderEncyclopedia()}
+
+function renderEncyclopedia(){
+  const body=document.getElementById('enc-body');
+  if(encDetailStrain){renderEncDetail(body,encDetailStrain);return}
+  if(encCurrentTab==='list')renderEncList(body);else renderEncGenerations(body);
+}
+
+function renderEncList(body){
+  const q=encSearchQuery.toLowerCase();
+  const ids=Object.keys(STRAINS).sort((a,b)=>STRAINS[a].generation-STRAINS[b].generation||STRAINS[a].name.localeCompare(STRAINS[b].name)).filter(id=>!q||STRAINS[id].name.toLowerCase().includes(q));
+  body.innerHTML=`<div class="enc-list">${ids.map(id=>{
+    const s=STRAINS[id],disc=discovered.has(id),bg=s.color||'#4a7a3a';
+    return`<div class="enc-list-item ${disc?'':'undiscovered'}" ${disc?`onclick="encShowDetail('${id}')"`:''}><div class="enc-list-emoji" style="background:${bg}22;border:1px solid ${bg}44">${disc?(s.emoji||'🌿'):'❓'}</div><div class="enc-list-info"><div class="enc-list-name">${disc?s.name:'???'}</div><div class="enc-list-meta"><span>${s.type.map(t=>t[0].toUpperCase()+t.slice(1)).join(' · ')}</span>${disc?`<span>THC: ${s.thc}</span>`:''}</div></div><div class="enc-list-gen">Gen ${s.generation}</div><div class="enc-list-arrow">${disc?'→':'🔒'}</div></div>`;
+  }).join('')}</div>`;
+}
+
+function renderEncGenerations(body){
+  const gens={};Object.entries(STRAINS).forEach(([id,s])=>{if(!gens[s.generation])gens[s.generation]=[];gens[s.generation].push(id)});
+  const gn=['🌍 Landrace Origins','🧬 First Generation','🔬 Second Generation','⚗️ Third Generation','🚀 Fourth Generation','💎 Fifth Generation'];
+  let h='<div class="enc-gen-view">';
+  Object.keys(gens).sort((a,b)=>a-b).forEach(g=>{
+    const ids=gens[g],dc=ids.filter(id=>discovered.has(id)).length;
+    h+=`<div class="enc-gen-group"><div class="enc-gen-label">${gn[g]||'Gen '+g}<span class="enc-gen-count">${dc}/${ids.length}</span></div><div class="enc-gen-items">${ids.map(id=>{
+      const s=STRAINS[id],d=discovered.has(id);
+      return`<div class="enc-gen-item ${d?'':'undiscovered'}" ${d?`onclick="encShowDetail('${id}')"`:''}><span class="enc-gen-item-emoji">${d?(s.emoji||'🌿'):'❓'}</span><span class="enc-gen-item-name">${d?s.name:'???'}</span></div>`;
+    }).join('')}</div></div>`;
+  });
+  body.innerHTML=h+'</div>';
+}
+
+function encShowDetail(id){encDetailStrain=id;renderEncyclopedia()}
+function encBack(){encDetailStrain=null;renderEncyclopedia()}
+
+function renderEncDetail(body,id){
+  const s=STRAINS[id];if(!s||!discovered.has(id)){encBack();return}
+  const bg=s.color||'#4a7a3a';
+  const children=[];
+  Object.entries(STRAINS).forEach(([cid,cs])=>{if(cs.recipes)for(const r of cs.recipes){if(r.includes(id)){children.push(cid);break}}});
+
+  let h=`<div class="enc-detail">
+    <button class="enc-back-btn" onclick="encBack()">← Back</button>
+    <div class="enc-detail-header">
+      <div class="enc-detail-emoji" style="background:${bg}22;border:2px solid ${bg}66">${s.emoji||'🌿'}</div>
+      <div class="enc-detail-title-area">
+        <div class="enc-detail-name">${s.name}</div>
+        <div class="enc-detail-types">${s.type.map(typeBadge).join('')}</div>
+        <div class="enc-detail-lineage">🧬 ${s.lineage}</div>
+      </div>
+    </div>
+    <div class="enc-stats-row">
+      <div class="enc-stat-box"><div class="enc-stat-val">${s.thc}</div><div class="enc-stat-lbl">THC</div></div>
+      <div class="enc-stat-box"><div class="enc-stat-val">${s.cbd}</div><div class="enc-stat-lbl">CBD</div></div>
+      <div class="enc-stat-box"><div class="enc-stat-val">Gen ${s.generation}</div><div class="enc-stat-lbl">Generation</div></div>
+    </div>
+    <div class="enc-description">${s.desc}</div>
+    <div class="enc-section-title">Effects</div>
+    <div class="enc-effects">${s.effects.map(e=>`<span class="enc-effect-tag">${e}</span>`).join('')}</div>
+    <div class="enc-flavor-section"><div class="enc-section-title">Flavor Profile</div><div class="enc-flavor-canvas-wrap"><canvas id="flavor-wheel-canvas" width="360" height="360"></canvas></div></div>
+    <div class="enc-tree-section"><div class="enc-section-title">Ancestral Lineage Tree</div><div class="enc-tree-canvas-wrap"><canvas id="family-tree-canvas"></canvas></div></div>`;
+  if(children.length){
+    h+=`<div class="enc-children"><div class="enc-section-title">Known Offspring</div><div class="enc-child-list">${children.map(cid=>{
+      const cs=STRAINS[cid],d=discovered.has(cid);
+      return`<span class="enc-child-tag ${d?'':'locked'}" ${d?`onclick="encShowDetail('${cid}')"`:''}>${d?(cs.emoji||'🌿')+' '+cs.name:'❓ ???'}</span>`;
+    }).join('')}</div></div>`;
+  }
+  h+='</div>';body.innerHTML=h;body.scrollTop=0;
+  requestAnimationFrame(()=>{drawFlavorWheel(id);drawFamilyTree(id)});
+}
+
+// ═══════════════════════════════════════════════
+// FLAVOR WHEEL — Canvas radar chart
+// ═══════════════════════════════════════════════
+function drawFlavorWheel(strainId){
+  const canvas=document.getElementById('flavor-wheel-canvas');if(!canvas)return;
+  const ctx=canvas.getContext('2d');const s=STRAINS[strainId];
+  const entries=Object.entries(s.flavors||{}).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  if(!entries.length)return;
+  const W=canvas.width,H=canvas.height,cx=W/2,cy=H/2,maxR=120,rings=4,n=entries.length,step=Math.PI*2/n;
+
+  ctx.clearRect(0,0,W,H);
+
+  // Rings
+  for(let i=rings;i>=1;i--){
+    const r=maxR*(i/rings);
+    ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(42,74,42,${.07*i})`;ctx.fill();
+    ctx.strokeStyle='#2a4a2a55';ctx.lineWidth=.5;ctx.stroke();
+  }
+
+  // Axes + labels
+  const flavorColors={Earthy:'#8B7355',Woody:'#A0522D',Pungent:'#9ACD32',Sweet:'#FF69B4',Spicy:'#FF6347',Herbal:'#3CB371',Pine:'#228B22',Hash:'#8B4513',Citrus:'#FFD700',Tropical:'#FF8C00',Floral:'#DA70D6',Berry:'#8A2BE2',Blueberry:'#4169E1',Vanilla:'#FFEFD5',Lemon:'#FFF44F',Diesel:'#B8860B',Sour:'#ADFF2F',Chemical:'#20B2AA',Skunk:'#6B8E23',Fruity:'#FF1493',Candy:'#FF69B4',Creamy:'#FFFDD0',Mint:'#98FB98',Cookie:'#D2691E',Chocolate:'#8B4513',Coffee:'#6F4E37',Grape:'#6A0DAD',Anise:'#E0B0FF',Sandalwood:'#C2A66B',Toffee:'#755139',Mango:'#FFB347',Incense:'#9370DB',Honey:'#EB9605',Haze:'#C8C8A0',Sugar:'#FADADD',Dough:'#E8D4A2',Cake:'#FFE4C4',Almond:'#EFDECD',Butter:'#FFE135',Milk:'#FDFFF5',Pineapple:'#FFDF00',Strawberry:'#FC5A8D',Orange:'#FFA500',Grapefruit:'#FF6961',Tangy:'#F0E68C',Pepper:'#E25822',Lime:'#32CD32',Nutty:'#AA8F60',Apple:'#4CBB17',Banana:'#FFE135',Cedar:'#8B6914',Lavender:'#B57EDC',Fuel:'#DAA520',Cheese:'#FFC87C'};
+
+  entries.forEach(([name,val],i)=>{
+    const angle=i*step-Math.PI/2;
+    const lx=cx+Math.cos(angle)*(maxR+20),ly=cy+Math.sin(angle)*(maxR+20);
+    ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+Math.cos(angle)*maxR,cy+Math.sin(angle)*maxR);
+    ctx.strokeStyle='#3a6b2a44';ctx.lineWidth=1;ctx.stroke();
+    ctx.font='bold 10px Georgia';ctx.fillStyle=flavorColors[name]||'#a8d890';ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText(name,lx,ly);
+  });
+
+  // Data shape — glow
+  ctx.beginPath();
+  entries.forEach(([,val],i)=>{
+    const angle=i*step-Math.PI/2;const r=val*maxR;
+    i===0?ctx.moveTo(cx+Math.cos(angle)*r,cy+Math.sin(angle)*r):ctx.lineTo(cx+Math.cos(angle)*r,cy+Math.sin(angle)*r);
+  });
+  ctx.closePath();ctx.fillStyle='rgba(126,200,80,0.12)';ctx.fill();
+  ctx.strokeStyle='rgba(126,200,80,0.6)';ctx.lineWidth=2;ctx.stroke();
+
+  // Data shape — solid
+  ctx.beginPath();
+  entries.forEach(([,val],i)=>{
+    const angle=i*step-Math.PI/2;const r=val*maxR;
+    i===0?ctx.moveTo(cx+Math.cos(angle)*r,cy+Math.sin(angle)*r):ctx.lineTo(cx+Math.cos(angle)*r,cy+Math.sin(angle)*r);
+  });
+  ctx.closePath();
+  const grad=ctx.createRadialGradient(cx,cy,0,cx,cy,maxR);
+  grad.addColorStop(0,'rgba(126,200,80,0.35)');grad.addColorStop(1,'rgba(74,154,42,0.15)');
+  ctx.fillStyle=grad;ctx.fill();
+  ctx.strokeStyle='#7ec850';ctx.lineWidth=2.5;ctx.stroke();
+
+  // Data points
+  entries.forEach(([name,val],i)=>{
+    const angle=i*step-Math.PI/2;const r=val*maxR;const px=cx+Math.cos(angle)*r,py=cy+Math.sin(angle)*r;
+    ctx.beginPath();ctx.arc(px,py,5,0,Math.PI*2);
+    ctx.fillStyle=flavorColors[name]||'#7ec850';ctx.fill();
+    ctx.strokeStyle='#0d1a0f';ctx.lineWidth=2;ctx.stroke();
+    // Value label
+    ctx.font='bold 9px Georgia';ctx.fillStyle='#e8dcc8';ctx.textAlign='center';
+    ctx.fillText(Math.round(val*100)+'%',px,py-10);
+  });
+}
+
+// ═══════════════════════════════════════════════
+// FAMILY TREE — Canvas lineage visualization
+// ═══════════════════════════════════════════════
+function buildAncestryTree(id,depth=0,maxDepth=6){
+  const s=STRAINS[id];if(!s||depth>maxDepth)return{id,name:s?.name||id,emoji:s?.emoji||'🌿',color:s?.color||'#4a7a3a',gen:s?.generation??0,children:[]};
+  const parents=[];
+  if(s.recipes&&s.recipes.length>0){
+    s.recipes[0].forEach(pid=>{
+      if(STRAINS[pid])parents.push(buildAncestryTree(pid,depth+1,maxDepth));
+    });
+  }
+  return{id,name:s.name,emoji:s.emoji||'🌿',color:s.color||'#4a7a3a',gen:s.generation,children:parents};
+}
+
+function measureTree(node){
+  if(!node.children.length){node.width=1;node.height=1;return}
+  node.children.forEach(c=>measureTree(c));
+  node.width=node.children.reduce((sum,c)=>sum+c.width,0);
+  node.height=1+Math.max(...node.children.map(c=>c.height));
+}
+
+function drawFamilyTree(strainId){
+  const canvas=document.getElementById('family-tree-canvas');if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  const tree=buildAncestryTree(strainId);
+  measureTree(tree);
+
+  const nodeW=100,nodeH=52,hGap=20,vGap=50;
+  const totalW=tree.width*(nodeW+hGap);
+  const totalH=tree.height*(nodeH+vGap);
+  const W=Math.max(totalW+40,460);
+  const H=Math.max(totalH+40,200);
+  canvas.width=W;canvas.height=H;
+
+  ctx.clearRect(0,0,W,H);
+
+  function layoutNode(node,x,y,availW){
+    node.x=x+availW/2;node.y=y;
+    if(!node.children.length)return;
+    let cx=x;
+    const childTotalW=node.children.reduce((s,c)=>s+c.width,0);
+    const childAvailW=availW;
+    const childSpacing=childAvailW/childTotalW;
+    node.children.forEach(c=>{
+      const cw=c.width*childSpacing;
+      layoutNode(c,cx,y+nodeH+vGap,cw);
+      cx+=cw;
+    });
+  }
+  layoutNode(tree,20,20,W-40);
+
+  function drawConnections(node){
+    if(!node.children.length)return;
+    node.children.forEach(c=>{
+      const sx=node.x,sy=node.y+nodeH,ex=c.x,ey=c.y;
+      const midY=(sy+ey)/2;
+      ctx.beginPath();ctx.moveTo(sx,sy);ctx.bezierCurveTo(sx,midY,ex,midY,ex,ey);
+      ctx.strokeStyle='#3a6b2a88';ctx.lineWidth=2;ctx.stroke();
+      // Animated glow
+      ctx.beginPath();ctx.moveTo(sx,sy);ctx.bezierCurveTo(sx,midY,ex,midY,ex,ey);
+      ctx.strokeStyle='#7ec85033';ctx.lineWidth=4;ctx.stroke();
+      drawConnections(c);
+    });
+  }
+  drawConnections(tree);
+
+  function drawNode(node){
+    const x=node.x-nodeW/2,y=node.y;
+    const isRoot=node.id===strainId;
+    // Shadow
+    ctx.shadowColor='#000';ctx.shadowBlur=8;ctx.shadowOffsetY=2;
+    // BG
+    ctx.beginPath();
+    roundRect(ctx,x,y,nodeW,nodeH,8);
+    const nbg=isRoot?'#2a4a2a':'#1a2e1a';
+    ctx.fillStyle=nbg;ctx.fill();
+    ctx.shadowBlur=0;ctx.shadowOffsetY=0;
+    // Border
+    ctx.strokeStyle=isRoot?'#7ec850':node.color+'88';ctx.lineWidth=isRoot?2:1;ctx.stroke();
+    // Emoji
+    ctx.font='18px serif';ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText(node.emoji,node.x,y+18);
+    // Name
+    ctx.font=`${isRoot?'bold ':''}9px Georgia`;ctx.fillStyle=isRoot?'#7ec850':'#c8e8b0';
+    const displayName=node.name.length>14?node.name.slice(0,13)+'…':node.name;
+    ctx.fillText(displayName,node.x,y+38);
+    // Gen badge
+    if(node.gen===0){
+      ctx.fillStyle='#c8a85044';
+      ctx.beginPath();roundRect(ctx,x+nodeW-24,y+2,22,12,4);ctx.fill();
+      ctx.font='bold 7px Georgia';ctx.fillStyle='#c8a850';ctx.fillText('L',x+nodeW-13,y+9);
+    }
+    node.children.forEach(drawNode);
+  }
+  drawNode(tree);
+}
+
+function roundRect(ctx,x,y,w,h,r){
+  ctx.beginPath();ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);
+  ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);ctx.lineTo(x+r,y+h);
+  ctx.quadraticCurveTo(x,y+h,x,y+h-r);ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath();
+}
+
+// ═══════════════════════════════════════════════
+// STRAIN MAP — Constellation View
+// ═══════════════════════════════════════════════
+let smapOpen=false, smapNodes=[], smapEdges=[];
+let smapOffX=0, smapOffY=0, smapScale=1, smapDragging=false, smapDragStartX=0, smapDragStartY=0;
+let smapShowLabels=true, smapShowUndiscovered=true;
+let smapHoveredNode=null, smapAnimFrame=null, smapTime=0;
+let smapCanvasW=0, smapCanvasH=0;
+
+function openStrainMap(){
+  document.getElementById('strainmap-overlay').classList.add('open');
+  smapOpen=true;
+  buildSmapGraph();
+  smapFitView();
+  smapStartRender();
+  document.getElementById('smap-subtitle').textContent=`${discovered.size} / ${Object.keys(STRAINS).length} discovered`;
+}
+function closeStrainMap(){
+  document.getElementById('strainmap-overlay').classList.remove('open');
+  smapOpen=false;
+  if(smapAnimFrame){cancelAnimationFrame(smapAnimFrame);smapAnimFrame=null}
+}
+
+function buildSmapGraph(){
+  smapNodes=[];smapEdges=[];
+  const allIds=Object.keys(STRAINS);
+  // Layout: arrange by generation in horizontal bands with force-directed spacing
+  const genGroups={};
+  allIds.forEach(id=>{const g=STRAINS[id].generation;if(!genGroups[g])genGroups[g]=[];genGroups[g].push(id)});
+  const genKeys=Object.keys(genGroups).sort((a,b)=>a-b);
+  const bandH=180;
+  const nodeMap={};
+
+  genKeys.forEach((g,gi)=>{
+    const ids=genGroups[g];
+    const y=gi*bandH+100;
+    const totalW=ids.length*140;
+    const startX=-totalW/2+70;
+    ids.forEach((id,i)=>{
+      const s=STRAINS[id];
+      const x=startX+i*140+(Math.sin(i*2.7)*20);
+      const node={id,x,y:y+(Math.cos(i*1.9)*15),baseX:0,baseY:0,vx:0,vy:0,s,gen:+g};
+      node.baseX=node.x;node.baseY=node.y;
+      smapNodes.push(node);
+      nodeMap[id]=node;
+    });
+  });
+
+  // Build edges from recipes
+  allIds.forEach(id=>{
+    const s=STRAINS[id];
+    if(!s.recipes)return;
+    s.recipes[0].forEach(pid=>{
+      if(nodeMap[pid]&&nodeMap[id]){
+        smapEdges.push({from:nodeMap[pid],to:nodeMap[id],fromId:pid,toId:id});
+      }
+    });
+  });
+
+  // Simple force-directed relaxation to reduce overlaps
+  for(let iter=0;iter<80;iter++){
+    // Repulsion between nodes in same generation
+    for(let i=0;i<smapNodes.length;i++){
+      for(let j=i+1;j<smapNodes.length;j++){
+        const a=smapNodes[i],b=smapNodes[j];
+        if(a.gen!==b.gen)continue;
+        let dx=b.x-a.x,dy=b.y-a.y;
+        let dist=Math.sqrt(dx*dx+dy*dy)||1;
+        if(dist<130){
+          const force=(130-dist)*0.3;
+          const fx=dx/dist*force,fy=dy/dist*force;
+          a.x-=fx;a.y-=fy*.2;
+          b.x+=fx;b.y+=fy*.2;
+        }
+      }
+    }
+    // Edge attraction — pull connected nodes closer horizontally
+    smapEdges.forEach(e=>{
+      let dx=e.to.x-e.from.x;
+      if(Math.abs(dx)>200){
+        const pull=dx*0.01;
+        e.from.x+=pull;e.to.x-=pull;
+      }
+    });
+    // Bring back towards center of gen band
+    smapNodes.forEach(n=>{
+      const genNodes=genGroups[n.gen];
+      const idx=genNodes.indexOf(n.id);
+      const idealX=n.baseX;
+      n.x+=(idealX-n.x)*0.02;
+    });
+  }
+
+  // Store final positions as base
+  smapNodes.forEach(n=>{n.baseX=n.x;n.baseY=n.y});
+}
+
+function smapFitView(){
+  const wrap=document.getElementById('smap-wrap');
+  const canvas=document.getElementById('smap-canvas');
+  smapCanvasW=wrap.clientWidth;smapCanvasH=wrap.clientHeight;
+  canvas.width=smapCanvasW*window.devicePixelRatio;
+  canvas.height=smapCanvasH*window.devicePixelRatio;
+  canvas.style.width=smapCanvasW+'px';
+  canvas.style.height=smapCanvasH+'px';
+
+  if(!smapNodes.length)return;
+  let minX=Infinity,maxX=-Infinity,minY=Infinity,maxY=-Infinity;
+  smapNodes.forEach(n=>{
+    if(n.x<minX)minX=n.x;if(n.x>maxX)maxX=n.x;
+    if(n.y<minY)minY=n.y;if(n.y>maxY)maxY=n.y;
+  });
+  const gw=maxX-minX+200,gh=maxY-minY+200;
+  const sx=smapCanvasW/gw,sy=smapCanvasH/gh;
+  smapScale=Math.min(sx,sy,1.5)*0.85;
+  smapOffX=smapCanvasW/2-((minX+maxX)/2)*smapScale;
+  smapOffY=smapCanvasH/2-((minY+maxY)/2)*smapScale;
+}
+
+function smapResetView(){smapFitView()}
+
+function smapToggleLabels(){
+  smapShowLabels=!smapShowLabels;
+  document.getElementById('smap-toggle-labels').textContent='Labels: '+(smapShowLabels?'On':'Off');
+  document.getElementById('smap-toggle-labels').classList.toggle('active',smapShowLabels);
+}
+
+function smapToggleUndiscovered(){
+  smapShowUndiscovered=!smapShowUndiscovered;
+  document.getElementById('smap-toggle-undiscovered').textContent='Hidden: '+(smapShowUndiscovered?'Show':'Hide');
+  document.getElementById('smap-toggle-undiscovered').classList.toggle('active',!smapShowUndiscovered);
+}
+
+function smapWorldToScreen(wx,wy){return{x:wx*smapScale+smapOffX,y:wy*smapScale+smapOffY}}
+function smapScreenToWorld(sx,sy){return{x:(sx-smapOffX)/smapScale,y:(sy-smapOffY)/smapScale}}
+
+function smapStartRender(){
+  if(smapAnimFrame)cancelAnimationFrame(smapAnimFrame);
+  function loop(t){
+    if(!smapOpen)return;
+    smapTime=t*0.001;
+    smapRender();
+    smapAnimFrame=requestAnimationFrame(loop);
+  }
+  smapAnimFrame=requestAnimationFrame(loop);
+}
+
+function smapRender(){
+  const canvas=document.getElementById('smap-canvas');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  const dpr=window.devicePixelRatio;
+  ctx.save();
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  ctx.clearRect(0,0,smapCanvasW,smapCanvasH);
+
+  // Background stars
+  ctx.fillStyle='#050d14';
+  ctx.fillRect(0,0,smapCanvasW,smapCanvasH);
+  const starSeed=42;
+  for(let i=0;i<120;i++){
+    const sx=(Math.sin(i*127.1+starSeed)*43758.5453)%1*smapCanvasW;
+    const sy=(Math.sin(i*269.5+starSeed)*17853.2917)%1*smapCanvasH;
+    const sb=0.2+0.3*Math.sin(smapTime*0.5+i*0.7);
+    ctx.fillStyle=`rgba(100,140,180,${Math.abs(sb)})`;
+    ctx.beginPath();ctx.arc(Math.abs(sx),Math.abs(sy),0.5+Math.abs(Math.sin(i))*0.8,0,Math.PI*2);ctx.fill();
+  }
+
+  // Generation band hints
+  const genGroups={};
+  smapNodes.forEach(n=>{if(!genGroups[n.gen])genGroups[n.gen]=[];genGroups[n.gen].push(n)});
+  const genNames=['Landrace Origins','First Generation','Second Generation','Third Generation','Fourth Generation','Fifth Generation'];
+  Object.keys(genGroups).sort((a,b)=>a-b).forEach(g=>{
+    const nodes=genGroups[g];
+    let minY=Infinity,maxY=-Infinity;
+    nodes.forEach(n=>{
+      const sp=smapWorldToScreen(n.x,n.y);
+      if(sp.y<minY)minY=sp.y;if(sp.y>maxY)maxY=sp.y;
+    });
+    const bandTop=minY-30,bandBot=maxY+30;
+    if(bandBot>0&&bandTop<smapCanvasH){
+      ctx.fillStyle='rgba(20,40,60,0.15)';
+      ctx.fillRect(0,bandTop,smapCanvasW,bandBot-bandTop);
+      ctx.strokeStyle='rgba(30,60,90,0.2)';
+      ctx.setLineDash([4,8]);ctx.lineWidth=1;
+      ctx.beginPath();ctx.moveTo(0,bandTop);ctx.lineTo(smapCanvasW,bandTop);ctx.stroke();
+      ctx.setLineDash([]);
+      // Gen label
+      ctx.font='bold 10px Georgia';ctx.fillStyle='rgba(60,120,160,0.4)';ctx.textAlign='left';
+      ctx.fillText(genNames[g]||('Gen '+g),8,bandTop+14);
+    }
+  });
+
+  // Draw edges
+  smapEdges.forEach(e=>{
+    const fromDisc=discovered.has(e.fromId),toDisc=discovered.has(e.toId);
+    if(!smapShowUndiscovered&&(!fromDisc||!toDisc))return;
+    const fp=smapWorldToScreen(e.from.x,e.from.y);
+    const tp=smapWorldToScreen(e.to.x,e.to.y);
+    // Check if on screen
+    if(Math.max(fp.x,tp.x)<-50||Math.min(fp.x,tp.x)>smapCanvasW+50)return;
+    if(Math.max(fp.y,tp.y)<-50||Math.min(fp.y,tp.y)>smapCanvasH+50)return;
+
+    const bothDisc=fromDisc&&toDisc;
+    const canCraft=fromDisc&&!toDisc;
+
+    ctx.beginPath();
+    const midY=(fp.y+tp.y)/2;
+    ctx.moveTo(fp.x,fp.y);
+    ctx.bezierCurveTo(fp.x,midY,tp.x,midY,tp.x,tp.y);
+
+    if(bothDisc){
+      // Bright green connection
+      const grad=ctx.createLinearGradient(fp.x,fp.y,tp.x,tp.y);
+      grad.addColorStop(0,'rgba(126,200,80,0.5)');
+      grad.addColorStop(0.5,'rgba(126,200,80,0.3)');
+      grad.addColorStop(1,'rgba(126,200,80,0.5)');
+      ctx.strokeStyle=grad;ctx.lineWidth=2;
+    }else if(canCraft){
+      // Blue dashed — craftable
+      ctx.strokeStyle='rgba(96,160,208,0.35)';ctx.lineWidth=1.5;
+      ctx.setLineDash([6,4]);
+    }else{
+      // Dim
+      ctx.strokeStyle='rgba(40,60,70,0.25)';ctx.lineWidth=1;
+      ctx.setLineDash([3,6]);
+    }
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Animated pulse along discovered edges
+    if(bothDisc&&toDisc){
+      const pulse=(smapTime*0.4+e.from.x*0.01)%1;
+      const px=fp.x+(tp.x-fp.x)*pulse;
+      const py=fp.y+(tp.y-fp.y)*pulse-Math.sin(pulse*Math.PI)*20*smapScale;
+      ctx.beginPath();ctx.arc(px,py,2,0,Math.PI*2);
+      ctx.fillStyle=`rgba(126,200,80,${0.4*(1-Math.abs(pulse-0.5)*2)})`;ctx.fill();
+    }
+  });
+
+  // Determine craftable set
+  const craftable=new Set();
+  Object.entries(STRAINS).forEach(([id,s])=>{
+    if(discovered.has(id)||!s.recipes)return;
+    if(s.recipes.some(r=>r.every(p=>discovered.has(p))))craftable.add(id);
+  });
+
+  // Draw nodes
+  smapNodes.forEach(n=>{
+    const disc=discovered.has(n.id);
+    const isCraftable=craftable.has(n.id);
+    const isLandrace=n.s.type.includes('landrace');
+    if(!smapShowUndiscovered&&!disc)return;
+
+    const sp=smapWorldToScreen(n.x,n.y);
+    // Cull off-screen
+    if(sp.x<-60||sp.x>smapCanvasW+60||sp.y<-60||sp.y>smapCanvasH+60)return;
+
+    const isHovered=smapHoveredNode&&smapHoveredNode.id===n.id;
+    const baseR=disc?16:10;
+    const r=baseR*Math.min(smapScale*0.8+0.4,1.2);
+
+    // Glow
+    if(disc||isCraftable){
+      const glowR=r*(isHovered?3.5:2.2);
+      const glowCol=isLandrace?'200,168,80':isCraftable&&!disc?'96,160,208':'126,200,80';
+      const glowA=isHovered?0.3:0.12;
+      const pulse=1+Math.sin(smapTime*2+n.x*0.05)*0.08;
+      const grd=ctx.createRadialGradient(sp.x,sp.y,r*0.3,sp.x,sp.y,glowR*pulse);
+      grd.addColorStop(0,`rgba(${glowCol},${glowA})`);
+      grd.addColorStop(1,`rgba(${glowCol},0)`);
+      ctx.fillStyle=grd;
+      ctx.beginPath();ctx.arc(sp.x,sp.y,glowR*pulse,0,Math.PI*2);ctx.fill();
+    }
+
+    // Node body
+    ctx.beginPath();ctx.arc(sp.x,sp.y,r,0,Math.PI*2);
+    if(disc){
+      if(isLandrace){
+        const g=ctx.createRadialGradient(sp.x-r*0.3,sp.y-r*0.3,0,sp.x,sp.y,r);
+        g.addColorStop(0,'#e8d080');g.addColorStop(1,'#8a6a20');
+        ctx.fillStyle=g;
+      }else{
+        const g=ctx.createRadialGradient(sp.x-r*0.3,sp.y-r*0.3,0,sp.x,sp.y,r);
+        g.addColorStop(0,'#a0e870');g.addColorStop(1,'#3a7a1a');
+        ctx.fillStyle=g;
+      }
+    }else if(isCraftable){
+      const g=ctx.createRadialGradient(sp.x-r*0.3,sp.y-r*0.3,0,sp.x,sp.y,r);
+      g.addColorStop(0,'#4a8ab0');g.addColorStop(1,'#1a3a5a');
+      ctx.fillStyle=g;
+    }else{
+      ctx.fillStyle='#1a2830';
+    }
+    ctx.fill();
+
+    // Border
+    ctx.strokeStyle=disc?(isLandrace?'#c8a850':'#7ec850'):isCraftable?'#3a7a9a':'#2a3a40';
+    ctx.lineWidth=isHovered?2.5:1.5;
+    ctx.stroke();
+
+    // Emoji inside node (only when zoomed in enough)
+    if(smapScale>0.5&&disc){
+      const emojiSize=Math.max(10,r*0.9);
+      ctx.font=`${emojiSize}px serif`;
+      ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText(n.s.emoji||'🌿',sp.x,sp.y+1);
+    }else if(!disc&&isCraftable){
+      ctx.font=`bold ${Math.max(8,r*0.6)}px Georgia`;
+      ctx.fillStyle='#4a8ab0';ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText('?',sp.x,sp.y+1);
+    }else if(!disc){
+      ctx.font=`bold ${Math.max(7,r*0.5)}px Georgia`;
+      ctx.fillStyle='#2a3a40';ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText('•',sp.x,sp.y);
+    }
+
+    // Labels
+    if(smapShowLabels&&smapScale>0.35){
+      const labelAlpha=Math.min(1,(smapScale-0.35)*3);
+      if(disc){
+        ctx.font=`bold ${Math.max(9,11*Math.min(smapScale,1.2))}px Georgia`;
+        ctx.fillStyle=`rgba(200,232,176,${labelAlpha*(isHovered?1:0.85)})`;
+        ctx.textAlign='center';ctx.textBaseline='top';
+        ctx.fillText(n.s.name,sp.x,sp.y+r+4);
+      }else if(isCraftable&&smapScale>0.6){
+        ctx.font=`${Math.max(8,9*smapScale)}px Georgia`;
+        ctx.fillStyle=`rgba(96,160,208,${labelAlpha*0.6})`;
+        ctx.textAlign='center';ctx.textBaseline='top';
+        ctx.fillText('???',sp.x,sp.y+r+3);
+      }
+    }
+
+    // Hovered highlight ring
+    if(isHovered){
+      ctx.beginPath();ctx.arc(sp.x,sp.y,r+4,0,Math.PI*2);
+      ctx.strokeStyle=disc?'rgba(126,200,80,0.6)':'rgba(96,160,208,0.5)';
+      ctx.lineWidth=1;ctx.setLineDash([3,3]);ctx.stroke();ctx.setLineDash([]);
+    }
+  });
+
+  ctx.restore();
+}
+
+// ═══ Strain Map Mouse Events ═══
+(function(){
+  const wrap=document.getElementById('smap-wrap');
+  const canvas=document.getElementById('smap-canvas');
+  const popup=document.getElementById('smap-info-popup');
+
+  wrap.addEventListener('mousedown',e=>{
+    if(e.button!==0)return;
+    smapDragging=true;smapDragStartX=e.clientX-smapOffX;smapDragStartY=e.clientY-smapOffY;
+  });
+  window.addEventListener('mousemove',e=>{
+    if(smapDragging){
+      smapOffX=e.clientX-smapDragStartX;smapOffY=e.clientY-smapDragStartY;
+      return;
+    }
+    if(!smapOpen)return;
+    const rect=canvas.getBoundingClientRect();
+    const mx=e.clientX-rect.left,my=e.clientY-rect.top;
+    const wp=smapScreenToWorld(mx,my);
+    let closest=null,closestDist=Infinity;
+    smapNodes.forEach(n=>{
+      if(!smapShowUndiscovered&&!discovered.has(n.id))return;
+      const dx=n.x-wp.x,dy=n.y-wp.y;
+      const d=Math.sqrt(dx*dx+dy*dy);
+      if(d<30/smapScale&&d<closestDist){closestDist=d;closest=n}
+    });
+    if(closest!==smapHoveredNode){
+      smapHoveredNode=closest;
+      if(closest){
+        showSmapPopup(closest,e.clientX,e.clientY);
+        canvas.style.cursor='pointer';
+      }else{
+        popup.classList.remove('show');
+        canvas.style.cursor='grab';
+      }
+    }
+    if(closest){
+      const pr=popup.getBoundingClientRect();
+      let px=e.clientX+16,py=e.clientY-10;
+      if(px+pr.width>window.innerWidth-10)px=e.clientX-pr.width-16;
+      if(py+pr.height>window.innerHeight-10)py=window.innerHeight-pr.height-10;
+      if(py<10)py=10;
+      popup.style.left=px+'px';popup.style.top=py+'px';
+    }
+  });
+  window.addEventListener('mouseup',()=>{smapDragging=false});
+
+  canvas.addEventListener('click',e=>{
+    if(!smapHoveredNode)return;
+    const n=smapHoveredNode;
+    if(discovered.has(n.id)){
+      closeStrainMap();
+      openEncyclopediaTo(n.id);
+    }
+  });
+
+  wrap.addEventListener('wheel',e=>{
+    e.preventDefault();
+    const rect=canvas.getBoundingClientRect();
+    const mx=e.clientX-rect.left,my=e.clientY-rect.top;
+    const zoomFactor=e.deltaY<0?1.12:1/1.12;
+    const newScale=Math.max(0.15,Math.min(4,smapScale*zoomFactor));
+    // Zoom toward mouse
+    smapOffX=mx-(mx-smapOffX)*(newScale/smapScale);
+    smapOffY=my-(my-smapOffY)*(newScale/smapScale);
+    smapScale=newScale;
+    document.getElementById('smap-zoom-info').textContent=`Zoom: ${Math.round(smapScale*100)}%`;
+  },{passive:false});
+
+  // Touch pan/zoom
+  let smapTouches=[];
+  let smapPinchDist=0;
+  let smapPinchScale=1;
+  wrap.addEventListener('touchstart',e=>{
+    smapTouches=[...e.touches];
+    if(smapTouches.length===1){smapDragging=true;smapDragStartX=smapTouches[0].clientX-smapOffX;smapDragStartY=smapTouches[0].clientY-smapOffY}
+    else if(smapTouches.length===2){
+      const dx=smapTouches[0].clientX-smapTouches[1].clientX;
+      const dy=smapTouches[0].clientY-smapTouches[1].clientY;
+      smapPinchDist=Math.sqrt(dx*dx+dy*dy);smapPinchScale=smapScale;
+    }
+  },{passive:true});
+  wrap.addEventListener('touchmove',e=>{
+    e.preventDefault();
+    if(e.touches.length===1&&smapDragging){
+      smapOffX=e.touches[0].clientX-smapDragStartX;smapOffY=e.touches[0].clientY-smapDragStartY;
+    }else if(e.touches.length===2){
+      const dx=e.touches[0].clientX-e.touches[1].clientX;
+      const dy=e.touches[0].clientY-e.touches[1].clientY;
+      const dist=Math.sqrt(dx*dx+dy*dy);
+      const newScale=Math.max(0.15,Math.min(4,smapPinchScale*(dist/smapPinchDist)));
+      const cx=(e.touches[0].clientX+e.touches[1].clientX)/2;
+      const cy=(e.touches[0].clientY+e.touches[1].clientY)/2;
+      const rect=canvas.getBoundingClientRect();
+      const mx=cx-rect.left,my=cy-rect.top;
+      smapOffX=mx-(mx-smapOffX)*(newScale/smapScale);
+      smapOffY=my-(my-smapOffY)*(newScale/smapScale);
+      smapScale=newScale;
+    }
+  },{passive:false});
+  wrap.addEventListener('touchend',()=>{smapDragging=false});
+
+  // Resize handler
+  window.addEventListener('resize',()=>{if(smapOpen)smapFitView()});
+})();
+
+function showSmapPopup(node,mx,my){
+  const popup=document.getElementById('smap-info-popup');
+  const s=node.s;
+  const disc=discovered.has(node.id);
+  const craftable=!disc&&s.recipes&&s.recipes.some(r=>r.every(p=>discovered.has(p)));
+
+  let html='';
+  if(disc){
+    html=`<div class="smi-name">${s.emoji||'🌿'} ${s.name}</div>
+      <div class="smi-types">${s.type.map(typeBadge).join('')}</div>
+      <div class="smi-lineage">🧬 ${s.lineage}</div>
+      <div class="smi-stats">THC: ${s.thc} · CBD: ${s.cbd} · Gen ${s.generation}</div>
+      <div style="margin-top:6px;font-size:10px;color:#4a9a6a">🖱️ Click to open in Encyclopedia</div>`;
+  }else if(craftable){
+    html=`<div class="smi-name locked">❓ Undiscovered Strain</div>
+      <div class="smi-types">${s.type.map(typeBadge).join('')}</div>
+      <div class="smi-stats">Generation ${s.generation}</div>
+      <div class="smi-hint">💡 You have the parents to discover this! Check the hint panel.</div>`;
+  }else{
+    const neededParents=s.recipes?s.recipes[0].filter(p=>!discovered.has(p)):[];
+    html=`<div class="smi-name locked">🔒 Locked Strain</div>
+      <div class="smi-types">${s.type.map(typeBadge).join('')}</div>
+      <div class="smi-stats">Generation ${s.generation}</div>
+      <div class="smi-hint">🔒 ${neededParents.length?`Need ${neededParents.length} more parent strain${neededParents.length>1?'s':''}`:'Discover more strains to unlock'}</div>`;
+  }
+  popup.innerHTML=html;
+  popup.classList.add('show');
+  popup.style.left=mx+16+'px';popup.style.top=my-10+'px';
+}
+
+// ═══════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════
+checkSession();
+</script>
+</body>
+</html>
