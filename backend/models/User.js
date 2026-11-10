@@ -3,6 +3,7 @@ const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/db');
 
 const User = sequelize.define('User', {
+  combos_count: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,

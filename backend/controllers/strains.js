@@ -11,7 +11,7 @@ const getAllStrains = async (req, res, next) => {
     if (generation) where.generation = generation;
     if (type) where.type = type;
     if (search) {
-      where.name = { [Op.iLike]: `%${search}%` };
+      where.name = { [Op.like]: `%${search}%` };
     }
     
     const strains = await Strain.findAll({

@@ -1,6 +1,7 @@
 
 const Discovery = require('../models/Discovery');
 const Strain = require('../models/Strain');
+const Recipe = require('../models/Recipe');
 
 // Get User Discoveries
 const getDiscoveries = async (req, res, next) => {
@@ -46,13 +47,12 @@ const addDiscovery = async (req, res, next) => {
       where: { user_id: req.user.id, strain_id },
     });
     
-    if (existingDiscovery) {
-      return res.status(400).json({
-        success: false,
-        error: { code: 'CONFLICT', message: 'Strain already discovered' },
-      });
+    if (existingDiscovery) return res.json({ success: true, discovery: existingDiscovery });
+    const owned = new Set((await Discovery.findAll({ where: { user_id: req.user.id } })).map(d => d.strain_id));
+    const recipes = await Recipe.findAll({ where: { offspring_id: strain_id } });
+    if (strain.generation !== 0 && !recipes.some(r => owned.has(r.parent1_id) && owned.has(r.parent2_id))) {
+      return res.status(403).json({ error: { message: 'Discover the required parents first' } });
     }
-    
     const discovery = await Discovery.create({
       user_id: req.user.id,
       strain_id,

@@ -1,0 +1,1686 @@
+{
+  "afghani": {
+    "name": "Afghani",
+    "type": [
+      "indica",
+      "landrace"
+    ],
+    "thc": "18-25%",
+    "cbd": "0.5-1%",
+    "lineage": "Hindu Kush Mountains, Afghanistan",
+    "desc": "One of the oldest and most influential cannabis strains in existence. Originating from the Hindu Kush mountains, Afghani is a pure indica landrace that has formed the genetic backbone of countless modern hybrids. Known for its heavy resin production and deeply relaxing effects.",
+    "effects": [
+      "Relaxed",
+      "Sleepy",
+      "Happy",
+      "Euphoric",
+      "Body High"
+    ],
+    "flavors": {
+      "Earthy": 0.9,
+      "Woody": 0.7,
+      "Pungent": 0.6,
+      "Sweet": 0.3,
+      "Spicy": 0.5,
+      "Herbal": 0.4,
+      "Pine": 0.5,
+      "Hash": 0.8
+    },
+    "emoji": "🏔️",
+    "generation": 0,
+    "color": "#4a7a3a"
+  },
+  "durban-poison": {
+    "name": "Durban Poison",
+    "type": [
+      "sativa",
+      "landrace"
+    ],
+    "thc": "15-20%",
+    "cbd": "0.01%",
+    "lineage": "Durban, South Africa",
+    "desc": "A pure sativa landrace from the port city of Durban, South Africa. Celebrated for its energetic, uplifting high and sweet, anise-like aroma. It's one of the most important sativa genetics in modern breeding.",
+    "effects": [
+      "Energetic",
+      "Uplifted",
+      "Creative",
+      "Focused",
+      "Happy"
+    ],
+    "flavors": {
+      "Sweet": 0.8,
+      "Earthy": 0.5,
+      "Pine": 0.4,
+      "Anise": 0.7,
+      "Citrus": 0.3,
+      "Herbal": 0.4,
+      "Spicy": 0.3,
+      "Woody": 0.2
+    },
+    "emoji": "🌍",
+    "generation": 0,
+    "color": "#8ab840"
+  },
+  "thai": {
+    "name": "Thai",
+    "type": [
+      "sativa",
+      "landrace"
+    ],
+    "thc": "14-24%",
+    "cbd": "0.1%",
+    "lineage": "Thailand",
+    "desc": "A pure sativa landrace from Thailand, historically sold as \"Thai sticks.\" Thai genetics are responsible for the long-flowering, cerebral sativas found in many modern hybrids. Its psychedelic, soaring high is legendary among connoisseurs.",
+    "effects": [
+      "Euphoric",
+      "Creative",
+      "Energetic",
+      "Psychedelic",
+      "Uplifted"
+    ],
+    "flavors": {
+      "Citrus": 0.7,
+      "Tropical": 0.6,
+      "Spicy": 0.5,
+      "Herbal": 0.6,
+      "Earthy": 0.3,
+      "Sweet": 0.4,
+      "Floral": 0.3,
+      "Woody": 0.4
+    },
+    "emoji": "🌏",
+    "generation": 0,
+    "color": "#6aaa30"
+  },
+  "colombian-gold": {
+    "name": "Colombian Gold",
+    "type": [
+      "sativa",
+      "landrace"
+    ],
+    "thc": "14-19%",
+    "cbd": "0.1%",
+    "lineage": "Santa Marta mountains, Colombia",
+    "desc": "A legendary sativa landrace from the Santa Marta mountains. Colombian Gold was one of the most sought-after strains during the 1960s-70s and has been a crucial building block in classic American hybrids.",
+    "effects": [
+      "Happy",
+      "Uplifted",
+      "Energetic",
+      "Relaxed",
+      "Creative"
+    ],
+    "flavors": {
+      "Citrus": 0.8,
+      "Sweet": 0.6,
+      "Earthy": 0.5,
+      "Lemon": 0.7,
+      "Woody": 0.3,
+      "Herbal": 0.2,
+      "Spicy": 0.2,
+      "Tropical": 0.4
+    },
+    "emoji": "🌄",
+    "generation": 0,
+    "color": "#c8b840"
+  },
+  "hindu-kush": {
+    "name": "Hindu Kush",
+    "type": [
+      "indica",
+      "landrace"
+    ],
+    "thc": "15-20%",
+    "cbd": "1%",
+    "lineage": "Hindu Kush mountain range",
+    "desc": "A pure indica landrace from the harsh Hindu Kush mountain range between Pakistan and Afghanistan. Known for its sweet, earthy sandalwood aroma and heavy-handed, tranquilizing effect. A fundamental building block of modern indica breeding.",
+    "effects": [
+      "Relaxed",
+      "Sleepy",
+      "Happy",
+      "Sedated",
+      "Pain Relief"
+    ],
+    "flavors": {
+      "Earthy": 0.9,
+      "Sweet": 0.5,
+      "Sandalwood": 0.8,
+      "Pine": 0.4,
+      "Woody": 0.7,
+      "Spicy": 0.3,
+      "Hash": 0.6,
+      "Herbal": 0.3
+    },
+    "emoji": "⛰️",
+    "generation": 0,
+    "color": "#5a5a3a"
+  },
+  "acapulco-gold": {
+    "name": "Acapulco Gold",
+    "type": [
+      "sativa",
+      "landrace"
+    ],
+    "thc": "15-23%",
+    "cbd": "0.1%",
+    "lineage": "Acapulco, Mexico",
+    "desc": "Considered one of the best cannabis strains ever created. Acapulco Gold was the premier smoke of the 1960s and 70s. Named for its gold and brown coloring, it delivers a euphoric, energetic high.",
+    "effects": [
+      "Euphoric",
+      "Energetic",
+      "Happy",
+      "Creative",
+      "Uplifted"
+    ],
+    "flavors": {
+      "Earthy": 0.6,
+      "Sweet": 0.5,
+      "Toffee": 0.7,
+      "Citrus": 0.4,
+      "Woody": 0.5,
+      "Spicy": 0.3,
+      "Coffee": 0.4,
+      "Herbal": 0.3
+    },
+    "emoji": "🌅",
+    "generation": 0,
+    "color": "#c8a030"
+  },
+  "jamaican": {
+    "name": "Jamaican",
+    "type": [
+      "sativa",
+      "landrace"
+    ],
+    "thc": "12-19%",
+    "cbd": "0.1%",
+    "lineage": "Jamaica",
+    "desc": "A pure sativa landrace from Jamaica, shaped by the island's tropical climate over centuries. Known for uplifting, spiritual effects and fruity, tropical flavor profile.",
+    "effects": [
+      "Happy",
+      "Uplifted",
+      "Relaxed",
+      "Creative",
+      "Euphoric"
+    ],
+    "flavors": {
+      "Tropical": 0.9,
+      "Sweet": 0.6,
+      "Citrus": 0.5,
+      "Mango": 0.7,
+      "Earthy": 0.3,
+      "Herbal": 0.3,
+      "Floral": 0.2,
+      "Spicy": 0.2
+    },
+    "emoji": "🌴",
+    "generation": 0,
+    "color": "#30a050"
+  },
+  "malawi-gold": {
+    "name": "Malawi Gold",
+    "type": [
+      "sativa",
+      "landrace"
+    ],
+    "thc": "15-18%",
+    "cbd": "0.1%",
+    "lineage": "Malawi, Africa",
+    "desc": "A rare sativa landrace from Malawi. Known for extreme potency and unusually long flowering time. Delivers a psychedelic, long-lasting high that has made it legendary among collectors and breeders.",
+    "effects": [
+      "Euphoric",
+      "Psychedelic",
+      "Energetic",
+      "Focused",
+      "Creative"
+    ],
+    "flavors": {
+      "Earthy": 0.7,
+      "Spicy": 0.6,
+      "Woody": 0.5,
+      "Herbal": 0.6,
+      "Sweet": 0.3,
+      "Citrus": 0.2,
+      "Pine": 0.3,
+      "Tropical": 0.4
+    },
+    "emoji": "🌞",
+    "generation": 0,
+    "color": "#d4a020"
+  },
+  "skunk-1": {
+    "name": "Skunk #1",
+    "type": [
+      "hybrid"
+    ],
+    "thc": "15-19%",
+    "cbd": "0.2%",
+    "lineage": "Afghani × Colombian Gold × Acapulco Gold",
+    "desc": "One of the most influential cannabis strains ever created, developed in the 1970s by Sacred Seeds. Skunk #1 is the genetic backbone of countless modern hybrids.",
+    "effects": [
+      "Happy",
+      "Relaxed",
+      "Uplifted",
+      "Euphoric",
+      "Creative"
+    ],
+    "flavors": {
+      "Skunk": 0.95,
+      "Earthy": 0.7,
+      "Sweet": 0.4,
+      "Pungent": 0.8,
+      "Citrus": 0.3,
+      "Herbal": 0.3,
+      "Woody": 0.2,
+      "Spicy": 0.2
+    },
+    "emoji": "🦨",
+    "generation": 1,
+    "color": "#7a9a30",
+    "recipes": [
+      [
+        "afghani",
+        "colombian-gold"
+      ],
+      [
+        "afghani",
+        "acapulco-gold"
+      ]
+    ]
+  },
+  "northern-lights": {
+    "name": "Northern Lights",
+    "type": [
+      "indica"
+    ],
+    "thc": "16-21%",
+    "cbd": "0.1%",
+    "lineage": "Afghani × Thai",
+    "desc": "A legendary pure indica developed in the Pacific Northwest. One of the most awarded cannabis strains in history, beloved for its resinous buds and deeply relaxing, nearly psychedelic body high.",
+    "effects": [
+      "Relaxed",
+      "Sleepy",
+      "Happy",
+      "Euphoric",
+      "Body High"
+    ],
+    "flavors": {
+      "Pine": 0.7,
+      "Earthy": 0.8,
+      "Sweet": 0.5,
+      "Spicy": 0.4,
+      "Honey": 0.3,
+      "Herbal": 0.3,
+      "Woody": 0.4,
+      "Pungent": 0.3
+    },
+    "emoji": "🌌",
+    "generation": 1,
+    "color": "#3a5a9a",
+    "recipes": [
+      [
+        "afghani",
+        "thai"
+      ]
+    ]
+  },
+  "haze": {
+    "name": "Haze",
+    "type": [
+      "sativa"
+    ],
+    "thc": "17-20%",
+    "cbd": "0.1%",
+    "lineage": "Colombian Gold × Thai × Mexican × South Indian",
+    "desc": "The original Haze was created in Santa Cruz, California in the 1970s by the Haze Brothers. A crossing of Colombian, Thai, Mexican, and South Indian genetics produced this soaring, long-lasting sativa.",
+    "effects": [
+      "Energetic",
+      "Creative",
+      "Euphoric",
+      "Uplifted",
+      "Focused"
+    ],
+    "flavors": {
+      "Spicy": 0.7,
+      "Earthy": 0.6,
+      "Citrus": 0.5,
+      "Sweet": 0.3,
+      "Herbal": 0.5,
+      "Woody": 0.3,
+      "Incense": 0.4,
+      "Floral": 0.3
+    },
+    "emoji": "☁️",
+    "generation": 1,
+    "color": "#9aaa50",
+    "recipes": [
+      [
+        "colombian-gold",
+        "thai"
+      ],
+      [
+        "colombian-gold",
+        "jamaican"
+      ]
+    ]
+  },
+  "og-kush": {
+    "name": "OG Kush",
+    "type": [
+      "hybrid"
+    ],
+    "thc": "19-26%",
+    "cbd": "0.3%",
+    "lineage": "Hindu Kush × Chemdawg × Lemon Thai",
+    "desc": "Perhaps the most famous cannabis strain in the world. Its fuel, citrus, and earth aroma with complex cerebral and physical effects have made it the genetic foundation of the West Coast cannabis scene.",
+    "effects": [
+      "Happy",
+      "Relaxed",
+      "Euphoric",
+      "Uplifted",
+      "Creative"
+    ],
+    "flavors": {
+      "Fuel": 0.8,
+      "Earthy": 0.7,
+      "Pine": 0.6,
+      "Lemon": 0.5,
+      "Woody": 0.5,
+      "Spicy": 0.4,
+      "Pungent": 0.6,
+      "Citrus": 0.4
+    },
+    "emoji": "👑",
+    "generation": 1,
+    "color": "#5a8a40",
+    "recipes": [
+      [
+        "hindu-kush",
+        "chemdawg"
+      ],
+      [
+        "afghani",
+        "durban-poison"
+      ]
+    ]
+  },
+  "chemdawg": {
+    "name": "Chemdawg",
+    "type": [
+      "hybrid"
+    ],
+    "thc": "15-20%",
+    "cbd": "0.1%",
+    "lineage": "Thai × Nepalese",
+    "desc": "A mysterious hybrid with uncertain origins. Chemdawg's legendary chemical, diesel-like aroma has made it one of the most sought-after genetics. Parent to both OG Kush and Sour Diesel.",
+    "effects": [
+      "Happy",
+      "Euphoric",
+      "Relaxed",
+      "Uplifted",
+      "Creative"
+    ],
+    "flavors": {
+      "Diesel": 0.9,
+      "Chemical": 0.8,
+      "Pungent": 0.7,
+      "Earthy": 0.5,
+      "Pine": 0.3,
+      "Woody": 0.3,
+      "Spicy": 0.2,
+      "Citrus": 0.2
+    },
+    "emoji": "🧪",
+    "generation": 1,
+    "color": "#5a9a60",
+    "recipes": [
+      [
+        "thai",
+        "malawi-gold"
+      ],
+      [
+        "thai",
+        "afghani"
+      ]
+    ]
+  },
+  "ak-47": {
+    "name": "AK-47",
+    "type": [
+      "hybrid"
+    ],
+    "thc": "13-20%",
+    "cbd": "1.5%",
+    "lineage": "Colombian Gold × Mexican × Afghani × Thai",
+    "desc": "Despite its aggressive name, AK-47 is a mellow, long-lasting sativa-dominant hybrid created in the Netherlands in 1992. It has won numerous Cannabis Cup awards.",
+    "effects": [
+      "Relaxed",
+      "Happy",
+      "Euphoric",
+      "Uplifted",
+      "Creative"
+    ],
+    "flavors": {
+      "Earthy": 0.6,
+      "Sweet": 0.5,
+      "Floral": 0.4,
+      "Spicy": 0.5,
+      "Woody": 0.4,
+      "Herbal": 0.3,
+      "Pungent": 0.5,
+      "Sour": 0.3
+    },
+    "emoji": "🏆",
+    "generation": 1,
+    "color": "#8a8a40",
+    "recipes": [
+      [
+        "colombian-gold",
+        "afghani"
+      ],
+      [
+        "acapulco-gold",
+        "thai"
+      ]
+    ]
+  },
+  "white-widow": {
+    "name": "White Widow",
+    "type": [
+      "hybrid"
+    ],
+    "thc": "18-25%",
+    "cbd": "0.2%",
+    "lineage": "Brazilian Sativa × South Indian Indica",
+    "desc": "One of the most famous Dutch strains, created by Green House Seeds in the early 1990s. Its white, crystal-covered buds and powerful burst of euphoria made it a global sensation.",
+    "effects": [
+      "Euphoric",
+      "Happy",
+      "Uplifted",
+      "Relaxed",
+      "Creative"
+    ],
+    "flavors": {
+      "Earthy": 0.6,
+      "Woody": 0.5,
+      "Pungent": 0.6,
+      "Spicy": 0.4,
+      "Sweet": 0.3,
+      "Herbal": 0.4,
+      "Pine": 0.3,
+      "Floral": 0.2
+    },
+    "emoji": "🕸️",
+    "generation": 1,
+    "color": "#c8c8c8",
+    "recipes": [
+      [
+        "afghani",
+        "jamaican"
+      ],
+      [
+        "hindu-kush",
+        "jamaican"
+      ]
+    ]
+  },
+  "blueberry": {
+    "name": "Blueberry",
+    "type": [
+      "indica"
+    ],
+    "thc": "15-20%",
+    "cbd": "0.2%",
+    "lineage": "Afghani × Thai × Purple Thai",
+    "desc": "Created by DJ Short in the 1970s-80s. Won the High Times Cannabis Cup in 2000. Beloved for its distinct blueberry aroma and flavor.",
+    "effects": [
+      "Relaxed",
+      "Happy",
+      "Euphoric",
+      "Sleepy",
+      "Body High"
+    ],
+    "flavors": {
+      "Blueberry": 0.95,
+      "Sweet": 0.8,
+      "Berry": 0.9,
+      "Earthy": 0.3,
+      "Herbal": 0.2,
+      "Vanilla": 0.3,
+      "Fruity": 0.7,
+      "Woody": 0.2
+    },
+    "emoji": "🫐",
+    "generation": 1,
+    "color": "#4a4a9a",
+    "recipes": [
+      [
+        "afghani",
+        "thai"
+      ],
+      [
+        "thai",
+        "jamaican"
+      ]
+    ]
+  },
+  "sour-diesel": {
+    "name": "Sour Diesel",
+    "type": [
+      "sativa"
+    ],
+    "thc": "18-26%",
+    "cbd": "0.2%",
+    "lineage": "Chemdawg × Super Skunk",
+    "desc": "Born in New York in the 1990s, Sour Diesel is a fast-acting, energizing sativa with a pungent, diesel-like aroma. One of the most popular strains on the East Coast.",
+    "effects": [
+      "Energetic",
+      "Happy",
+      "Uplifted",
+      "Creative",
+      "Focused"
+    ],
+    "flavors": {
+      "Diesel": 0.95,
+      "Sour": 0.8,
+      "Pungent": 0.7,
+      "Citrus": 0.4,
+      "Earthy": 0.4,
+      "Herbal": 0.3,
+      "Fuel": 0.6,
+      "Spicy": 0.3
+    },
+    "emoji": "⛽",
+    "generation": 2,
+    "color": "#c8a830",
+    "recipes": [
+      [
+        "chemdawg",
+        "skunk-1"
+      ],
+      [
+        "chemdawg",
+        "northern-lights"
+      ]
+    ]
+  },
+  "blue-dream": {
+    "name": "Blue Dream",
+    "type": [
+      "hybrid"
+    ],
+    "thc": "17-24%",
+    "cbd": "0.1-2%",
+    "lineage": "Blueberry × Haze",
+    "desc": "A California classic and one of the best-selling strains in the US. Combines Blueberry's relaxing body effects with Haze's gentle cerebral invigoration.",
+    "effects": [
+      "Happy",
+      "Relaxed",
+      "Euphoric",
+      "Uplifted",
+      "Creative"
+    ],
+    "flavors": {
+      "Blueberry": 0.8,
+      "Sweet": 0.7,
+      "Berry": 0.7,
+      "Herbal": 0.4,
+      "Vanilla": 0.3,
+      "Citrus": 0.3,
+      "Earthy": 0.3,
+      "Floral": 0.2
+    },
+    "emoji": "💙",
+    "generation": 2,
+    "color": "#4a7ac8",
+    "recipes": [
+      [
+        "blueberry",
+        "haze"
+      ]
+    ]
+  },
+  "bubba-kush": {
+    "name": "Bubba Kush",
+    "type": [
+      "indica"
+    ],
+    "thc": "14-22%",
+    "cbd": "0.1%",
+    "lineage": "OG Kush × Afghani",
+    "desc": "An indica-dominant hybrid developed in California in the 1990s. Delivers a heavy, tranquilizing stone with flavors of chocolate, coffee, and sweet hashish.",
+    "effects": [
+      "Relaxed",
+      "Sleepy",
+      "Happy",
+      "Euphoric",
+      "Sedated"
+    ],
+    "flavors": {
+      "Coffee": 0.8,
+      "Chocolate": 0.7,
+      "Earthy": 0.6,
+      "Sweet": 0.4,
+      "Hash": 0.6,
+      "Woody": 0.4,
+      "Spicy": 0.3,
+      "Pungent": 0.3
+    },
+    "emoji": "☕",
+    "generation": 2,
+    "color": "#6a5a3a",
+    "recipes": [
+      [
+        "og-kush",
+        "afghani"
+      ],
+      [
+        "og-kush",
+        "hindu-kush"
+      ]
+    ]
+  },
+  "super-silver-haze": {
+    "name": "Super Silver Haze",
+    "type": [
+      "sativa"
+    ],
+    "thc": "18-23%",
+    "cbd": "0.1%",
+    "lineage": "Skunk #1 × Northern Lights × Haze",
+    "desc": "A three-time Cannabis Cup winner (1997-1999), created by Green House Seeds. A long-lasting, energetic, cerebral experience.",
+    "effects": [
+      "Energetic",
+      "Uplifted",
+      "Euphoric",
+      "Creative",
+      "Happy"
+    ],
+    "flavors": {
+      "Citrus": 0.6,
+      "Spicy": 0.6,
+      "Herbal": 0.5,
+      "Earthy": 0.5,
+      "Skunk": 0.5,
+      "Sweet": 0.4,
+      "Pine": 0.3,
+      "Haze": 0.7
+    },
+    "emoji": "🥇",
+    "generation": 2,
+    "color": "#a0c040",
+    "recipes": [
+      [
+        "skunk-1",
+        "haze"
+      ],
+      [
+        "northern-lights",
+        "haze"
+      ]
+    ]
+  },
+  "trainwreck": {
+    "name": "Trainwreck",
+    "type": [
+      "hybrid"
+    ],
+    "thc": "18-25%",
+    "cbd": "0.1%",
+    "lineage": "Mexican Sativa × Thai Sativa × Afghani Indica",
+    "desc": "A potent, fast-acting sativa-dominant hybrid from Humboldt County. The name reflects its powerful onset — a mind-bending, euphoric rush followed by body relaxation.",
+    "effects": [
+      "Euphoric",
+      "Happy",
+      "Creative",
+      "Relaxed",
+      "Energetic"
+    ],
+    "flavors": {
+      "Pine": 0.7,
+      "Lemon": 0.6,
+      "Earthy": 0.5,
+      "Spicy": 0.5,
+      "Woody": 0.4,
+      "Sweet": 0.3,
+      "Herbal": 0.3,
+      "Pungent": 0.4
+    },
+    "emoji": "🚂",
+    "generation": 2,
+    "color": "#8a6a30",
+    "recipes": [
+      [
+        "haze",
+        "afghani"
+      ],
+      [
+        "thai",
+        "acapulco-gold"
+      ]
+    ]
+  },
+  "jack-herer": {
+    "name": "Jack Herer",
+    "type": [
+      "sativa"
+    ],
+    "thc": "15-24%",
+    "cbd": "0.03%",
+    "lineage": "Haze × (Northern Lights #5 × Shiva Skunk)",
+    "desc": "Named after the legendary cannabis activist. Created by Sensi Seeds in the Netherlands. Combines a Haze hybrid with Northern Lights and Skunk.",
+    "effects": [
+      "Happy",
+      "Energetic",
+      "Creative",
+      "Uplifted",
+      "Focused"
+    ],
+    "flavors": {
+      "Pine": 0.8,
+      "Earthy": 0.6,
+      "Spicy": 0.5,
+      "Woody": 0.5,
+      "Herbal": 0.4,
+      "Citrus": 0.3,
+      "Sweet": 0.2,
+      "Floral": 0.2
+    },
+    "emoji": "📚",
+    "generation": 2,
+    "color": "#78a838",
+    "recipes": [
+      [
+        "haze",
+        "northern-lights"
+      ],
+      [
+        "haze",
+        "skunk-1"
+      ],
+      [
+        "northern-lights",
+        "skunk-1"
+      ]
+    ]
+  },
+  "gorilla-glue": {
+    "name": "Gorilla Glue #4",
+    "type": [
+      "hybrid"
+    ],
+    "thc": "25-30%",
+    "cbd": "0.1%",
+    "lineage": "Chem's Sister × Chocolate Diesel × Sour Dubb",
+    "desc": "One of the most potent strains ever created. Its extreme resin production and 25-30% THC content have made it a modern classic.",
+    "effects": [
+      "Relaxed",
+      "Euphoric",
+      "Happy",
+      "Sleepy",
+      "Body High"
+    ],
+    "flavors": {
+      "Diesel": 0.7,
+      "Chocolate": 0.5,
+      "Earthy": 0.6,
+      "Pine": 0.5,
+      "Pungent": 0.6,
+      "Coffee": 0.4,
+      "Sour": 0.4,
+      "Chemical": 0.3
+    },
+    "emoji": "🦍",
+    "generation": 2,
+    "color": "#6a5a40",
+    "recipes": [
+      [
+        "chemdawg",
+        "sour-diesel"
+      ],
+      [
+        "og-kush",
+        "chemdawg"
+      ]
+    ]
+  },
+  "girl-scout-cookies": {
+    "name": "Girl Scout Cookies",
+    "type": [
+      "hybrid"
+    ],
+    "thc": "17-28%",
+    "cbd": "0.2%",
+    "lineage": "OG Kush × Durban Poison",
+    "desc": "Created in the Bay Area of California, GSC took the cannabis world by storm in the early 2010s. Multiple Cannabis Cup winner and parent to dozens of famous strains.",
+    "effects": [
+      "Happy",
+      "Relaxed",
+      "Euphoric",
+      "Uplifted",
+      "Creative"
+    ],
+    "flavors": {
+      "Sweet": 0.8,
+      "Mint": 0.7,
+      "Earthy": 0.5,
+      "Chocolate": 0.4,
+      "Spicy": 0.3,
+      "Vanilla": 0.4,
+      "Pungent": 0.3,
+      "Cookie": 0.8
+    },
+    "emoji": "🍪",
+    "generation": 2,
+    "color": "#c89060",
+    "recipes": [
+      [
+        "og-kush",
+        "durban-poison"
+      ]
+    ]
+  },
+  "gelato": {
+    "name": "Gelato",
+    "type": [
+      "hybrid"
+    ],
+    "thc": "17-25%",
+    "cbd": "0.2%",
+    "lineage": "Sunset Sherbet × Thin Mint GSC",
+    "desc": "Born from the Cookie Fam in San Francisco. Its sweet, creamy flavor reminiscent of sherbet ice cream pairs with a balanced, euphoric high.",
+    "effects": [
+      "Happy",
+      "Relaxed",
+      "Euphoric",
+      "Uplifted",
+      "Creative"
+    ],
+    "flavors": {
+      "Sweet": 0.9,
+      "Creamy": 0.8,
+      "Berry": 0.5,
+      "Citrus": 0.5,
+      "Mint": 0.4,
+      "Lavender": 0.3,
+      "Earthy": 0.2,
+      "Vanilla": 0.5
+    },
+    "emoji": "🍨",
+    "generation": 3,
+    "color": "#c870a0",
+    "recipes": [
+      [
+        "girl-scout-cookies",
+        "blueberry"
+      ],
+      [
+        "girl-scout-cookies",
+        "skunk-1"
+      ]
+    ]
+  },
+  "wedding-cake": {
+    "name": "Wedding Cake",
+    "type": [
+      "hybrid"
+    ],
+    "thc": "22-25%",
+    "cbd": "0.1%",
+    "lineage": "Triangle Kush × Animal Mints",
+    "desc": "Also known as Pink Cookies. A rich, tangy indica-hybrid with sweet vanilla-cake flavor. Named Leafly's Strain of the Year in 2019.",
+    "effects": [
+      "Relaxed",
+      "Happy",
+      "Euphoric",
+      "Uplifted",
+      "Sedated"
+    ],
+    "flavors": {
+      "Vanilla": 0.9,
+      "Sweet": 0.8,
+      "Earthy": 0.5,
+      "Pepper": 0.4,
+      "Cake": 0.8,
+      "Creamy": 0.6,
+      "Dough": 0.5,
+      "Spicy": 0.3
+    },
+    "emoji": "🎂",
+    "generation": 3,
+    "color": "#e8d0b0",
+    "recipes": [
+      [
+        "girl-scout-cookies",
+        "og-kush"
+      ],
+      [
+        "girl-scout-cookies",
+        "white-widow"
+      ]
+    ]
+  },
+  "mac-1": {
+    "name": "MAC 1",
+    "type": [
+      "hybrid"
+    ],
+    "thc": "20-23%",
+    "cbd": "0.1%",
+    "lineage": "Alien Cookies × Colombian × Starfighter",
+    "desc": "MAC 1 (Miracle Alien Cookies) by Capulator is one of the most coveted strains of the modern era. Delivers balanced, long-lasting euphoria.",
+    "effects": [
+      "Euphoric",
+      "Happy",
+      "Relaxed",
+      "Creative",
+      "Uplifted"
+    ],
+    "flavors": {
+      "Citrus": 0.6,
+      "Sweet": 0.5,
+      "Earthy": 0.4,
+      "Floral": 0.5,
+      "Dough": 0.4,
+      "Vanilla": 0.3,
+      "Diesel": 0.3,
+      "Herbal": 0.3
+    },
+    "emoji": "👽",
+    "generation": 3,
+    "color": "#80c0a0",
+    "recipes": [
+      [
+        "girl-scout-cookies",
+        "chemdawg"
+      ],
+      [
+        "girl-scout-cookies",
+        "colombian-gold"
+      ]
+    ]
+  },
+  "runtz": {
+    "name": "Runtz",
+    "type": [
+      "hybrid"
+    ],
+    "thc": "19-29%",
+    "cbd": "0.04%",
+    "lineage": "Zkittlez × Gelato",
+    "desc": "A rare, evenly balanced hybrid by Cookies. Tastes like the candy it's named after. Leafly's Strain of the Year in 2020.",
+    "effects": [
+      "Euphoric",
+      "Happy",
+      "Uplifted",
+      "Relaxed",
+      "Creative"
+    ],
+    "flavors": {
+      "Candy": 0.9,
+      "Sweet": 0.8,
+      "Tropical": 0.6,
+      "Berry": 0.5,
+      "Creamy": 0.5,
+      "Citrus": 0.4,
+      "Fruity": 0.7,
+      "Sugar": 0.6
+    },
+    "emoji": "🍬",
+    "generation": 3,
+    "color": "#e060c0",
+    "recipes": [
+      [
+        "gelato",
+        "durban-poison"
+      ],
+      [
+        "gelato",
+        "skunk-1"
+      ]
+    ]
+  },
+  "zkittlez": {
+    "name": "Zkittlez",
+    "type": [
+      "indica"
+    ],
+    "thc": "15-23%",
+    "cbd": "0.4%",
+    "lineage": "Grape Ape × Grapefruit",
+    "desc": "An indica-dominant mix by 3rd Gen Family and Terp Hogz. Delivers a flavor blast of tropical fruit and grape with calming, focused euphoria.",
+    "effects": [
+      "Happy",
+      "Relaxed",
+      "Euphoric",
+      "Uplifted",
+      "Focused"
+    ],
+    "flavors": {
+      "Grape": 0.9,
+      "Tropical": 0.7,
+      "Sweet": 0.8,
+      "Berry": 0.7,
+      "Candy": 0.6,
+      "Citrus": 0.4,
+      "Fruity": 0.8,
+      "Herbal": 0.2
+    },
+    "emoji": "🌈",
+    "generation": 3,
+    "color": "#d060d0",
+    "recipes": [
+      [
+        "blueberry",
+        "girl-scout-cookies"
+      ],
+      [
+        "blueberry",
+        "og-kush"
+      ]
+    ]
+  },
+  "pineapple-express": {
+    "name": "Pineapple Express",
+    "type": [
+      "hybrid"
+    ],
+    "thc": "16-26%",
+    "cbd": "0.1%",
+    "lineage": "Trainwreck × Hawaiian",
+    "desc": "Made famous by the 2008 film. A combination of Trainwreck and Hawaiian that delivers a long-lasting, energetic buzz with tropical, fruity aroma.",
+    "effects": [
+      "Happy",
+      "Uplifted",
+      "Energetic",
+      "Creative",
+      "Relaxed"
+    ],
+    "flavors": {
+      "Pineapple": 0.95,
+      "Tropical": 0.8,
+      "Citrus": 0.6,
+      "Sweet": 0.5,
+      "Mango": 0.4,
+      "Earthy": 0.2,
+      "Cedar": 0.3,
+      "Fruity": 0.7
+    },
+    "emoji": "🍍",
+    "generation": 3,
+    "color": "#d4a820",
+    "recipes": [
+      [
+        "trainwreck",
+        "jamaican"
+      ],
+      [
+        "trainwreck",
+        "haze"
+      ]
+    ]
+  },
+  "do-si-dos": {
+    "name": "Do-Si-Dos",
+    "type": [
+      "indica"
+    ],
+    "thc": "20-30%",
+    "cbd": "0.1%",
+    "lineage": "Girl Scout Cookies × Face Off OG",
+    "desc": "An indica-dominant hybrid from Archive Seed Bank. Combines powerful GSC genetics with Face Off OG for a potent, relaxing strain.",
+    "effects": [
+      "Relaxed",
+      "Euphoric",
+      "Happy",
+      "Sedated",
+      "Body High"
+    ],
+    "flavors": {
+      "Floral": 0.7,
+      "Earthy": 0.6,
+      "Lime": 0.5,
+      "Sweet": 0.5,
+      "Mint": 0.4,
+      "Nutty": 0.3,
+      "Herbal": 0.3,
+      "Spicy": 0.4
+    },
+    "emoji": "🌸",
+    "generation": 3,
+    "color": "#8060a0",
+    "recipes": [
+      [
+        "girl-scout-cookies",
+        "bubba-kush"
+      ],
+      [
+        "girl-scout-cookies",
+        "afghani"
+      ]
+    ]
+  },
+  "sherbet": {
+    "name": "Sunset Sherbet",
+    "type": [
+      "hybrid"
+    ],
+    "thc": "15-19%",
+    "cbd": "0.2%",
+    "lineage": "Girl Scout Cookies × Pink Panties",
+    "desc": "Created by the Cookie Fam. Inherits GSC's sweet, dessert-like genetics and adds fruity notes reminiscent of fruity sherbet.",
+    "effects": [
+      "Happy",
+      "Relaxed",
+      "Euphoric",
+      "Uplifted",
+      "Creative"
+    ],
+    "flavors": {
+      "Sweet": 0.8,
+      "Citrus": 0.7,
+      "Berry": 0.6,
+      "Creamy": 0.5,
+      "Earthy": 0.3,
+      "Mint": 0.3,
+      "Fruity": 0.6,
+      "Tropical": 0.4
+    },
+    "emoji": "🍧",
+    "generation": 3,
+    "color": "#e89040",
+    "recipes": [
+      [
+        "girl-scout-cookies",
+        "white-widow"
+      ],
+      [
+        "girl-scout-cookies",
+        "blueberry"
+      ],
+      [
+        "girl-scout-cookies",
+        "northern-lights"
+      ]
+    ]
+  },
+  "purple-punch": {
+    "name": "Purple Punch",
+    "type": [
+      "indica"
+    ],
+    "thc": "18-20%",
+    "cbd": "0.1%",
+    "lineage": "Larry OG × Granddaddy Purple",
+    "desc": "Smells and tastes like tropical punch with blueberry muffins and grape candy. A dessert strain perfect for nighttime relaxation.",
+    "effects": [
+      "Relaxed",
+      "Sleepy",
+      "Happy",
+      "Euphoric",
+      "Body High"
+    ],
+    "flavors": {
+      "Grape": 0.9,
+      "Blueberry": 0.7,
+      "Sweet": 0.7,
+      "Berry": 0.8,
+      "Vanilla": 0.4,
+      "Herbal": 0.2,
+      "Candy": 0.5,
+      "Tropical": 0.3
+    },
+    "emoji": "🍇",
+    "generation": 4,
+    "color": "#7030c0",
+    "recipes": [
+      [
+        "bubba-kush",
+        "blueberry"
+      ],
+      [
+        "blueberry",
+        "northern-lights"
+      ]
+    ]
+  },
+  "strawberry-cough": {
+    "name": "Strawberry Cough",
+    "type": [
+      "sativa"
+    ],
+    "thc": "15-20%",
+    "cbd": "0.1%",
+    "lineage": "Haze × Strawberry Fields",
+    "desc": "Kyle Kushman's famous creation. A sativa-dominant hybrid known for its potent skunky, strawberry scent and smooth, sweet smoke.",
+    "effects": [
+      "Happy",
+      "Uplifted",
+      "Euphoric",
+      "Energetic",
+      "Creative"
+    ],
+    "flavors": {
+      "Strawberry": 0.95,
+      "Sweet": 0.7,
+      "Berry": 0.6,
+      "Earthy": 0.3,
+      "Herbal": 0.3,
+      "Skunk": 0.3,
+      "Floral": 0.2,
+      "Fruity": 0.5
+    },
+    "emoji": "🍓",
+    "generation": 4,
+    "color": "#e04060",
+    "recipes": [
+      [
+        "haze",
+        "durban-poison"
+      ],
+      [
+        "super-silver-haze",
+        "durban-poison"
+      ]
+    ]
+  },
+  "mimosa": {
+    "name": "Mimosa",
+    "type": [
+      "hybrid"
+    ],
+    "thc": "17-30%",
+    "cbd": "0.1%",
+    "lineage": "Clementine × Purple Punch",
+    "desc": "A tantalizing sativa-dominant hybrid by Symbiotic Genetics. Delivers bright citrus flavors — orange, grapefruit, and tropical fruits.",
+    "effects": [
+      "Energetic",
+      "Happy",
+      "Uplifted",
+      "Euphoric",
+      "Creative"
+    ],
+    "flavors": {
+      "Orange": 0.9,
+      "Citrus": 0.8,
+      "Tropical": 0.6,
+      "Sweet": 0.5,
+      "Grapefruit": 0.5,
+      "Berry": 0.3,
+      "Tangy": 0.4,
+      "Floral": 0.2
+    },
+    "emoji": "🥂",
+    "generation": 4,
+    "color": "#f0b820",
+    "recipes": [
+      [
+        "purple-punch",
+        "sour-diesel"
+      ],
+      [
+        "purple-punch",
+        "durban-poison"
+      ]
+    ]
+  },
+  "cereal-milk": {
+    "name": "Cereal Milk",
+    "type": [
+      "hybrid"
+    ],
+    "thc": "18-23%",
+    "cbd": "0.1%",
+    "lineage": "Y Life × Snowman (GSC phenotype)",
+    "desc": "A Cookies creation that captures the sweet, leftover milk at the bottom of a cereal bowl. Breakfast for champions.",
+    "effects": [
+      "Euphoric",
+      "Relaxed",
+      "Happy",
+      "Uplifted",
+      "Creative"
+    ],
+    "flavors": {
+      "Creamy": 0.9,
+      "Sweet": 0.8,
+      "Vanilla": 0.7,
+      "Berry": 0.4,
+      "Milk": 0.7,
+      "Sugar": 0.5,
+      "Fruity": 0.4,
+      "Dough": 0.3
+    },
+    "emoji": "🥛",
+    "generation": 4,
+    "color": "#e0d0b0",
+    "recipes": [
+      [
+        "gelato",
+        "wedding-cake"
+      ],
+      [
+        "sherbet",
+        "wedding-cake"
+      ]
+    ]
+  },
+  "ice-cream-cake": {
+    "name": "Ice Cream Cake",
+    "type": [
+      "indica"
+    ],
+    "thc": "20-25%",
+    "cbd": "0.1%",
+    "lineage": "Wedding Cake × Gelato #33",
+    "desc": "A rare indica-dominant hybrid by Seed Junky Genetics. Features a creamy, vanilla-cake flavor with a long-lasting, relaxing high.",
+    "effects": [
+      "Relaxed",
+      "Sleepy",
+      "Happy",
+      "Euphoric",
+      "Body High"
+    ],
+    "flavors": {
+      "Vanilla": 0.9,
+      "Creamy": 0.8,
+      "Cake": 0.7,
+      "Sweet": 0.7,
+      "Dough": 0.5,
+      "Butter": 0.4,
+      "Earthy": 0.2,
+      "Lavender": 0.3
+    },
+    "emoji": "🍦",
+    "generation": 4,
+    "color": "#f0e0c0",
+    "recipes": [
+      [
+        "wedding-cake",
+        "gelato"
+      ],
+      [
+        "wedding-cake",
+        "bubba-kush"
+      ]
+    ]
+  },
+  "biscotti": {
+    "name": "Biscotti",
+    "type": [
+      "indica"
+    ],
+    "thc": "21-25%",
+    "cbd": "0.1%",
+    "lineage": "Gelato #25 × South Florida OG",
+    "desc": "A potent indica-dominant hybrid from Cookies Fam. Smells and tastes of freshly baked biscotti cookies.",
+    "effects": [
+      "Relaxed",
+      "Euphoric",
+      "Happy",
+      "Sleepy",
+      "Creative"
+    ],
+    "flavors": {
+      "Cookie": 0.9,
+      "Almond": 0.7,
+      "Sweet": 0.6,
+      "Earthy": 0.4,
+      "Diesel": 0.4,
+      "Vanilla": 0.5,
+      "Coffee": 0.3,
+      "Butter": 0.4
+    },
+    "emoji": "🍫",
+    "generation": 4,
+    "color": "#a07040",
+    "recipes": [
+      [
+        "gelato",
+        "og-kush"
+      ],
+      [
+        "gelato",
+        "bubba-kush"
+      ]
+    ]
+  },
+  "apples-bananas": {
+    "name": "Apples and Bananas",
+    "type": [
+      "hybrid"
+    ],
+    "thc": "28-31%",
+    "cbd": "0.1%",
+    "lineage": "Platinum Cookies × GDP × Blue Power × Gelato #41",
+    "desc": "One of the most potent modern strains at 28-31% THC by Compound Genetics. Tastes like a sweet fruit medley.",
+    "effects": [
+      "Euphoric",
+      "Relaxed",
+      "Happy",
+      "Sleepy",
+      "Body High"
+    ],
+    "flavors": {
+      "Apple": 0.8,
+      "Banana": 0.7,
+      "Sweet": 0.7,
+      "Fruity": 0.8,
+      "Tropical": 0.5,
+      "Creamy": 0.4,
+      "Berry": 0.3,
+      "Earthy": 0.2
+    },
+    "emoji": "🍏",
+    "generation": 4,
+    "color": "#a0c040",
+    "recipes": [
+      [
+        "gelato",
+        "purple-punch"
+      ],
+      [
+        "runtz",
+        "zkittlez"
+      ]
+    ]
+  },
+  "white-runtz": {
+    "name": "White Runtz",
+    "type": [
+      "hybrid"
+    ],
+    "thc": "23-28%",
+    "cbd": "0.1%",
+    "lineage": "Zkittlez × Gelato (White phenotype)",
+    "desc": "A premium phenotype of Runtz selected for its pale, frosty appearance and refined candy sweetness.",
+    "effects": [
+      "Happy",
+      "Euphoric",
+      "Relaxed",
+      "Uplifted",
+      "Creative"
+    ],
+    "flavors": {
+      "Candy": 0.8,
+      "Sweet": 0.7,
+      "Creamy": 0.6,
+      "Fruity": 0.6,
+      "Citrus": 0.4,
+      "Berry": 0.4,
+      "Vanilla": 0.5,
+      "Sugar": 0.5
+    },
+    "emoji": "⬜",
+    "generation": 4,
+    "color": "#e8e8e8",
+    "recipes": [
+      [
+        "runtz",
+        "white-widow"
+      ],
+      [
+        "zkittlez",
+        "white-widow"
+      ]
+    ]
+  },
+  "mac-and-cheese": {
+    "name": "Mac and Cheese",
+    "type": [
+      "hybrid"
+    ],
+    "thc": "20-25%",
+    "cbd": "0.1%",
+    "lineage": "MAC 1 × Alien Cheese",
+    "desc": "Combines MAC 1 with Alien Cheese genetics for a surprisingly accurate macaroni and cheese aroma — cheesy, earthy, and creamy.",
+    "effects": [
+      "Happy",
+      "Relaxed",
+      "Euphoric",
+      "Uplifted",
+      "Creative"
+    ],
+    "flavors": {
+      "Cheese": 0.9,
+      "Earthy": 0.6,
+      "Creamy": 0.5,
+      "Pungent": 0.6,
+      "Sweet": 0.3,
+      "Dough": 0.4,
+      "Butter": 0.3,
+      "Herbal": 0.2
+    },
+    "emoji": "🧀",
+    "generation": 5,
+    "color": "#e0a820",
+    "recipes": [
+      [
+        "mac-1",
+        "og-kush"
+      ],
+      [
+        "mac-1",
+        "chemdawg"
+      ]
+    ]
+  },
+  "jealousy": {
+    "name": "Jealousy",
+    "type": [
+      "hybrid"
+    ],
+    "thc": "23-28%",
+    "cbd": "0.1%",
+    "lineage": "Sherbet × Gelato #41",
+    "desc": "A Seed Junky Genetics creation and one of the hottest strains of 2022-2023. Named for the envy it inspires.",
+    "effects": [
+      "Euphoric",
+      "Relaxed",
+      "Happy",
+      "Creative",
+      "Uplifted"
+    ],
+    "flavors": {
+      "Creamy": 0.7,
+      "Fruity": 0.6,
+      "Diesel": 0.5,
+      "Sweet": 0.6,
+      "Citrus": 0.5,
+      "Berry": 0.4,
+      "Earthy": 0.3,
+      "Floral": 0.3
+    },
+    "emoji": "💚",
+    "generation": 5,
+    "color": "#50a050",
+    "recipes": [
+      [
+        "sherbet",
+        "gelato"
+      ],
+      [
+        "ice-cream-cake",
+        "gelato"
+      ]
+    ]
+  },
+  "permanent-marker": {
+    "name": "Permanent Marker",
+    "type": [
+      "hybrid"
+    ],
+    "thc": "25-32%",
+    "cbd": "0.1%",
+    "lineage": "Biscotti × Sherbert × Jealousy",
+    "desc": "A pinnacle of modern cannabis breeding by Seed Junky Genetics. Ultra-high THC with uniquely gassy, sweet, and floral aroma.",
+    "effects": [
+      "Euphoric",
+      "Relaxed",
+      "Happy",
+      "Creative",
+      "Sedated"
+    ],
+    "flavors": {
+      "Chemical": 0.7,
+      "Sweet": 0.6,
+      "Floral": 0.5,
+      "Diesel": 0.6,
+      "Earthy": 0.4,
+      "Pungent": 0.5,
+      "Berry": 0.3,
+      "Vanilla": 0.3
+    },
+    "emoji": "✏️",
+    "generation": 5,
+    "color": "#2050a0",
+    "recipes": [
+      [
+        "biscotti",
+        "jealousy"
+      ],
+      [
+        "biscotti",
+        "sherbet"
+      ]
+    ]
+  },
+  "gary-payton": {
+    "name": "Gary Payton",
+    "type": [
+      "hybrid"
+    ],
+    "thc": "20-25%",
+    "cbd": "0.1%",
+    "lineage": "The Y × Snowman",
+    "desc": "A collaboration between Cookies and Hall-of-Fame basketball player Gary Payton. Delivers fuel-forward flavor with swift-acting euphoria.",
+    "effects": [
+      "Euphoric",
+      "Happy",
+      "Creative",
+      "Uplifted",
+      "Energetic"
+    ],
+    "flavors": {
+      "Fuel": 0.7,
+      "Earthy": 0.6,
+      "Diesel": 0.5,
+      "Sweet": 0.4,
+      "Pungent": 0.5,
+      "Herbal": 0.3,
+      "Spicy": 0.3,
+      "Pine": 0.2
+    },
+    "emoji": "🏀",
+    "generation": 5,
+    "color": "#4080c0",
+    "recipes": [
+      [
+        "gorilla-glue",
+        "girl-scout-cookies"
+      ],
+      [
+        "mac-1",
+        "runtz"
+      ]
+    ]
+  }
+}

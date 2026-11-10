@@ -4,6 +4,6 @@ const router = express.Router();
 const recipeController = require('../controllers/recipes');
 
 router.get('/', recipeController.getAllRecipes);
-router.post('/validate', recipeController.validateRecipe);
+router.post('/validate', require('../middlewares/auth'), recipeController.validateRecipe);
 
 module.exports = router;
