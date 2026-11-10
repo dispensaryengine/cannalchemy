@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useGame } from '../../context/GameContext';
 export default function Encyclopedia({ onClose }) {
   const {strains,recipes,discoveries,detailId,setDetailId} = useGame();
+  const bodyRef = useRef(null);
+  useEffect(()=>{ if(bodyRef.current) bodyRef.current.scrollTop=0; },[detailId]);
   const [query,setQuery] = useState('');
   const [tab,setTab] = useState('list');
   const owned = new Set(discoveries.map(d=>d.strain_id));
@@ -13,7 +15,7 @@ export default function Encyclopedia({ onClose }) {
     <div className="enc-header"><div className="enc-title">📖 Strain Encyclopedia</div><button className="enc-close" aria-label="Close encyclopedia" onClick={onClose}>×</button></div>
     <div className="enc-tabs"><button className={`enc-tab ${tab==='list'?'active':''}`} onClick={()=>{setDetailId(null);setTab('list')}}>All Strains</button><button className={`enc-tab ${tab==='generations'?'active':''}`} onClick={()=>{setDetailId(null);setTab('generations')}}>Generations</button></div>
     <div className="enc-search"><input placeholder="Search encyclopedia..." value={query} onChange={e=>{setDetailId(null);setQuery(e.target.value)}}/></div>
-    <div className="enc-body">{selected?<>
+    <div className="enc-body" ref={bodyRef}>{selected?<>
       <button className="enc-back-btn" onClick={()=>setDetailId(null)}>← Back</button><div className="enc-detail-hero"><div className="enc-detail-emoji">{selected.emoji}</div><h2>{selected.name}</h2><div>{selected.type} · Generation {selected.generation}</div></div>
       <div className="enc-lineage">🧬 {selected.lineage}</div><p className="enc-description">{selected.description}</p>
       <div className="result-stats"><div>THC: {selected.thc_range}</div><div>CBD: {selected.cbd_range}</div></div>

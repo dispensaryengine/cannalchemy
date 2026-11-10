@@ -1,96 +1,50 @@
-ChronAlchemy is a cannabis strain lineage simulator and discovery game. It allows users to collect base landrace strains and combine them through an alchemy-inspired crafting system to discover hundreds of unique hybrids across five generations. The application features a deep data model for strain attributes, a force-directed constellation map for visualizing genetic relationships, and a detailed encyclopedia with flavor profile visualizations.
+# Cannalchemy
 
-Core Concepts
-The system revolves around the genetic progression of cannabis strains. Users start with Gen 0 (Landrace) strains and use the combine() function to generate new entities.
+A cannabis strain discovery game. Start with eight landrace strains and combine them to unlock the catalog's 44 strains across five generations. The game data contains 61 unique two-parent recipes.
 
-Strains: The primary data entity, containing botanical data, chemical profiles (THC/CBD), and lineage.
-Recipes: A lookup table that defines which two parent strains produce a specific offspring.
-Discovery: A persistence layer that tracks which strains a user has successfully "crafted."
-Visualization: Real-time rendering of genetic trees and spatial relationships using HTML5 Canvas.
-System Mapping: Natural Language to Code Entities
-The following diagram bridges the conceptual game mechanics to the specific code identifiers and file locations.
+## React + Express + MySQL version
 
-Diagram: System Entity Mapping
+- `frontend/`: React interface, drag-and-drop or click-to-select crafting, encyclopedia, and lineage map.
+- `backend/`: Express API, Sequelize models, MySQL persistence, and JWT authentication.
+- `backend/data/strains.json`: catalog copied from the repository's original game data, preserving its descriptions, recipes, and attributes.
+- `index.html`: the earlier standalone browser-storage version; it is not served by the MySQL deployment.
 
+Player accounts, discoveries, and combination counts are stored in MySQL. Guest players receive separate accounts and retain progress in the same browser through their session token. Register a username to restore progress by logging in on another browser. The browser stores the session token, not the game catalog or discovery progress.
 
+### Local setup
 
+Use Node.js 22 and npm 11.9.0 (the versions used by the Docker build), plus MySQL 8.
 
+1. Create a database: `CREATE DATABASE cannalchemy CHARACTER SET utf8mb4;`
+2. Copy `.env.example` to `backend/.env`; configure `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASSWORD`, and a random `JWT_SECRET`.
+3. Install: `npm ci --prefix backend` and `npm ci --prefix frontend`.
+4. Build: `npm run build --prefix frontend`.
+5. Start: `cd backend && npm start`.
+6. Open `http://localhost:3001`.
 
+Startup waits for MySQL, creates missing tables without dropping existing ones, seeds missing catalog rows, and only then starts accepting requests. Seeding is repeatable and does not reset player progress. Existing schemas are not automatically migrated; this playtest uses a new database.
 
+For frontend development, run `npm start` from `frontend/` alongside the backend; the existing development proxy forwards `/api` requests.
 
+### Railway
 
+Deploy the repository using its root `Dockerfile` and `railway.json`. The application serves the React production build and API from one domain. Add a MySQL service and configure the application service:
 
+| Variable | Value |
+| --- | --- |
+| `NODE_ENV` | `production` |
+| `DB_HOST` | `${{MySQL.MYSQLHOST}}` |
+| `DB_PORT` | `${{MySQL.MYSQLPORT}}` |
+| `DB_NAME` | `${{MySQL.MYSQLDATABASE}}` |
+| `DB_USER` | `${{MySQL.MYSQLUSER}}` |
+| `DB_PASSWORD` | `${{MySQL.MYSQLPASSWORD}}` |
+| `JWT_SECRET` | A securely generated random secret |
 
+`/api/health` returns `{"success":true,"database":"mysql"}` only when the database responds. Secrets belong in runtime environment variables, never in Git.
 
+### Verification
 
+- `npm run build --prefix frontend`: compile the production app.
+- `TEST_BASE_URL=https://your-test-domain npm test --prefix backend`: exercise the live MySQL API, including authentication, independent guest progress, reverse-order recipes, duplicate combinations, all 44 discoveries, and registered-login persistence. This creates isolated test users in the selected test database; use a playtest deployment. Without `TEST_BASE_URL`, the live test is skipped.
 
-
-
-
-
-Sources: 
-index.js
-#6-23
- 
-index.html
-#1255-1270
-
-Tech Stack & Architecture
-ChronAlchemy is built as a highly portable, single-page application (SPA) with minimal external dependencies.
-
-Frontend: Vanilla HTML5, CSS3, and JavaScript (ES6+).
-Storage: Client-side localStorage for session persistence and game state.
-Graphics: Dual-engine approach using standard DOM for the UI and HTML5 Canvas for the Strain Encyclopedia and Constellation Map.
-Design: A custom CSS design system driven by CSS variables (--bg, --accent, etc.) defined in the :root selector.
-For details on the single-file structure and global module pattern, see Getting Started & Architecture.
-
-Diagram: Application Flow
-
-
-
-
-Sources: 
-index.html
-#9-13
- 
-index.js
-#6-8
- 
-index.js
-#1255-1280
-
-Codebase Organization
-The codebase is organized into a primary index.html containing the structure and styles, and an index.js (or inline script) containing the logic.
-
-
-Component	Responsibility	Key Symbols
-Data Layer	Defines all 200+ strains and their recipes.	STRAINS, RECIPE_INDEX
-Auth System	Manages guest and registered user sessions.	handleAuth, guestLogin, hashPass
-Crafting Engine	Validates combinations and updates discovery state.	combine, discovered, checkRecipe
-UI Controller	Handles filtering, searching, and modal navigation.	filterCollection, setFilter, openEncyclopedia
-Visualizers	Renders the lineage tree and constellation map.	drawFlavorWheel, smapRender, buildSmapGraph
-Data Model Overview
-The heart of the application is the STRAINS global object. Every strain is assigned a generation (0–5) and a type (Indica, Sativa, Hybrid, or Landrace). For details on the fields and the ID formation logic, see Strain Data Model.
-
-Sources: 
-index.js
-#1-23
- 
-index.html
-#1255-1280
-
-Subsystems
-Game Mechanics
-The core loop involves moving strains from the Collection Panel into the Craft Area. The system uses a normalized alphabetical key check against the RECIPE_INDEX to determine if a combination is valid.
-
-Persistence: Handled via saveGameState and checkSession.
-Feedback: Provided via the Notification system and spawnParticles function.
-Visualization Subsystems
-Strain Encyclopedia: A slide-in panel featuring a recursive ancestral lineage tree and a "Flavor Wheel" radar chart.
-Strain Constellation Map: A force-directed graph that visualizes the entire "Strain-verse," allowing users to see how their discoveries connect to undiscovered nodes.
-Sources: 
-index.html
-#61-80
- 
-index.js
-#10-23
+The catalog and simplified two-parent combinations are game content from the original repository, not a verification of historical strain genetics.
