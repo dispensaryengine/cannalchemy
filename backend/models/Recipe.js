@@ -39,7 +39,7 @@ const Recipe = sequelize.define('Recipe', {
   indexes: [
     {
       unique: true,
-      fields: ['parent1_id', 'parent2_id'],
+      fields: ['parent1_id', 'parent2_id', 'offspring_id'],
     },
     {
       fields: ['parent1_id'],

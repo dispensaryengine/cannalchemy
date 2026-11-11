@@ -1,6 +1,8 @@
 
 const Strain = require('../models/Strain');
 const { Op } = require('sequelize');
+const { serializeStrain, validateCatalog } = require('../lib/catalog');
+const { path, waves, ...catalog } = validateCatalog();
 
 // Get All Strains
 const getAllStrains = async (req, res, next) => {
@@ -21,7 +23,8 @@ const getAllStrains = async (req, res, next) => {
     
     res.json({
       success: true,
-      strains,
+      strains: strains.map(serializeStrain),
+      catalog,
     });
   } catch (error) {
     next(error);
@@ -44,7 +47,7 @@ const getStrain = async (req, res, next) => {
     
     res.json({
       success: true,
-      strain,
+      strain: serializeStrain(strain),
     });
   } catch (error) {
     next(error);

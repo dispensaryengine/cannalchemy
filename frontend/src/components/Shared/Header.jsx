@@ -3,7 +3,7 @@ import React from 'react';
 import { useAuth } from '../Auth/AuthContext';
 import { useGame } from '../../context/GameContext';
 
-const Header = ({ onOpenEncyclopedia, onOpenStrainMap }) => {
+const Header = ({ onOpenEncyclopedia, onOpenStrainMap, onOpenSeedBank }) => {
   const { user, logout } = useAuth();
   const { strains, discoveries, combosCount } = useGame();
 
@@ -11,6 +11,7 @@ const Header = ({ onOpenEncyclopedia, onOpenStrainMap }) => {
     <header className="header">
       <div className="logo">🌿 CHRON<span>ALCHEMY</span></div>
       <div className="header-actions">
+        <button className="strainmap-btn" onClick={onOpenSeedBank}>Seed Bank</button>
         <button className="strainmap-btn" onClick={onOpenStrainMap}>
           Strain Map
         </button>

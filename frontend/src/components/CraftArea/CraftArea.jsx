@@ -18,8 +18,8 @@ export default function CraftArea({ onNotify }) {
       setCombosCount(data.combos_count);
       if (data.valid) {
         await refresh();
-        setResult({...data.offspring, isNew: data.isNew});
-        onNotify(data.isNew?`Discovered ${data.offspring.name}!`:`${data.offspring.name} is already in your collection.`, 'success');
+        setResult({...data.offspring, isNew: data.isNew, remainingOutcomes: data.remaining_outcomes, unlocked: data.unlocked});
+        onNotify(data.isNew?`Discovered ${data.offspring.name}!${data.unlocked?.length ? ` + ${data.unlocked.length} seed-bank accessions` : ''}`:`${data.offspring.name} is already in your collection.`, 'success');
       } else onNotify('No known combination — try different strains.', 'error');
     } catch (err) { onNotify(err.message || 'Unable to combine strains', 'error'); }
     finally { setCombining(false); }
@@ -31,7 +31,7 @@ export default function CraftArea({ onNotify }) {
       <div className="plus-sign">+</div>
       <Slot strain={slots[1]} label="Parent B" onClear={()=>setSlots([slots[0],null])} onDrop={s=>setSlots([slots[0],s])}/>
     </div><CombineButton onClick={combine} disabled={!slots[0]||!slots[1]||isCombining}/><button className="clear-btn" onClick={clear}>Clear Slots</button>
-    <p className="craft-help">Drag strains into the slots, or click two strains to select them.</p></div></div>
+    <p className="craft-help">Click or drag two parents. Some pairs have more than one named outcome; repeat to discover each.</p></div></div>
     <ResultPanel result={result} onClose={clear}/>
   </div></div>;
 }

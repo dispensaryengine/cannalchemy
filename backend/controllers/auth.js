@@ -6,13 +6,13 @@ const { jwtConfig } = require('../config/jwt');
 const User = require('../models/User');
 const Discovery = require('../models/Discovery');
 const Strain = require('../models/Strain');
+const { synchronizeProgress } = require('../lib/progression');
 const safeUser = u => ({ id: u.id, username: u.username, email: u.email, is_guest: u.is_guest, combos_count: u.combos_count });
 const respond = (res, user) => res.json({ success: true, user: safeUser(user), token: jwt.sign({ id: user.id }, jwtConfig.secret, { expiresIn: jwtConfig.expiresIn }) });
 async function createUser(values) {
   return sequelize.transaction(async transaction => {
     const user = await User.create(values, { transaction });
-    const landraces = await Strain.findAll({ where: { generation: 0 }, transaction });
-    await Discovery.bulkCreate(landraces.map(s => ({ user_id: user.id, strain_id: s.id })), { transaction });
+    await synchronizeProgress(user.id, transaction);
     return user;
   });
 }
