@@ -1,10 +1,19 @@
 
 const Discovery = require('../models/Discovery');
 const Strain = require('../models/Strain');
+const Recipe = require('../models/Recipe');
+const User = require('../models/User');
+const { sequelize } = require('../config/db');
+const { synchronizeProgress } = require('../lib/progression');
+const { source } = require('../lib/catalog');
 
 // Get User Discoveries
 const getDiscoveries = async (req, res, next) => {
   try {
+    await sequelize.transaction(async transaction => {
+      await User.findByPk(req.user.id, { transaction, lock: transaction.LOCK.UPDATE });
+      await synchronizeProgress(req.user.id, transaction);
+    });
     const discoveries = await Discovery.findAll({
       where: { user_id: req.user.id },
       include: [
@@ -46,13 +55,12 @@ const addDiscovery = async (req, res, next) => {
       where: { user_id: req.user.id, strain_id },
     });
     
-    if (existingDiscovery) {
-      return res.status(400).json({
-        success: false,
-        error: { code: 'CONFLICT', message: 'Strain already discovered' },
-      });
+    if (existingDiscovery) return res.json({ success: true, discovery: existingDiscovery });
+    const owned = new Set((await Discovery.findAll({ where: { user_id: req.user.id } })).map(d => d.strain_id));
+    const recipes = await Recipe.findAll({ where: { offspring_id: strain_id } });
+    if (source[strain_id]?.unlock.kind !== 'cross' || !recipes.some(r => owned.has(r.parent1_id) && owned.has(r.parent2_id))) {
+      return res.status(403).json({ error: { message: 'Discover the required parents first' } });
     }
-    
     const discovery = await Discovery.create({
       user_id: req.user.id,
       strain_id,

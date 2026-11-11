@@ -1,5 +1,7 @@
 
 const express = require('express');
+const path = require('path');
+const { sequelize } = require('./config/db');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
@@ -11,6 +13,8 @@ const recipeRoutes = require('./routes/recipes');
 const discoveryRoutes = require('./routes/discoveries');
 
 const app = express();
+app.set('trust proxy', 1);
+app.disable('x-powered-by');
 
 // Middlewares
 app.use(cors({ origin: process.env.CORS_ORIGIN || '*' }));
@@ -33,9 +37,18 @@ app.use('/api/recipes', recipeRoutes);
 app.use('/api/discoveries', discoveryRoutes);
 
 // Health Check
-app.get('/api/health', (req, res) => {
-  res.json({ success: true, message: 'Server is healthy' });
+app.get('/api/health', async (req, res) => {
+  try {
+    await sequelize.authenticate();
+    res.json({ success: true, database: 'mysql' });
+  } catch {
+    res.status(503).json({ success: false, message: 'Database unavailable' });
+  }
 });
+app.use('/api', (req, res) => res.status(404).json({ success: false, error: { message: 'Endpoint not found' } }));
+const frontend = path.resolve(__dirname, '../frontend/build');
+app.use(express.static(frontend));
+app.get('*', (req, res) => res.sendFile(path.join(frontend, 'index.html')));
 
 // Error Handling
 app.use(errorHandler);

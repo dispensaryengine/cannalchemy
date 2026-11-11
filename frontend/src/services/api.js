@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || 'http://localhost:3001/api',
+  baseURL: process.env.REACT_APP_API_URL || '/api',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -23,7 +23,7 @@ api.interceptors.response.use(
   (error) => {
     if (error.response) {
       // Server responded with a status other than 2xx
-      return Promise.reject(error.response.data);
+      return Promise.reject({ ...error.response.data, message: error.response.data.error?.message || error.response.data.message || 'Request failed' });
     } else if (error.request) {
       // Request was made but no response received
       return Promise.reject({ message: 'Network error' });

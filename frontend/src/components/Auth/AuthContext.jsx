@@ -45,7 +45,7 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem('token', newToken);
       return { success: true };
     } catch (err) {
-      setError(err.message);
+      setError(err.message || 'Unable to sign in');
       return { success: false, error: err.message };
     } finally {
       setIsLoading(false);
@@ -63,7 +63,7 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem('token', newToken);
       return { success: true };
     } catch (err) {
-      setError(err.message);
+      setError(err.message || 'Unable to sign in');
       return { success: false, error: err.message };
     } finally {
       setIsLoading(false);
@@ -81,7 +81,7 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem('token', newToken);
       return { success: true };
     } catch (err) {
-      setError(err.message);
+      setError(err.message || 'Unable to sign in');
       return { success: false, error: err.message };
     } finally {
       setIsLoading(false);

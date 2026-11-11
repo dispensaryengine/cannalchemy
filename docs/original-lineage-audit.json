@@ -1,0 +1,1405 @@
+[
+  {
+    "id": "afghani",
+    "name": "Afghani",
+    "previous_lineage": "Hindu Kush Mountains, Afghanistan",
+    "previous_recipes": [],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Hindu Kush Mountains, Afghanistan",
+    "unlock": {
+      "kind": "starter"
+    },
+    "genetics_status": "reported",
+    "reason": "Founding regional accession. Regional names encompass different breeding lines and do not identify a single universal clone.",
+    "sources": [
+      {
+        "url": "https://www.leafly.com/strains/afghani",
+        "publisher": "Leafly",
+        "claim": "Regional Afghan landrace genetics; individual accessions differ.",
+        "accessed": "2026-11-10",
+        "level": "reported"
+      }
+    ]
+  },
+  {
+    "id": "durban-poison",
+    "name": "Durban Poison",
+    "previous_lineage": "Durban, South Africa",
+    "previous_recipes": [],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Durban, South Africa",
+    "unlock": {
+      "kind": "starter"
+    },
+    "genetics_status": "breeder-reported",
+    "reason": "Founding regional accession. Regional names encompass different breeding lines and do not identify a single universal clone.",
+    "sources": [
+      {
+        "url": "https://dutch-passion.com/en/cannabis-seeds/durban-poison",
+        "publisher": "Dutch Passion",
+        "claim": "Durban Poison is a selected South African sativa line.",
+        "accessed": "2026-11-10",
+        "level": "breeder-reported"
+      }
+    ]
+  },
+  {
+    "id": "thai",
+    "name": "Thai",
+    "previous_lineage": "Thailand",
+    "previous_recipes": [],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Thailand",
+    "unlock": {
+      "kind": "starter"
+    },
+    "genetics_status": "reported",
+    "reason": "Founding regional accession. Regional names encompass different breeding lines and do not identify a single universal clone.",
+    "sources": [
+      {
+        "url": "https://www.leafly.com/strains/thai",
+        "publisher": "Leafly",
+        "claim": "Thai regional sativa genetics; individual accessions differ.",
+        "accessed": "2026-11-10",
+        "level": "reported"
+      }
+    ]
+  },
+  {
+    "id": "colombian-gold",
+    "name": "Colombian Gold",
+    "previous_lineage": "Santa Marta mountains, Colombia",
+    "previous_recipes": [],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Santa Marta mountains, Colombia",
+    "unlock": {
+      "kind": "starter"
+    },
+    "genetics_status": "reported",
+    "reason": "Founding regional accession. Regional names encompass different breeding lines and do not identify a single universal clone.",
+    "sources": [
+      {
+        "url": "https://www.leafly.com/strains/colombian-gold",
+        "publisher": "Leafly",
+        "claim": "Colombian landrace associated with the Santa Marta mountains.",
+        "accessed": "2026-11-10",
+        "level": "reported"
+      }
+    ]
+  },
+  {
+    "id": "hindu-kush",
+    "name": "Hindu Kush",
+    "previous_lineage": "Hindu Kush mountain range",
+    "previous_recipes": [],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Hindu Kush mountain range",
+    "unlock": {
+      "kind": "starter"
+    },
+    "genetics_status": "breeder-reported",
+    "reason": "Founding regional accession. Regional names encompass different breeding lines and do not identify a single universal clone.",
+    "sources": [
+      {
+        "url": "https://sensiseeds.com/en/feminized-seeds/sensi-seeds/hindu-kush-feminised",
+        "publisher": "Sensi Seeds",
+        "claim": "Hindu Kush mountain-region indica.",
+        "accessed": "2026-11-10",
+        "level": "breeder-reported"
+      }
+    ]
+  },
+  {
+    "id": "acapulco-gold",
+    "name": "Acapulco Gold",
+    "previous_lineage": "Acapulco, Mexico",
+    "previous_recipes": [],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Acapulco, Mexico",
+    "unlock": {
+      "kind": "starter"
+    },
+    "genetics_status": "reported",
+    "reason": "Founding regional accession. Regional names encompass different breeding lines and do not identify a single universal clone.",
+    "sources": [
+      {
+        "url": "https://www.leafly.com/strains/acapulco-gold",
+        "publisher": "Leafly",
+        "claim": "Mexican regional landrace associated with Acapulco.",
+        "accessed": "2026-11-10",
+        "level": "reported"
+      }
+    ]
+  },
+  {
+    "id": "jamaican",
+    "name": "Jamaican",
+    "previous_lineage": "Jamaica",
+    "previous_recipes": [],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Jamaica",
+    "unlock": {
+      "kind": "starter"
+    },
+    "genetics_status": "breeder-reported",
+    "reason": "Founding regional accession. Regional names encompass different breeding lines and do not identify a single universal clone.",
+    "sources": [
+      {
+        "url": "https://www.aceseeds.org/en/seeds/nepal-jam-regular-seeds/",
+        "publisher": "ACE Seeds",
+        "claim": "Jamaican 85 is the Jamaican accession in Nepal Jam.",
+        "accessed": "2026-11-10",
+        "level": "breeder-reported"
+      }
+    ]
+  },
+  {
+    "id": "malawi-gold",
+    "name": "Malawi Gold",
+    "previous_lineage": "Malawi, Africa",
+    "previous_recipes": [],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Malawi, Africa",
+    "unlock": {
+      "kind": "starter"
+    },
+    "genetics_status": "breeder-reported",
+    "reason": "Founding regional accession. Regional names encompass different breeding lines and do not identify a single universal clone.",
+    "sources": [
+      {
+        "url": "https://www.aceseeds.org/en/seeds/golden-tiger-regular-seeds/",
+        "publisher": "ACE Seeds",
+        "claim": "Malawi parental plants are used in Golden Tiger; regional Malawi genetics.",
+        "accessed": "2026-11-10",
+        "level": "breeder-reported"
+      }
+    ]
+  },
+  {
+    "id": "skunk-1",
+    "name": "Skunk #1",
+    "previous_lineage": "Afghani × Colombian Gold × Acapulco Gold",
+    "previous_recipes": [
+      [
+        "afghani",
+        "colombian-gold"
+      ],
+      [
+        "afghani",
+        "acapulco-gold"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Afghani / Acapulco Gold / Colombian Gold",
+    "unlock": {
+      "kind": "archive",
+      "after_crosses": 0,
+      "requires": []
+    },
+    "genetics_status": "breeder-reported",
+    "reason": "Three ancestral populations are documented. The game does not invent the missing intermediate cross.",
+    "sources": [
+      {
+        "url": "https://sensiseeds.com/en/blog/Skunk-1-story-Skunk-1-automatic-grow-report/",
+        "publisher": "Sensi Seeds",
+        "claim": "Afghani, Acapulco Gold and Colombian Gold ancestry.",
+        "accessed": "2026-11-10",
+        "level": "breeder-reported"
+      }
+    ]
+  },
+  {
+    "id": "northern-lights",
+    "name": "Northern Lights",
+    "previous_lineage": "Afghani × Thai",
+    "previous_recipes": [
+      [
+        "afghani",
+        "thai"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Reported Afghan / Thai ancestry",
+    "unlock": {
+      "kind": "archive",
+      "after_crosses": 3,
+      "requires": []
+    },
+    "genetics_status": "reported",
+    "reason": "An established Northern Lights accession. Exact historical parents and numbered selections are not interchangeable.",
+    "sources": [
+      {
+        "url": "https://www.leafly.com/strains/northern-lights",
+        "publisher": "Leafly",
+        "claim": "Commonly described as Afghani and Thai ancestry; historical selections vary.",
+        "accessed": "2026-11-10",
+        "level": "reported"
+      }
+    ]
+  },
+  {
+    "id": "haze",
+    "name": "Haze",
+    "previous_lineage": "Colombian Gold × Thai × Mexican × South Indian",
+    "previous_recipes": [
+      [
+        "colombian-gold",
+        "thai"
+      ],
+      [
+        "colombian-gold",
+        "jamaican"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Historical Haze breeding line",
+    "unlock": {
+      "kind": "archive",
+      "after_crosses": 0,
+      "requires": []
+    },
+    "genetics_status": "disputed",
+    "reason": "Historical Haze accounts vary; no exact two-parent reconstruction is asserted.",
+    "sources": [
+      {
+        "url": "https://www.leafly.com/strains/haze",
+        "publisher": "Leafly",
+        "claim": "Historical multi-population Haze; accounts of exact ancestry vary.",
+        "accessed": "2026-11-10",
+        "level": "reported"
+      }
+    ]
+  },
+  {
+    "id": "og-kush",
+    "name": "OG Kush",
+    "previous_lineage": "Hindu Kush × Chemdawg × Lemon Thai",
+    "previous_recipes": [
+      [
+        "hindu-kush",
+        "chemdawg"
+      ],
+      [
+        "afghani",
+        "durban-poison"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Disputed; several OG Kush origin accounts",
+    "unlock": {
+      "kind": "archive",
+      "after_crosses": 8,
+      "requires": []
+    },
+    "genetics_status": "disputed",
+    "reason": "No synthetic Afghani × Durban Poison recipe. The original pedigree is unresolved.",
+    "sources": [
+      {
+        "url": "https://www.leafly.com/strains/og-kush",
+        "publisher": "Leafly",
+        "claim": "Competing accounts exist for the original OG Kush pedigree.",
+        "accessed": "2026-11-10",
+        "level": "reported"
+      }
+    ]
+  },
+  {
+    "id": "chemdawg",
+    "name": "Chemdawg",
+    "previous_lineage": "Thai × Nepalese",
+    "previous_recipes": [
+      [
+        "thai",
+        "malawi-gold"
+      ],
+      [
+        "thai",
+        "afghani"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Unknown; historical bag-seed origin",
+    "unlock": {
+      "kind": "archive",
+      "after_crosses": 3,
+      "requires": []
+    },
+    "genetics_status": "unknown",
+    "reason": "The Thai × Nepalese claim is not treated as established parentage.",
+    "sources": [
+      {
+        "url": "https://www.leafly.com/strains/chemdawg",
+        "publisher": "Leafly",
+        "claim": "Bag-seed origin; exact parentage unresolved.",
+        "accessed": "2026-11-10",
+        "level": "reported"
+      }
+    ]
+  },
+  {
+    "id": "ak-47",
+    "name": "AK-47",
+    "previous_lineage": "Colombian Gold × Mexican × Afghani × Thai",
+    "previous_recipes": [
+      [
+        "colombian-gold",
+        "afghani"
+      ],
+      [
+        "acapulco-gold",
+        "thai"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Colombian / Mexican / Thai / Afghan",
+    "unlock": {
+      "kind": "archive",
+      "after_crosses": 8,
+      "requires": []
+    },
+    "genetics_status": "breeder-reported",
+    "reason": "Serious Seeds identifies four populations but withholds the exact pedigree. No invented two-parent shortcut.",
+    "sources": [
+      {
+        "url": "https://www.seriousseeds.com/cannabis-seeds/ak-47",
+        "publisher": "Serious Seeds",
+        "claim": "Colombian, Mexican, Thai and Afghan ancestry; exact pedigree kept secret.",
+        "accessed": "2026-11-10",
+        "level": "breeder-reported"
+      }
+    ]
+  },
+  {
+    "id": "white-widow",
+    "name": "White Widow",
+    "previous_lineage": "Brazilian Sativa × South Indian Indica",
+    "previous_recipes": [
+      [
+        "afghani",
+        "jamaican"
+      ],
+      [
+        "hindu-kush",
+        "jamaican"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Brazilian Sativa × South Indian",
+    "unlock": {
+      "kind": "cross",
+      "parents": [
+        "brazilian-sativa",
+        "south-indian"
+      ]
+    },
+    "genetics_status": "breeder-reported",
+    "reason": "",
+    "sources": [
+      {
+        "url": "https://shop.greenhouseseeds.us/feminised-cannabis-seeds/white-widow/",
+        "publisher": "Green House Seed Co.",
+        "claim": "Brazilian × South Indian.",
+        "accessed": "2026-11-10",
+        "level": "breeder-reported"
+      }
+    ]
+  },
+  {
+    "id": "blueberry",
+    "name": "Blueberry",
+    "previous_lineage": "Afghani × Thai × Purple Thai",
+    "previous_recipes": [
+      [
+        "afghani",
+        "thai"
+      ],
+      [
+        "thai",
+        "jamaican"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Afghani / Thai / Oaxacan",
+    "unlock": {
+      "kind": "archive",
+      "after_crosses": 0,
+      "requires": []
+    },
+    "genetics_status": "breeder-reported",
+    "reason": "Dutch Passion describes three ancestral populations. Imported as an established line, rather than fabricated from Afghani × Thai.",
+    "sources": [
+      {
+        "url": "https://dutch-passion.com/en/cannabis-seeds/blueberry",
+        "publisher": "Dutch Passion",
+        "claim": "Afghani, Thai and Oaxacan ancestry; a three-way breeding history.",
+        "accessed": "2026-11-10",
+        "level": "breeder-reported"
+      }
+    ]
+  },
+  {
+    "id": "sour-diesel",
+    "name": "Sour Diesel",
+    "previous_lineage": "Chemdawg × Super Skunk",
+    "previous_recipes": [
+      [
+        "chemdawg",
+        "skunk-1"
+      ],
+      [
+        "chemdawg",
+        "northern-lights"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Disputed; commonly Chemdawg / Super Skunk",
+    "unlock": {
+      "kind": "archive",
+      "after_crosses": 8,
+      "requires": []
+    },
+    "genetics_status": "disputed",
+    "reason": "No proof of the exact original parents is asserted. Skunk #1 and Northern Lights are not substitutes for Super Skunk.",
+    "sources": [
+      {
+        "url": "https://www.leafly.com/strains/sour-diesel",
+        "publisher": "Leafly",
+        "claim": "Common Chemdawg / Super Skunk account; original pedigree is contested.",
+        "accessed": "2026-11-10",
+        "level": "reported"
+      }
+    ]
+  },
+  {
+    "id": "blue-dream",
+    "name": "Blue Dream",
+    "previous_lineage": "Blueberry × Haze",
+    "previous_recipes": [
+      [
+        "blueberry",
+        "haze"
+      ]
+    ],
+    "retained_exact_recipes": [
+      [
+        "blueberry",
+        "haze"
+      ]
+    ],
+    "replacement_lineage": "Blueberry × Haze",
+    "unlock": {
+      "kind": "cross",
+      "parents": [
+        "blueberry",
+        "haze"
+      ]
+    },
+    "genetics_status": "reported",
+    "reason": "Reported classic Blueberry × Haze account. Breeder recreations that use Super Silver Haze are not treated as identical.",
+    "sources": [
+      {
+        "url": "https://www.leafly.com/strains/blue-dream",
+        "publisher": "Leafly",
+        "claim": "Blueberry × Haze.",
+        "accessed": "2026-11-10",
+        "level": "reported"
+      }
+    ]
+  },
+  {
+    "id": "bubba-kush",
+    "name": "Bubba Kush",
+    "previous_lineage": "OG Kush × Afghani",
+    "previous_recipes": [
+      [
+        "og-kush",
+        "afghani"
+      ],
+      [
+        "og-kush",
+        "hindu-kush"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Uncertain original pedigree",
+    "unlock": {
+      "kind": "archive",
+      "after_crosses": 15,
+      "requires": []
+    },
+    "genetics_status": "unknown",
+    "reason": "The original clone is imported. The Green House Bubble Gum × Kush release is a separate breeder version, not proof of the original lineage.",
+    "sources": [
+      {
+        "url": "https://www.leafly.com/strains/bubba-kush",
+        "publisher": "Leafly",
+        "claim": "Original parentage is uncertain; multiple seed versions differ.",
+        "accessed": "2026-11-10",
+        "level": "reported"
+      }
+    ]
+  },
+  {
+    "id": "super-silver-haze",
+    "name": "Super Silver Haze",
+    "previous_lineage": "Skunk #1 × Northern Lights × Haze",
+    "previous_recipes": [
+      [
+        "skunk-1",
+        "haze"
+      ],
+      [
+        "northern-lights",
+        "haze"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Skunk / Northern Lights / Haze",
+    "unlock": {
+      "kind": "archive",
+      "after_crosses": 8,
+      "requires": []
+    },
+    "genetics_status": "breeder-reported",
+    "reason": "Three-way breeder history; imported without inventing an intermediate.",
+    "sources": [
+      {
+        "url": "https://shop.greenhouseseeds.us/feminised-cannabis-seeds/super-silver-haze/",
+        "publisher": "Green House Seed Co.",
+        "claim": "Skunk / Northern Lights / Haze ancestry.",
+        "accessed": "2026-11-10",
+        "level": "breeder-reported"
+      }
+    ]
+  },
+  {
+    "id": "trainwreck",
+    "name": "Trainwreck",
+    "previous_lineage": "Mexican Sativa × Thai Sativa × Afghani Indica",
+    "previous_recipes": [
+      [
+        "haze",
+        "afghani"
+      ],
+      [
+        "thai",
+        "acapulco-gold"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Arcata clone; reported Mexican / Thai / Afghan ancestry",
+    "unlock": {
+      "kind": "archive",
+      "after_crosses": 8,
+      "requires": []
+    },
+    "genetics_status": "reported",
+    "reason": "Clone accession. Exact intermediate crosses are not established by the cited breeder page.",
+    "sources": [
+      {
+        "url": "https://shop.greenhouseseeds.us/feminised-cannabis-seeds/train-wreck/",
+        "publisher": "Green House Seed Co.",
+        "claim": "The original Arcata clone-only strain.",
+        "accessed": "2026-11-10",
+        "level": "breeder-reported"
+      }
+    ]
+  },
+  {
+    "id": "jack-herer",
+    "name": "Jack Herer",
+    "previous_lineage": "Haze × (Northern Lights #5 × Shiva Skunk)",
+    "previous_recipes": [
+      [
+        "haze",
+        "northern-lights"
+      ],
+      [
+        "haze",
+        "skunk-1"
+      ],
+      [
+        "northern-lights",
+        "skunk-1"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Reported Haze / Northern Lights #5 / Shiva Skunk",
+    "unlock": {
+      "kind": "archive",
+      "after_crosses": 8,
+      "requires": []
+    },
+    "genetics_status": "reported",
+    "reason": "Original Sensi accession. The separate Green House Haze × Red Skunk release is labeled as a breeder version.",
+    "sources": [
+      {
+        "url": "https://sensiseeds.com/en/feminized-seeds/sensi-seeds/jack-herer-feminised",
+        "publisher": "Sensi Seeds",
+        "claim": "Haze / Northern Lights #5 / Shiva Skunk ancestry; established Sensi line.",
+        "accessed": "2026-11-10",
+        "level": "breeder-reported"
+      }
+    ]
+  },
+  {
+    "id": "gorilla-glue",
+    "name": "Gorilla Glue #4",
+    "previous_lineage": "Chem's Sister × Chocolate Diesel × Sour Dubb",
+    "previous_recipes": [
+      [
+        "chemdawg",
+        "sour-diesel"
+      ],
+      [
+        "og-kush",
+        "chemdawg"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Chem’s Sister / Sour Dubb / Chocolate Diesel",
+    "unlock": {
+      "kind": "archive",
+      "after_crosses": 15,
+      "requires": []
+    },
+    "genetics_status": "reported",
+    "reason": "GG4 is a selected plant with a multi-line breeding history; Chemdawg is not a substitute for Chem’s Sister.",
+    "sources": [
+      {
+        "url": "https://www.leafly.com/strains/original-glue",
+        "publisher": "Leafly",
+        "claim": "Chem’s Sister / Sour Dubb / Chocolate Diesel ancestry.",
+        "accessed": "2026-11-10",
+        "level": "reported"
+      }
+    ]
+  },
+  {
+    "id": "girl-scout-cookies",
+    "name": "Girl Scout Cookies",
+    "previous_lineage": "OG Kush × Durban Poison",
+    "previous_recipes": [
+      [
+        "og-kush",
+        "durban-poison"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "OG Kush (GSC parental selection) × F1 Durb",
+    "unlock": {
+      "kind": "cross",
+      "parents": [
+        "og-kush-gsc-parent",
+        "f1-durb"
+      ]
+    },
+    "genetics_status": "reported",
+    "reason": "The current report names F1 Durban and an OG sub-type. Generic Durban Poison and generic OG Kush are not silently substituted.",
+    "sources": [
+      {
+        "url": "https://www.leafly.com/strains/gsc",
+        "publisher": "Leafly",
+        "claim": "An OG Kush sub-type × F1 Durban.",
+        "accessed": "2026-11-10",
+        "level": "reported"
+      }
+    ]
+  },
+  {
+    "id": "gelato",
+    "name": "Gelato",
+    "previous_lineage": "Sunset Sherbet × Thin Mint GSC",
+    "previous_recipes": [
+      [
+        "girl-scout-cookies",
+        "blueberry"
+      ],
+      [
+        "girl-scout-cookies",
+        "skunk-1"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Sunset Sherbet × Thin Mint GSC",
+    "unlock": {
+      "kind": "cross",
+      "parents": [
+        "sherbet",
+        "thin-mint-gsc"
+      ]
+    },
+    "genetics_status": "reported",
+    "reason": "",
+    "sources": [
+      {
+        "url": "https://www.leafly.com/strains/gelato",
+        "publisher": "Leafly",
+        "claim": "Sunset Sherbet × Thin Mint GSC.",
+        "accessed": "2026-11-10",
+        "level": "reported"
+      }
+    ]
+  },
+  {
+    "id": "wedding-cake",
+    "name": "Wedding Cake",
+    "previous_lineage": "Triangle Kush × Animal Mints",
+    "previous_recipes": [
+      [
+        "girl-scout-cookies",
+        "og-kush"
+      ],
+      [
+        "girl-scout-cookies",
+        "white-widow"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Triangle Kush × Animal Mints",
+    "unlock": {
+      "kind": "cross",
+      "parents": [
+        "triangle-kush",
+        "animal-mints"
+      ]
+    },
+    "genetics_status": "reported",
+    "reason": "The game unlocks the named cultivar from its reported cross; recreating the cross does not reproduce the #23 clone exactly.",
+    "sources": [
+      {
+        "url": "https://www.leafly.com/strains/wedding-cake",
+        "publisher": "Leafly",
+        "claim": "Triangle Kush × Animal Mints; the named cut is Triangle Mints #23.",
+        "accessed": "2026-11-10",
+        "level": "reported"
+      }
+    ]
+  },
+  {
+    "id": "mac-1",
+    "name": "MAC 1",
+    "previous_lineage": "Alien Cookies × Colombian × Starfighter",
+    "previous_recipes": [
+      [
+        "girl-scout-cookies",
+        "chemdawg"
+      ],
+      [
+        "girl-scout-cookies",
+        "colombian-gold"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Selection of MAC (Miracle Alien Cookies)",
+    "unlock": {
+      "kind": "selection",
+      "requires": [
+        "mac"
+      ],
+      "after_crosses": 0
+    },
+    "genetics_status": "reported",
+    "reason": "A named selection of MAC (Miracle Alien Cookies). Unlocked from the seed bank after its source line; this is not another breeding cross.",
+    "sources": [
+      {
+        "url": "https://weedmaps.com/strains/mac",
+        "publisher": "Weedmaps",
+        "claim": "MAC 1 is Capulator’s selected clone of MAC.",
+        "accessed": "2026-11-10",
+        "level": "reported"
+      }
+    ]
+  },
+  {
+    "id": "runtz",
+    "name": "Runtz",
+    "previous_lineage": "Zkittlez × Gelato",
+    "previous_recipes": [
+      [
+        "gelato",
+        "durban-poison"
+      ],
+      [
+        "gelato",
+        "skunk-1"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "The Original Z (Zkittlez) × Gelato",
+    "unlock": {
+      "kind": "cross",
+      "parents": [
+        "zkittlez",
+        "gelato"
+      ]
+    },
+    "genetics_status": "breeder-reported",
+    "reason": "",
+    "sources": [
+      {
+        "url": "https://www.barneysfarm.com/runtz-631",
+        "publisher": "Barney's Farm",
+        "claim": "Original Z × Gelato.",
+        "accessed": "2026-11-10",
+        "level": "breeder-reported"
+      }
+    ]
+  },
+  {
+    "id": "zkittlez",
+    "name": "Zkittlez",
+    "previous_lineage": "Grape Ape × Grapefruit",
+    "previous_recipes": [
+      [
+        "blueberry",
+        "girl-scout-cookies"
+      ],
+      [
+        "blueberry",
+        "og-kush"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Alleged Grape Ape / Grapefruit / undisclosed parent",
+    "unlock": {
+      "kind": "archive",
+      "after_crosses": 15,
+      "requires": []
+    },
+    "genetics_status": "unknown",
+    "reason": "An undisclosed parent prevents a complete historical reconstruction. Imported as an established line.",
+    "sources": [
+      {
+        "url": "https://www.leafly.com/strains/zkittlez",
+        "publisher": "Leafly",
+        "claim": "Alleged Grape Ape and Grapefruit ancestry plus an undisclosed strain.",
+        "accessed": "2026-11-10",
+        "level": "reported"
+      }
+    ]
+  },
+  {
+    "id": "pineapple-express",
+    "name": "Pineapple Express",
+    "previous_lineage": "Trainwreck × Hawaiian",
+    "previous_recipes": [
+      [
+        "trainwreck",
+        "jamaican"
+      ],
+      [
+        "trainwreck",
+        "haze"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Trainwreck × Hawaiian Sativa",
+    "unlock": {
+      "kind": "cross",
+      "parents": [
+        "trainwreck",
+        "hawaiian"
+      ]
+    },
+    "genetics_status": "breeder-reported",
+    "reason": "",
+    "sources": [
+      {
+        "url": "https://www.barneysfarm.com/pineapple-express-609",
+        "publisher": "Barney's Farm",
+        "claim": "Trainwreck × Hawaiian.",
+        "accessed": "2026-11-10",
+        "level": "breeder-reported"
+      }
+    ]
+  },
+  {
+    "id": "do-si-dos",
+    "name": "Do-Si-Dos",
+    "previous_lineage": "Girl Scout Cookies × Face Off OG",
+    "previous_recipes": [
+      [
+        "girl-scout-cookies",
+        "bubba-kush"
+      ],
+      [
+        "girl-scout-cookies",
+        "afghani"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "OG Kush Breath (OGKB) × Face Off OG BX1",
+    "unlock": {
+      "kind": "cross",
+      "parents": [
+        "ogkb",
+        "face-off-og-bx1"
+      ]
+    },
+    "genetics_status": "breeder-reported",
+    "reason": "",
+    "sources": [
+      {
+        "url": "https://archiveseedbank.com/products/do-si-dos",
+        "publisher": "Archive Seed Bank",
+        "claim": "Verified OGKB × Face Off OG BX1.",
+        "accessed": "2026-11-10",
+        "level": "breeder-reported"
+      }
+    ]
+  },
+  {
+    "id": "sherbet",
+    "name": "Sunset Sherbet",
+    "previous_lineage": "Girl Scout Cookies × Pink Panties",
+    "previous_recipes": [
+      [
+        "girl-scout-cookies",
+        "white-widow"
+      ],
+      [
+        "girl-scout-cookies",
+        "blueberry"
+      ],
+      [
+        "girl-scout-cookies",
+        "northern-lights"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Girl Scout Cookies × Pink Panties",
+    "unlock": {
+      "kind": "cross",
+      "parents": [
+        "girl-scout-cookies",
+        "pink-panties"
+      ]
+    },
+    "genetics_status": "reported",
+    "reason": "",
+    "sources": [
+      {
+        "url": "https://www.leafly.com/strains/sunset-sherbert",
+        "publisher": "Leafly",
+        "claim": "Girl Scout Cookies × Pink Panties.",
+        "accessed": "2026-11-10",
+        "level": "reported"
+      }
+    ]
+  },
+  {
+    "id": "purple-punch",
+    "name": "Purple Punch",
+    "previous_lineage": "Larry OG × Granddaddy Purple",
+    "previous_recipes": [
+      [
+        "bubba-kush",
+        "blueberry"
+      ],
+      [
+        "blueberry",
+        "northern-lights"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Larry OG × Granddaddy Purple",
+    "unlock": {
+      "kind": "cross",
+      "parents": [
+        "larry-og",
+        "granddaddy-purple"
+      ]
+    },
+    "genetics_status": "breeder-reported",
+    "reason": "",
+    "sources": [
+      {
+        "url": "https://www.barneysfarm.com/purple-punch-483",
+        "publisher": "Barney's Farm",
+        "claim": "Granddaddy Purple × Larry OG.",
+        "accessed": "2026-11-10",
+        "level": "breeder-reported"
+      }
+    ]
+  },
+  {
+    "id": "strawberry-cough",
+    "name": "Strawberry Cough",
+    "previous_lineage": "Haze × Strawberry Fields",
+    "previous_recipes": [
+      [
+        "haze",
+        "durban-poison"
+      ],
+      [
+        "super-silver-haze",
+        "durban-poison"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Proposed Haze × Strawberry Fields",
+    "unlock": {
+      "kind": "archive",
+      "after_crosses": 15,
+      "requires": []
+    },
+    "genetics_status": "disputed",
+    "reason": "The historic Strawberry Fields is not assumed to be the later Sagarmatha line made from Strawberry Cough; that would introduce circular ancestry.",
+    "sources": [
+      {
+        "url": "https://www.leafly.com/strains/strawberry-cough",
+        "publisher": "Leafly",
+        "claim": "Mysterious origins; Haze × Strawberry Fields is a proposed account.",
+        "accessed": "2026-11-10",
+        "level": "reported"
+      }
+    ]
+  },
+  {
+    "id": "mimosa",
+    "name": "Mimosa",
+    "previous_lineage": "Clementine × Purple Punch",
+    "previous_recipes": [
+      [
+        "purple-punch",
+        "sour-diesel"
+      ],
+      [
+        "purple-punch",
+        "durban-poison"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Clementine × Purple Punch",
+    "unlock": {
+      "kind": "cross",
+      "parents": [
+        "clementine",
+        "purple-punch"
+      ]
+    },
+    "genetics_status": "reported",
+    "reason": "",
+    "sources": [
+      {
+        "url": "https://www.leafly.com/strains/mimosa.1",
+        "publisher": "Leafly",
+        "claim": "Clementine × Purple Punch.",
+        "accessed": "2026-11-10",
+        "level": "reported"
+      }
+    ]
+  },
+  {
+    "id": "cereal-milk",
+    "name": "Cereal Milk",
+    "previous_lineage": "Y Life × Snowman (GSC phenotype)",
+    "previous_recipes": [
+      [
+        "gelato",
+        "wedding-cake"
+      ],
+      [
+        "sherbet",
+        "wedding-cake"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Y Life × Snowman",
+    "unlock": {
+      "kind": "cross",
+      "parents": [
+        "y-life",
+        "snowman"
+      ]
+    },
+    "genetics_status": "reported",
+    "reason": "",
+    "sources": [
+      {
+        "url": "https://www.leafly.com/strains/cereal-milk",
+        "publisher": "Leafly",
+        "claim": "Y Life × Snowman; The Y is not substituted for Y Life.",
+        "accessed": "2026-11-10",
+        "level": "reported"
+      }
+    ]
+  },
+  {
+    "id": "ice-cream-cake",
+    "name": "Ice Cream Cake",
+    "previous_lineage": "Wedding Cake × Gelato #33",
+    "previous_recipes": [
+      [
+        "wedding-cake",
+        "gelato"
+      ],
+      [
+        "wedding-cake",
+        "bubba-kush"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Wedding Cake × Gelato #33",
+    "unlock": {
+      "kind": "cross",
+      "parents": [
+        "wedding-cake",
+        "gelato-33"
+      ]
+    },
+    "genetics_status": "breeder-reported",
+    "reason": "",
+    "sources": [
+      {
+        "url": "https://www.barneysfarm.com/ice-cream-cake-632",
+        "publisher": "Barney's Farm",
+        "claim": "Gelato #33 × Wedding Cake.",
+        "accessed": "2026-11-10",
+        "level": "breeder-reported"
+      }
+    ]
+  },
+  {
+    "id": "biscotti",
+    "name": "Biscotti",
+    "previous_lineage": "Gelato #25 × South Florida OG",
+    "previous_recipes": [
+      [
+        "gelato",
+        "og-kush"
+      ],
+      [
+        "gelato",
+        "bubba-kush"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Disputed; Gelato 25 / Florida OG or Motorbreath / Gelato 41",
+    "unlock": {
+      "kind": "archive",
+      "after_crosses": 25,
+      "requires": []
+    },
+    "genetics_status": "disputed",
+    "reason": "Conflicting accounts remain visible. No generic Gelato × OG Kush shortcut.",
+    "sources": [
+      {
+        "url": "https://www.leafly.com/strains/biscotti",
+        "publisher": "Leafly",
+        "claim": "Competing accounts: Gelato 25 × Florida OG, or Motorbreath × Gelato 41.",
+        "accessed": "2026-11-10",
+        "level": "reported"
+      }
+    ]
+  },
+  {
+    "id": "apples-bananas",
+    "name": "Apples and Bananas",
+    "previous_lineage": "Platinum Cookies × GDP × Blue Power × Gelato #41",
+    "previous_recipes": [
+      [
+        "gelato",
+        "purple-punch"
+      ],
+      [
+        "runtz",
+        "zkittlez"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Reported Platinum Cookies / GDP / Blue Power / Gelatti",
+    "unlock": {
+      "kind": "archive",
+      "after_crosses": 25,
+      "requires": []
+    },
+    "genetics_status": "disputed",
+    "reason": "Accounts differ in their intermediate names and Gelatti is not Gelato. The original two fabricated recipes are removed.",
+    "sources": [
+      {
+        "url": "https://www.leafly.com/strains/apples-and-bananas",
+        "publisher": "Leafly",
+        "claim": "Complex Cookies/Compound breeding history with Blue Power ancestry.",
+        "accessed": "2026-11-10",
+        "level": "reported"
+      }
+    ]
+  },
+  {
+    "id": "white-runtz",
+    "name": "White Runtz",
+    "previous_lineage": "Zkittlez × Gelato (White phenotype)",
+    "previous_recipes": [
+      [
+        "runtz",
+        "white-widow"
+      ],
+      [
+        "zkittlez",
+        "white-widow"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Selection of Runtz",
+    "unlock": {
+      "kind": "selection",
+      "requires": [
+        "runtz"
+      ],
+      "after_crosses": 0
+    },
+    "genetics_status": "breeder-reported",
+    "reason": "A named Gelato × Original Z selection, awarded after Runtz. White Widow is not a parent.",
+    "sources": [
+      {
+        "url": "https://www.barneysfarm.com/us/white-runtz-weed-strain-710",
+        "publisher": "Barney's Farm",
+        "claim": "Gelato × Original Z; a named selection from the Runtz family.",
+        "accessed": "2026-11-10",
+        "level": "breeder-reported"
+      }
+    ]
+  },
+  {
+    "id": "mac-and-cheese",
+    "name": "Mac and Cheese",
+    "previous_lineage": "MAC 1 × Alien Cheese",
+    "previous_recipes": [
+      [
+        "mac-1",
+        "og-kush"
+      ],
+      [
+        "mac-1",
+        "chemdawg"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "MAC (Miracle Alien Cookies) × Alien Cheese",
+    "unlock": {
+      "kind": "cross",
+      "parents": [
+        "mac",
+        "alien-cheese"
+      ]
+    },
+    "genetics_status": "reported",
+    "reason": "",
+    "sources": [
+      {
+        "url": "https://www.leafly.com/strains/mac-and-cheese",
+        "publisher": "Leafly",
+        "claim": "The MAC × Alien Cheese; not a generic MAC 1 × OG Kush cross.",
+        "accessed": "2026-11-10",
+        "level": "reported"
+      }
+    ]
+  },
+  {
+    "id": "jealousy",
+    "name": "Jealousy",
+    "previous_lineage": "Sherbet × Gelato #41",
+    "previous_recipes": [
+      [
+        "sherbet",
+        "gelato"
+      ],
+      [
+        "ice-cream-cake",
+        "gelato"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Gelato #41 × Sherbert BX1",
+    "unlock": {
+      "kind": "cross",
+      "parents": [
+        "gelato-41",
+        "sherbert-bx1"
+      ]
+    },
+    "genetics_status": "reported",
+    "reason": "",
+    "sources": [
+      {
+        "url": "https://www.leafly.com/news/strains-products/permanent-marker-strain-genetics-explained",
+        "publisher": "Leafly",
+        "claim": "Jealousy uses Gelato 41 and a Sherbert backcross line.",
+        "accessed": "2026-11-10",
+        "level": "reported"
+      }
+    ]
+  },
+  {
+    "id": "permanent-marker",
+    "name": "Permanent Marker",
+    "previous_lineage": "Biscotti × Sherbert × Jealousy",
+    "previous_recipes": [
+      [
+        "biscotti",
+        "jealousy"
+      ],
+      [
+        "biscotti",
+        "sherbet"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "Biscotti S1 × Sherbert BX1 × Jealousy F2",
+    "unlock": {
+      "kind": "cross",
+      "parents": [
+        "biscotti-sherb-bx1",
+        "jealousy-f2"
+      ]
+    },
+    "genetics_status": "reported",
+    "reason": "The complete reported cross is (Biscotti S1 × Sherbert BX1) × Jealousy F2. All named parental accessions are preserved.",
+    "sources": [
+      {
+        "url": "https://www.leafly.com/news/strains-products/permanent-marker-strain-genetics-explained",
+        "publisher": "Leafly; Seed Junky genealogy reporting",
+        "claim": "(Biscotti S1 × Sherb BX1) × Jealousy F2.",
+        "accessed": "2026-11-10",
+        "level": "reported"
+      }
+    ]
+  },
+  {
+    "id": "gary-payton",
+    "name": "Gary Payton",
+    "previous_lineage": "The Y × Snowman",
+    "previous_recipes": [
+      [
+        "gorilla-glue",
+        "girl-scout-cookies"
+      ],
+      [
+        "mac-1",
+        "runtz"
+      ]
+    ],
+    "retained_exact_recipes": [],
+    "replacement_lineage": "The Y × Snowman",
+    "unlock": {
+      "kind": "cross",
+      "parents": [
+        "the-y",
+        "snowman"
+      ]
+    },
+    "genetics_status": "reported",
+    "reason": "",
+    "sources": [
+      {
+        "url": "https://www.leafly.com/strains/gary-payton",
+        "publisher": "Leafly",
+        "claim": "The Y × Snowman.",
+        "accessed": "2026-11-10",
+        "level": "reported"
+      }
+    ]
+  }
+]

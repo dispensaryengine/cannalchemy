@@ -47,6 +47,7 @@ const Signup = ({ onSwitchToLogin, onClose }) => {
           onChange={(e) => setPassword(e.target.value)}
           required
           autoComplete="new-password"
+          minLength={8}
           placeholder="Enter password"
         />
       </div>

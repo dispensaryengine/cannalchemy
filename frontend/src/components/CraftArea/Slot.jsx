@@ -1,31 +1,9 @@
-
 import React from 'react';
-
-const Slot = ({ strain, onClear }) => {
-  return (
-    <div className={"slot " + (strain ? "filled" : "")}>
-      {strain ? (
-        <>
-          <div className="slot-placeholder-img">
-            {strain.image_url ? (
-              <img src={strain.image_url} alt={strain.name} />
-            ) : (
-              <span>🌿</span>
-            )}
-          </div>
-          <div className="slot-name">{strain.name}</div>
-        </>
-      ) : (
-        <div className="slot-empty-text">Drop strain here</div>
-      )}
-      <div className="slot-label">{strain ? (strain.id === slot1?.id ? 'Parent A' : 'Parent B') : 'Parent'}</div>
-      {strain && (
-        <button className="slot-clear-btn" onClick={onClear}>
-          X
-        </button>
-      )}
-    </div>
-  );
-};
-
-export default Slot;
+import { useDrop } from 'react-dnd';
+export default function Slot({ strain, label, onClear, onDrop }) {
+  const [{isOver}, drop] = useDrop(() => ({ accept: 'strain', drop: (item,monitor) => { onDrop(item.strain); return {handled:true}; }, collect: m=>({isOver:m.isOver()}) }), [onDrop]);
+  return <div ref={drop} className={`slot ${strain?'filled':''} ${isOver?'drag-over':''}`}>
+    {strain?<><div className="slot-placeholder-img" style={{background:`${strain.color}22`}}>{strain.emoji||'🌿'}</div><div className="slot-name">{strain.name}</div><button className="slot-clear-btn" aria-label={`Clear ${label}`} onClick={onClear}>×</button></>:<div className="slot-empty-text">Drop<br/>strain here</div>}
+    <div className="slot-label">{label}</div>
+  </div>;
+}

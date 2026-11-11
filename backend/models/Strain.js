@@ -3,6 +3,11 @@ const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/db');
 
 const Strain = sequelize.define('Strain', {
+  lineage: DataTypes.TEXT,
+  emoji: DataTypes.STRING(20),
+  color: DataTypes.STRING(20),
+  thc_range: DataTypes.STRING(40),
+  cbd_range: DataTypes.STRING(40),
   id: {
     type: DataTypes.STRING(255),
     primaryKey: true,
