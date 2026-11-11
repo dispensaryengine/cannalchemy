@@ -48,7 +48,7 @@ Inherited prototype THC/CBD ranges, effect lists and flavor scores were outside 
 
 ## Avoiding unreachable branches
 
-Nine foundation accessions are available with the eight starters. Further packs arrive after 3, 8, 15, 25 and 40 distinct cross outcomes. Imports and repeated attempts do not advance these milestones. Named selections unlock only after their source line. All awards are automatic and backfill existing saves.
+Nine foundation accessions are available with the eight starters; Exodus Cheese is also awarded immediately as a Skunk #1 selection. Further packs arrive after 3, 8, 15 and 25 distinct cross outcomes. Imports and repeated attempts do not advance these milestones. Named selections unlock only after their source line. All awards are automatic and backfill existing saves.
 
 The graph validator checks references, provenance, self-dependencies, dependency cycles, milestone reachability, exact recipe declarations, and the full closure. A separate test runs 100 different randomized discovery orders. Every run must finish all 199 entries, with a productive frontier until completion. This establishes structural reachability; it does not establish that all stages are equally fun or that no parent is central to several branches.
 
@@ -67,3 +67,7 @@ All 44 original IDs are preserved. Existing discoveries are grandfathered even i
 - `TEST_BASE_URL=https://your-playtest-domain npm test --prefix backend`: run the complete MySQL API playthrough, isolation, milestone, same-pair and persistence checks.
 
 Further expansion should add evidence before adding a recipe. If a pedigree is undisclosed, disputed, or describes only a multi-way ancestry without a supported intermediate, use an accession or leave it for later research. Do not invent a cross simply to hit 300 entries.
+
+## Completed playtest verification
+
+The deployed MySQL playthrough passed all 199 entries and all 106 cross outcomes, including both pairs with multiple named results, reverse parent order, duplicate results, automatic milestone awards, isolated guests, authenticated parent ownership, rejection of removed fabricated recipes, and registered-login persistence. The migration check retained all 11 discoveries and all 3 attempts in a pre-update test account. The production React build and all six backend tests passed. Browser checks confirmed the 199-entry catalog, retained account progress, seed-bank milestones, encyclopedia provenance links, and dynamic map tiers.

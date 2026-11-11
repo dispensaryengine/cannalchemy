@@ -53,4 +53,4 @@ Sources distinguish breeder-reported, producer-reported, secondary-reported, dis
 
 ### Progression
 
-Cross two discovered parent entries. If a pair has multiple documented named outcomes, the server guarantees every undiscovered result before repeating a known one. Seed-bank packs arrive after 0, 3, 8, 15, 25 and 40 **unique cross outcomes**, not attempts or imported entries. Named selections arrive when their source line is discovered. The Seed Bank panel explains upcoming packs; the encyclopedia links each entry to its evidence and flags uncertain genetics.
+Cross two discovered parent entries. If a pair has multiple documented named outcomes, the server guarantees every undiscovered result before repeating a known one. Seed-bank packs arrive after 0, 3, 8, 15 and 25 **unique cross outcomes**, not attempts or imported entries. Named selections arrive when their source line is discovered. The Seed Bank panel explains upcoming packs; the encyclopedia links each entry to its evidence and flags uncertain genetics.
